@@ -1,7 +1,8 @@
-    [build]
-    publish = "dist/yettoexplore"
+[build]
+  command = "ng build --configuration production"
+  publish = "dist/yettosxplore/browser"
 
 [[redirects]]
-    from = "/*"
-    to = "/index.html"
-    status = 200
+  from = "/*"
+  to = "/index.html"
+  status = 200
