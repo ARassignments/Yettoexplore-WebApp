@@ -1,6 +1,6 @@
 [build]
   command = "ng build --configuration production"
-  publish = "dist/yettosxplore/browser"
+  publish = "dist/yettoexplore/browser"
 
 [[redirects]]
   from = "/*"
