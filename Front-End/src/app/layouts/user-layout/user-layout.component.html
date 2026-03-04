@@ -1,0 +1,937 @@
+<div class="user-template-wrapper">
+
+  <!-- Header -->
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/">MyApp</a>
+      <div class="ms-auto">
+        <a routerLink="/user/login" class="btn btn-outline-light me-2">Login</a>
+        <a routerLink="/user/register" class="btn btn-primary">Register</a>
+        <a routerLink="/dashboard/home" class="btn btn-primary">Dashboard</a>
+      </div>
+    </div>
+  </nav> -->
+
+  <!-- Main Content -->
+  <main class="user-main">
+    <!-- Child user routes render here -->
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- Footer
+  <footer class="user-footer bg-dark text-white text-center py-3">
+    <p class="mb-0">&copy; 2024 MyApp. All rights reserved.</p>
+  </footer> -->
+
+</div>
+
+<!-- Loader Start -->
+<div class="togo-loader">
+  <div class="togo-preloader p-relative">
+    <span style="--i: 1"></span>
+    <span style="--i: 2"></span>
+    <span style="--i: 3"></span>
+    <span style="--i: 4"></span>
+    <span style="--i: 5"></span>
+    <span style="--i: 6"></span>
+    <span style="--i: 7"></span>
+    <span style="--i: 8"></span>
+    <span style="--i: 9"></span>
+    <span style="--i: 10"></span>
+    <span style="--i: 11"></span>
+    <span style="--i: 12"></span>
+    <span style="--i: 13"></span>
+    <span style="--i: 14"></span>
+    <span style="--i: 15"></span>
+    <span style="--i: 16"></span>
+    <span style="--i: 17"></span>
+    <span style="--i: 18"></span>
+    <span style="--i: 19"></span>
+    <span style="--i: 20"></span>
+    <div class="plane">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="80" height="80" fill="currentColor">
+        <path
+          d="M407.72 208c-2.72 0-14.44.08-18.67.31l-57.77 1.52L198.06 48h-62.81l74.59 164.61-97.31 1.44L68.25 160H16.14l20.61 94.18c.15.54.33 1.07.53 1.59a.26.26 0 010 .15 15.42 15.42 0 00-.53 1.58L15.86 352h51.78l45.45-55 96.77 2.17L135.24 464h63l133-161.75 57.77 1.54c4.29.23 16 .31 18.66.31 24.35 0 44.27-3.34 59.21-9.94C492.22 283 496 265.46 496 256c0-30.06-33-48-88.28-48zm-71.29 87.9z">
+        </path>
+      </svg>
+    </div>
+  </div>
+</div>
+<!-- Loader End -->
+
+
+<!-- back btn start -->
+<div class="togo-back-wrapper">
+  <button id="back-btn-top" type="button" class="togo-back-btn">
+    <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+</div>
+<!-- back btn end -->
+
+<!-- cart-area-start -->
+<div class="cart-area">
+  <div class="cart-wrapper">
+    <div class="cart-top">
+      <div class="cart-title-wrap">
+        <h4 class="cart-title">Your Cart </h4>
+      </div>
+      <div class="cart-close">
+        <button class="offcanvas-close-btn">
+          <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.19141 9.80762L27.5762 28.1924" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path d="M9.19141 28.1924L27.5762 9.80761" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="cart-empty-content">
+      <span class="cart-empty-icon">
+        <svg width="70" height="78" fill="none">
+          <path fill="#888" fill-rule="evenodd"
+            d="m2.357 32.177.732 3.764a1.13 1.13 0 1 1-2.216.433L.14 32.609c-.891-4.581 2.577-8.87 7.23-8.87H62.63c4.597 0 8.053 4.194 7.254 8.738l-6.933 39.386C62.329 75.406 59.278 78 55.698 78H15.73c-3.438 0-6.41-2.398-7.179-5.767l-1.08-4.735a1.129 1.129 0 1 1 2.201-.504l1.08 4.735c.538 2.355 2.607 4.01 4.978 4.01h39.968c2.468 0 4.594-1.79 5.03-4.268l6.933-39.386C68.22 28.899 65.798 26 62.63 26H7.37c-3.206 0-5.638 2.965-5.013 6.177Z"
+            clip-rule="evenodd"></path>
+          <path fill="#888"
+            d="M32.633 2.802a1.805 1.805 0 0 0-.489-2.496 1.786 1.786 0 0 0-2.485.49L11.027 28.684a1.805 1.805 0 0 0 .489 2.497A1.786 1.786 0 0 0 14 30.689L32.633 2.802ZM56.038 30.501a1.786 1.786 0 0 0 2.447-.657c.495-.86.203-1.96-.654-2.458L35.096 14.172a1.786 1.786 0 0 0-2.447.656c-.495.86-.203 1.96.654 2.459L56.038 30.5Z">
+          </path>
+          <path fill="#888" fill-rule="evenodd"
+            d="M35.012 53.02c-.298.07-.663.362-.897.674-.514.683-1.412.76-2.008.17-.595-.588-.662-1.62-.148-2.303.477-.635 1.358-1.48 2.488-1.742a2.917 2.917 0 0 1 1.943.207c.67.319 1.247.882 1.727 1.643.46.731.319 1.752-.318 2.281-.637.53-1.527.366-1.988-.365-.237-.375-.42-.498-.51-.54a.412.412 0 0 0-.29-.025Z"
+            clip-rule="evenodd"></path>
+          <path fill="#888"
+            d="M25.402 47.478a1.695 1.695 0 1 0-.002-3.389 1.695 1.695 0 0 0 .003 3.39ZM44.596 47.478c.936 0 1.693-.759 1.693-1.695a1.694 1.694 0 1 0-3.387 0c0 .936.758 1.695 1.694 1.695Z">
+          </path>
+        </svg>
+      </span>
+      <h4 class="cart-empty-title">Your cart is currently empty!</h4>
+      <div class="cart-empty-text">
+        <p>You may check out all the available trips and book one that suits you.</p>
+      </div>
+      <div class="cart-empty-btn">
+        <a class="togo-btn-primary" href="shop.html">Continue Browsing Trips</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- cart-area-end -->
+
+
+<!-- offcanvus-area-start -->
+<div class="offcanvas-area">
+  <div class="offcanvas-wrapper">
+    <div class="offcanvas-top d-flex align-items-center justify-content-between">
+      <div class="offcanvas-logo">
+        <a href="index.html">
+          <img width="120" src="assets/user/img/logo/logo-yte.png" alt="">
+        </a>
+      </div>
+      <div class="offcanvas-close">
+        <button class="offcanvas-close-btn">
+          <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.19141 9.80762L27.5762 28.1924" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path d="M9.19141 28.1924L27.5762 9.80761" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="offcanvas-content">
+      <div class="togo-mobilemenu-content fix mb-30"></div>
+    </div>
+  </div>
+</div>
+<div class="body-overlay"></div>
+<!-- offcanvus-area-end -->
+
+
+<header>
+
+  <!-- header area start -->
+  <div class="togo-header-sec togo-hdr-transparent">
+    <div class="togo-header-2-top d-none d-lg-block" data-bg-color="#111111">
+      <div class="container-fluid p-0">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="togo-header-2-top-info">
+              <a href="tel:012345678"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17"
+                  fill="none">
+                  <path
+                    d="M11.25 10.3512C9.25415 12.4518 4.16318 7.40653 6.16662 5.29795C7.38985 4.01052 6.00803 2.53923 5.24317 1.45778C3.8077 -0.571854 0.656427 2.23034 0.752132 4.01287C1.05394 9.63404 7.13462 16.2955 13.0229 15.7145C14.865 15.5327 16.9815 12.206 14.8686 10.9902C13.8121 10.3822 12.3618 9.18099 11.25 10.3512Z"
+                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg> (+60) 17-399 2201, (+60) 32110 0689</a>
+              <a href="mailto:info@yettoexplore.com"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                  viewBox="0 0 20 20" fill="none">
+                  <path
+                    d="M1.66797 10C1.66797 6.85731 1.66797 5.28597 2.88836 4.30965C4.10875 3.33334 6.07293 3.33334 10.0013 3.33334C13.9297 3.33334 15.8939 3.33334 17.1142 4.30965C18.3346 5.28597 18.3346 6.85731 18.3346 10C18.3346 13.1427 18.3346 14.7141 17.1142 15.6904C15.8939 16.6667 13.9297 16.6667 10.0013 16.6667C6.07293 16.6667 4.10875 16.6667 2.88836 15.6904C1.66797 14.7141 1.66797 13.1427 1.66797 10Z"
+                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path
+                    d="M17.2216 4.42514L13.2004 8.1659C11.6699 9.44134 10.9046 10.0791 9.99949 10.0791C9.09437 10.0791 8.3291 9.44134 6.79857 8.1659L2.77734 4.42514"
+                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg> info@yettoexplore.com</a>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="togo-header-2-top-text text-center">
+              <p>Save up to $500 when you book by June. <a class="hover-line" href="#">Detail</a></p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="togo-header-2-top-social text-lg-end">
+              <a href="#">
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path
+                      d="M5.41797 8.33333V11.6667H7.91797V17.5H11.2513V11.6667H13.7513L14.5846 8.33333H11.2513V6.66667C11.2513 6.21278 11.6307 5.83333 12.0846 5.83333H14.5846V2.5H12.0846C9.81519 2.5 7.91797 4.39722 7.91797 6.66667V8.33333H5.41797Z"
+                      stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </a>
+              <a href="#">
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path
+                      d="M13.75 2.5H6.25C4.17893 2.5 2.5 4.17893 2.5 6.25V13.75C2.5 15.8211 4.17893 17.5 6.25 17.5H13.75C15.8211 17.5 17.5 15.8211 17.5 13.75V6.25C17.5 4.17893 15.8211 2.5 13.75 2.5Z"
+                      stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                      d="M12.8838 9.57218C12.9738 10.179 12.8701 10.7988 12.5876 11.3433C12.305 11.8879 11.858 12.3295 11.31 12.6053C10.762 12.8811 10.141 12.9771 9.53533 12.8796C8.92964 12.7822 8.3701 12.4962 7.93631 12.0624C7.50251 11.6286 7.21654 11.0691 7.11908 10.4634C7.02161 9.85769 7.11762 9.23669 7.39343 8.68871C7.66925 8.14072 8.11083 7.69366 8.65537 7.41111C9.19991 7.12856 9.81968 7.02491 10.4265 7.11489C11.0455 7.20669 11.6186 7.49513 12.0611 7.93762C12.5036 8.38011 12.792 8.95318 12.8838 9.57218Z"
+                      stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M14.168 5.41666H14.5846" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </a>
+              <a href="#">
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                    <path
+                      d="M14.5 0.75L9.06391 7.10276M1.66667 15.4167L7.10276 9.06391M7.10276 9.06391L12.4146 15.1021C12.5892 15.3006 12.8577 15.4167 13.1421 15.4167H14.4934C15.2603 15.4167 15.6917 14.6368 15.2208 14.1016L9.06391 7.10276M7.10276 9.06391L0.945838 2.06506C0.475005 1.52984 0.906398 0.75 1.6733 0.75H3.02462C3.30901 0.75 3.57748 0.866089 3.75208 1.06457L9.06391 7.10276"
+                      stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </a>
+              <a href="#">
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path
+                      d="M8.75 8.25645V11.7436C8.75 11.9312 8.90391 12.0833 9.09372 12.0833C9.16113 12.0833 9.22706 12.0637 9.28329 12.027L11.9291 10.2985C12.0875 10.195 12.131 9.98421 12.0263 9.82767C12.0013 9.79025 11.969 9.75807 11.9314 9.73305L9.28553 7.97449C9.12801 7.8698 8.91442 7.91115 8.80847 8.06689C8.77037 8.12295 8.75 8.18895 8.75 8.25645Z"
+                      stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                      d="M1.66797 9.99999C1.66797 7.25013 1.66797 5.8752 2.88836 5.02093C4.10875 4.16666 6.07293 4.16666 10.0013 4.16666C13.9297 4.16666 15.8939 4.16666 17.1142 5.02093C18.3346 5.8752 18.3346 7.25013 18.3346 9.99999C18.3346 12.7498 18.3346 14.1248 17.1142 14.9791C15.8939 15.8333 13.9297 15.8333 10.0013 15.8333C6.07293 15.8333 4.10875 15.8333 2.88836 14.9791C1.66797 14.1248 1.66797 12.7498 1.66797 9.99999Z"
+                      stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid p-0">
+      <div class="togo-header-wrapper">
+        <div class="row align-items-center">
+          <div class="col-xxl-1 col-xl-2 col-lg-6 col-4">
+            <div class="togo-header-logo">
+              <a routerLink="/user/home">
+                <img width="120" src="assets/user/img/logo/logo-yte.png" alt="">
+              </a>
+            </div>
+          </div>
+          <div class="col-xxl-8 col-xl-6 d-none d-xl-block">
+            <div class="togo-header-style-1">
+              <div class="togo-header-menu">
+                <nav class="togo-mobile-menu">
+                  <ul>
+                    <li class="togo" routerLinkActive="active">
+                      <a routerLink="/user/home">Home</a>
+                    </li>
+                    <!-- <li class="togo-dropdown">
+                      <a href="index.html">Demo</a>
+                      <ul class="togo-submenu mobile-slide">
+                        <li><a href="index.html">Home 1</a></li>
+                        <li><a href="index-2.html">Home 2</a></li>
+                        <li><a href="index-3.html">Home 3</a></li>
+                        <li><a href="index-4.html">Home 4</a></li>
+                        <li><a href="index-5.html">Home 5</a></li>
+                        <li><a href="index-6.html">Home 6</a></li>
+                        <li><a href="index-7.html">Home 7</a></li>
+                        <li><a href="index-8.html">Home 8</a></li>
+                        <li><a href="index-9.html">Home 9</a></li>
+                        <li><a href="index-10.html">Home 10</a></li>
+                        <li><a href="index-11.html">Home 11</a></li>
+                        <li><a href="index-12.html">Home 12</a></li>
+                      </ul>
+                    </li> -->
+                    <li class="togo-dropdown p-static">
+                      <a href="city-details-1.html">Destinations</a>
+                      <div class="togo-megamenu mobile-slide">
+                        <div class="row">
+                          <div class="col-xl-3">
+                            <div class="togo-megamenu-nav">
+                              <ul>
+                                <li class="active">
+                                  <a href="#">Top destinations
+                                    <span>
+                                      <svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.5"
+                                          stroke-linecap="round" stroke-linejoin="round"></path>
+                                      </svg>
+                                    </span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#">France
+                                    <span>
+                                      <svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.5"
+                                          stroke-linecap="round" stroke-linejoin="round"></path>
+                                      </svg>
+                                    </span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#">Thailand
+                                    <span>
+                                      <svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.5"
+                                          stroke-linecap="round" stroke-linejoin="round"></path>
+                                      </svg>
+                                    </span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#">United Kingdom
+                                    <span>
+                                      <svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.5"
+                                          stroke-linecap="round" stroke-linejoin="round"></path>
+                                      </svg>
+                                    </span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="#">United States
+                                    <span>
+                                      <svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.5"
+                                          stroke-linecap="round" stroke-linejoin="round"></path>
+                                      </svg>
+                                    </span>
+                                  </a>
+                                </li>
+                              </ul>
+                              <div class="togo-megamenu-show d-none d-xl-block">
+                                <a class="togo-tour-btn line-border" href="city-details-1.html">
+                                  <span>View all</span>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-xl-6">
+                            <div class="togo-megamenu-destination">
+                              <div class="togo-megamenu-destination-wrap">
+                                <span class="togo-megamenu-destination-title">Top destinations in Countries</span>
+                                <div class="row">
+                                  <div class="col-xl-6">
+                                    <div class="togo-megamenu-destination-item mb-20">
+                                      <div class="togo-megamenu-destination-thumb">
+                                        <img src="assets/user/img/explor/megamenu/thumb-1.jpg" alt="">
+                                      </div>
+                                      <div class="togo-megamenu-destination-content">
+                                        <a href="city-details-1.html">Ha Noi</a>
+                                      </div>
+                                    </div>
+                                    <div class="togo-megamenu-destination-item mb-20">
+                                      <div class="togo-megamenu-destination-thumb">
+                                        <img src="assets/user/img/explor/megamenu/thumb-3.jpg" alt="">
+                                      </div>
+                                      <div class="togo-megamenu-destination-content">
+                                        <a href="city-details-2.html">Ho Chi Minh</a>
+                                      </div>
+                                    </div>
+                                    <div class="togo-megamenu-destination-item mb-20">
+                                      <div class="togo-megamenu-destination-thumb">
+                                        <img src="assets/user/img/explor/megamenu/thumb-5.jpg" alt="">
+                                      </div>
+                                      <div class="togo-megamenu-destination-content">
+                                        <a href="city-details-3.html">Hue</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-xl-6">
+                                    <div class="togo-megamenu-destination-item mb-20">
+                                      <div class="togo-megamenu-destination-thumb">
+                                        <img src="assets/user/img/explor/megamenu/thumb-2.jpg" alt="">
+                                      </div>
+                                      <div class="togo-megamenu-destination-content">
+                                        <a href="city-details-2.html">Hoi An</a>
+                                      </div>
+                                    </div>
+                                    <div class="togo-megamenu-destination-item mb-20">
+                                      <div class="togo-megamenu-destination-thumb">
+                                        <img src="assets/user/img/explor/megamenu/thumb-4.jpg" alt="">
+                                      </div>
+                                      <div class="togo-megamenu-destination-content">
+                                        <a href="city-details-3.html">Da Nang</a>
+                                      </div>
+                                    </div>
+                                    <div class="togo-megamenu-destination-item mb-20">
+                                      <div class="togo-megamenu-destination-thumb">
+                                        <img src="assets/user/img/explor/megamenu/thumb-6.jpg" alt="">
+                                      </div>
+                                      <div class="togo-megamenu-destination-content">
+                                        <a href="city-details-1.html">Ha Long Bay</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="togo-megamenu-show d-none d-xl-block">
+                                  <a class="togo-tour-btn line-border" href="city-details-1.html">
+                                    <span>View all</span>
+                                  </a>
+                                </div>
+                              </div>
+                              <div class="togo-megamenu-destination-wrap">
+                                <span class="togo-megamenu-destination-title">Top destinations in France</span>
+                                <div class="row">
+                                  <div class="col-xl-6">
+                                    <div class="togo-megamenu-destination-item mb-20">
+                                      <div class="togo-megamenu-destination-thumb">
+                                        <img src="assets/user/img/explor/megamenu/thumb-1.jpg" alt="">
+                                      </div>
+                                      <div class="togo-megamenu-destination-content">
+                                        <a href="city-details-1.html">Ha Noi</a>
+                                      </div>
+                                    </div>
+                                    <div class="togo-megamenu-destination-item mb-20">
+                                      <div class="togo-megamenu-destination-thumb">
+                                        <img src="assets/user/img/explor/megamenu/thumb-3.jpg" alt="">
+                                      </div>
+                                      <div class="togo-megamenu-destination-content">
+                                        <a href="city-details-2.html">Ho Chi Minh</a>
+                                      </div>
+                                    </div>
+                                    <div class="togo-megamenu-destination-item mb-20">
+                                      <div class="togo-megamenu-destination-thumb">
+                                        <img src="assets/user/img/explor/megamenu/thumb-5.jpg" alt="">
+                                      </div>
+                                      <div class="togo-megamenu-destination-content">
+                                        <a href="city-details-3.html">Hue</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-xl-6">
+                                    <div class="togo-megamenu-destination-item mb-20">
+                                      <div class="togo-megamenu-destination-thumb">
+                                        <img src="assets/user/img/explor/megamenu/thumb-2.jpg" alt="">
+                                      </div>
+                                      <div class="togo-megamenu-destination-content">
+                                        <a href="city-details-2.html">Hoi An</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="togo-megamenu-show d-none d-xl-block">
+                                  <a class="togo-tour-btn line-border" href="city-details-1.html">
+                                    <span>View all</span>
+                                  </a>
+                                </div>
+                              </div>
+                              <div class="togo-megamenu-destination-wrap">
+                                <span class="togo-megamenu-destination-title">Top destinations in Thailand </span>
+                                <div class="row">
+                                  <div class="col-xl-6">
+                                    <div class="togo-megamenu-destination-item mb-20">
+                                      <div class="togo-megamenu-destination-thumb">
+                                        <img src="assets/user/img/explor/megamenu/thumb-1.jpg" alt="">
+                                      </div>
+                                      <div class="togo-megamenu-destination-content">
+                                        <a href="city-details-1.html">Ha Noi</a>
+                                      </div>
+                                    </div>
+                                    <div class="togo-megamenu-destination-item mb-20">
+                                      <div class="togo-megamenu-destination-thumb">
+                                        <img src="assets/user/img/explor/megamenu/thumb-3.jpg" alt="">
+                                      </div>
+                                      <div class="togo-megamenu-destination-content">
+                                        <a href="city-details-2.html">Ho Chi Minh</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-xl-6">
+                                    <div class="togo-megamenu-destination-item mb-20">
+                                      <div class="togo-megamenu-destination-thumb">
+                                        <img src="assets/user/img/explor/megamenu/thumb-2.jpg" alt="">
+                                      </div>
+                                      <div class="togo-megamenu-destination-content">
+                                        <a href="city-details-3.html">Hoi An</a>
+                                      </div>
+                                    </div>
+                                    <div class="togo-megamenu-destination-item mb-20">
+                                      <div class="togo-megamenu-destination-thumb">
+                                        <img src="assets/user/img/explor/megamenu/thumb-5.jpg" alt="">
+                                      </div>
+                                      <div class="togo-megamenu-destination-content">
+                                        <a href="city-details-2.html">Hue</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="togo-megamenu-show d-none d-xl-block">
+                                  <a class="togo-tour-btn line-border" href="city-details-1.html">
+                                    <span>View all</span>
+                                  </a>
+                                </div>
+                              </div>
+                              <div class="togo-megamenu-destination-wrap">
+                                <span class="togo-megamenu-destination-title">Top destinations in United Kingdom</span>
+                                <div class="row">
+                                  <div class="col-xl-6">
+                                    <div class="togo-megamenu-destination-item mb-20">
+                                      <div class="togo-megamenu-destination-thumb">
+                                        <img src="assets/user/img/explor/megamenu/thumb-1.jpg" alt="">
+                                      </div>
+                                      <div class="togo-megamenu-destination-content">
+                                        <a href="city-details-2.html">Ha Noi</a>
+                                      </div>
+                                    </div>
+                                    <div class="togo-megamenu-destination-item mb-20">
+                                      <div class="togo-megamenu-destination-thumb">
+                                        <img src="assets/user/img/explor/megamenu/thumb-3.jpg" alt="">
+                                      </div>
+                                      <div class="togo-megamenu-destination-content">
+                                        <a href="city-details-3.html">Ho Chi Minh</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-xl-6">
+                                    <div class="togo-megamenu-destination-item mb-20">
+                                      <div class="togo-megamenu-destination-thumb">
+                                        <img src="assets/user/img/explor/megamenu/thumb-2.jpg" alt="">
+                                      </div>
+                                      <div class="togo-megamenu-destination-content">
+                                        <a href="city-details-1.html">Hoi An</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="togo-megamenu-show d-none d-xl-block">
+                                  <a class="togo-tour-btn line-border" href="city-details-1.html">
+                                    <span>View all</span>
+                                  </a>
+                                </div>
+                              </div>
+                              <div class="togo-megamenu-destination-wrap">
+                                <span class="togo-megamenu-destination-title">Top destinations in United States</span>
+                                <div class="row">
+                                  <div class="col-xl-6">
+                                    <div class="togo-megamenu-destination-item mb-20">
+                                      <div class="togo-megamenu-destination-thumb">
+                                        <img src="assets/user/img/explor/megamenu/thumb-1.jpg" alt="">
+                                      </div>
+                                      <div class="togo-megamenu-destination-content">
+                                        <a href="city-details-2.html">Ha Noi</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-xl-6">
+                                    <div class="togo-megamenu-destination-item mb-20">
+                                      <div class="togo-megamenu-destination-thumb">
+                                        <img src="assets/user/img/explor/megamenu/thumb-2.jpg" alt="">
+                                      </div>
+                                      <div class="togo-megamenu-destination-content">
+                                        <a href="city-details-3.html">Hoi An</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="togo-megamenu-show d-none d-xl-block">
+                                  <a class="togo-tour-btn line-border" href="city-details-1.html">
+                                    <span>View all</span>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-xl-3">
+                            <div class="togo-megamenu-banner"
+                              data-background="assets/user/img/banner/home-10/megamenu-1.jpg">
+                              <h4 class="togo-megamenu-banner-title">Togo <br> Travel Booking <br> Html</h4>
+                              <p>The most complete Tour Management System</p>
+                              <a class="togo-btn-primary" href="contact.html">Get it now</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="togo" routerLinkActive="active">
+                      <a routerLink="/dashboard/home">Dashboard</a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+          <div class="col-xxl-3 col-xl-4 col-lg-6 col-8">
+            <div class="togo-header-right d-flex align-items-center justify-content-end">
+              <div class="togo-header-cart ml-20">
+                <button class="togo-header-cart-btn cart-open-btn">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path
+                        d="M1.45907 3.15018H16.6741C18.0517 3.15018 19.0468 4.42075 18.6694 5.69802L17.0149 11.298C16.761 12.1574 15.9465 12.7502 15.0196 12.7502H5.86164C4.93469 12.7502 4.12021 12.1574 3.86631 11.298L1.45907 3.15018ZM1.45907 3.15018L0.75 0.750183M15.75 17.2502C15.75 18.0786 15.0784 18.7502 14.25 18.7502C13.4216 18.7502 12.75 18.0786 12.75 17.2502C12.75 16.4218 13.4216 15.7502 14.25 15.7502C15.0784 15.7502 15.75 16.4218 15.75 17.2502ZM7.75 17.2502C7.75 18.0786 7.07843 18.7502 6.25 18.7502C5.42157 18.7502 4.75 18.0786 4.75 17.2502C4.75 16.4218 5.42157 15.7502 6.25 15.7502C7.07843 15.7502 7.75 16.4218 7.75 17.2502Z"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+              <div class="togo-header-user ml-20">
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path
+                      d="M14.75 16.95C14.4331 10.7633 5.06692 10.7633 4.75 16.95M12.25 6.84999C12.25 8.2307 11.1307 9.34999 9.74998 9.34999C8.36926 9.34999 7.24997 8.2307 7.24997 6.84999C7.24997 5.46928 8.36926 4.34999 9.74998 4.34999C11.1307 4.34999 12.25 5.46928 12.25 6.84999ZM18.75 9.75C18.75 14.7206 14.7206 18.75 9.75 18.75C4.77944 18.75 0.75 14.7206 0.75 9.75C0.75 4.77944 4.77944 0.75 9.75 0.75C14.7206 0.75 18.75 4.77944 18.75 9.75Z"
+                      stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <div class="togo-header-user-submenu">
+                  <div class="togo-header-user-thumb mb-20">
+                    <a href="dashboard-my-account.html">
+                      <img class="mr-5" src="assets/user/img/tour/partner/author-2.jpg" alt="">
+                      <span>Sara Mia</span>
+                    </a>
+                  </div>
+                  <div class="togo-header-user-menu">
+                    <a href="dashboard-my-account.html">
+                      <span class="togo-svg-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                          viewBox="0 0 22 22" fill="none">
+                          <path d="M8.25 3.20831L8.25 18.7916" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M18.7943 8.70831H3.21094" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path
+                            d="M2.75 11C2.75 7.11091 2.75 5.16637 3.95818 3.95818C5.16637 2.75 7.11091 2.75 11 2.75C14.8891 2.75 16.8336 2.75 18.0418 3.95818C19.25 5.16637 19.25 7.11091 19.25 11C19.25 14.8891 19.25 16.8336 18.0418 18.0418C16.8336 19.25 14.8891 19.25 11 19.25C7.11091 19.25 5.16637 19.25 3.95818 18.0418C2.75 16.8336 2.75 14.8891 2.75 11Z"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          </path>
+                        </svg></span>
+                      Dashboard
+                    </a>
+                    <a href="dashboard-booking.html">
+                      <span class="togo-svg-icon"><svg aria-hidden="true" role="img" focusable="false"
+                          viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M19 19C20.1046 19 21 18.1046 21 17V14C19.8954 14 19 13.1046 19 12C19 10.8954 19.8954 10 21 10V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V10C4.10457 10 5 10.8954 5 12C5 13.1046 4.10457 14 3 14V17C3 18.1046 3.89543 19 5 19H19Z"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          </path>
+                          <path d="M12 11.75L12 12.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                          <path d="M12 8L12 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                          <path d="M12 15.5L12 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                        </svg></span>
+                      Bookings
+                    </a>
+                    <a href="dashboard-wishlist.html">
+                      <span class="togo-svg-icon "><svg aria-hidden="true" role="img" focusable="false"
+                          viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M7.75 3.5C5.12665 3.5 3 5.75956 3 8.54688C3 14.125 12 20.5 12 20.5C12 20.5 21 14.125 21 8.54688C21 5.09375 18.8734 3.5 16.25 3.5C14.39 3.5 12.7796 4.63593 12 6.2905C11.2204 4.63593 9.61003 3.5 7.75 3.5Z"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          </path>
+                        </svg></span>
+                      Wishlist
+                    </a>
+                    <a href="dashboard-review.html">
+                      <span class="togo-svg-icon "><svg aria-hidden="true" role="img" focusable="false"
+                          viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M12.8541 3.50067C12.4862 2.83311 11.5138 2.83311 11.1459 3.50067C10.9456 3.86432 10.7534 4.23285 10.5695 4.60602C9.99049 5.78115 9.49447 7.00233 9.08879 8.26238C8.95002 8.69339 8.53768 8.99275 8.06577 9.00528C6.9521 9.03484 5.84047 9.12648 4.73814 9.28206C4.42331 9.32649 4.11016 9.37595 3.79877 9.43035C3.02451 9.56562 2.73398 10.4484 3.2838 10.9864C3.40922 11.1091 3.5357 11.2308 3.66323 11.3515C4.61689 12.2537 5.62918 13.0978 6.69404 13.8779C7.06131 14.1469 7.21228 14.6084 7.07191 15.0297C6.63214 16.3496 6.29178 17.713 6.05943 19.1116C6.01284 19.3921 5.97058 19.674 5.93274 19.9573C5.83193 20.7119 6.64048 21.2448 7.3423 20.885C7.59281 20.7566 7.84111 20.6247 8.08712 20.4893C9.21586 19.8679 10.2965 19.1736 11.3222 18.4128C11.7204 18.1175 12.2796 18.1175 12.6778 18.4128C13.7035 19.1736 14.7841 19.8679 15.9129 20.4893C16.1589 20.6247 16.4072 20.7566 16.6577 20.885C17.3595 21.2448 18.1681 20.7119 18.0673 19.9573C18.0294 19.674 17.9872 19.3921 17.9406 19.1116C17.7082 17.713 17.3679 16.3496 16.9281 15.0297C16.7877 14.6084 16.9387 14.1469 17.306 13.8779C18.3708 13.0978 19.3831 12.2537 20.3368 11.3515C20.4643 11.2308 20.5908 11.1091 20.7162 10.9864C21.266 10.4484 20.9755 9.56562 20.2012 9.43035C19.8898 9.37595 19.5767 9.32649 19.2619 9.28206C18.1595 9.12648 17.0479 9.03484 15.9342 9.00528C15.4623 8.99275 15.05 8.69339 14.9112 8.26237C14.5055 7.00233 14.0095 5.78115 13.4305 4.60602C13.2466 4.23285 13.0544 3.86432 12.8541 3.50067Z"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          </path>
+                        </svg></span>
+                      Reviews
+                    </a>
+                    <a href="dashboard-setting.html">
+                      <span class="togo-svg-icon "><svg aria-hidden="true" role="img" focusable="false"
+                          viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M10.11 3.9005C10.1611 3.38929 10.5912 3 11.105 3H12.895C13.4088 3 13.8389 3.38929 13.89 3.9005L13.9233 4.23269C14.712 4.42735 15.4547 4.739 16.1318 5.1482L16.3908 4.93631C16.7884 4.61099 17.3678 4.63989 17.7311 5.00316L18.9969 6.2689C19.3601 6.63218 19.389 7.21163 19.0637 7.60925L18.8518 7.86823C19.261 8.54533 19.5727 9.28799 19.7673 10.0767L20.0995 10.1099C20.6107 10.1611 21 10.5912 21 11.105V12.895C21 13.4088 20.6107 13.8389 20.0995 13.89L19.7673 13.9233C19.5727 14.712 19.261 15.4547 18.8518 16.1318L19.0637 16.3908C19.389 16.7884 19.3601 17.3679 18.9968 17.7311L17.7311 18.9969C17.3678 19.3601 16.7884 19.389 16.3908 19.0637L16.1318 18.8518C15.4547 19.261 14.712 19.5727 13.9233 19.7673L13.89 20.0995C13.8389 20.6107 13.4088 21 12.895 21H11.105C10.5912 21 10.1611 20.6107 10.11 20.0995L10.0767 19.7673C9.28799 19.5727 8.54533 19.261 7.86822 18.8518L7.60929 19.0637C7.21167 19.389 6.63222 19.3601 6.26894 18.9968L5.00321 17.7311C4.63993 17.3678 4.61103 16.7884 4.93636 16.3907L5.1482 16.1318C4.73901 15.4547 4.42735 14.712 4.23269 13.9233L3.9005 13.89C3.38929 13.8389 3 13.4088 3 12.895V11.105C3 10.5912 3.38929 10.1611 3.9005 10.11L4.23269 10.0767C4.42734 9.28799 4.73899 8.54533 5.14818 7.86822L4.93632 7.60929C4.611 7.21167 4.6399 6.63222 5.00317 6.26894L6.26891 5.00321C6.63219 4.63993 7.21164 4.61103 7.60926 4.93636L7.86818 5.1482C8.5453 4.73901 9.28797 4.42735 10.0767 4.23269L10.11 3.9005Z"
+                            stroke="currentColor" stroke-width="1.5" stroke-miterlimit="1" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                          <circle cx="2.5" cy="2.5" r="2.5" transform="matrix(1 0 0 -1 9.5 14.5)" stroke="currentColor"
+                            stroke-width="1.5" stroke-miterlimit="1" stroke-linecap="round" stroke-linejoin="round">
+                          </circle>
+                        </svg></span>
+                      Settings
+                    </a>
+                    <a href="sign-in.html">
+                      <span class="togo-svg-icon"><svg aria-hidden="true" role="img" focusable="false"
+                          viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M13.4958 21H6.5C5.39543 21 4.5 19.8487 4.5 18.4286V5.57143C4.5 4.15127 5.39543 3 6.5 3H13.5"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          </path>
+                          <path d="M16 15.5L19.5 12L16 8.5" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M9.5 11.9958H19.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                        </svg></span>
+                      Logout
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="togo-header-btn-box ml-20 d-none d-md-block">
+                <a href="tel:+60321100689" class="togo-btn-primary">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path
+                        d="M10.7 9.8911C8.90374 11.7816 4.32186 7.24088 6.12496 5.34315C7.22586 4.18447 5.98222 2.8603 5.29385 1.887C4.00193 0.0603317 1.16578 2.58231 1.25192 4.18658C1.52355 9.24564 6.99616 15.241 12.2956 14.718C13.9535 14.5545 15.8584 11.5604 13.9567 10.4661C13.0059 9.91899 11.7007 8.83789 10.7 9.8911Z"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                  (+60) 32110 0689
+                </a>
+              </div>
+              <div class="togo-header-bar ml-20 d-xl-none">
+                <button class="offcanvas-open-btn togo-offcanvas-hamburger-btn">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.5 6.5H19.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                    <path d="M4.5 12H19.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                    <path d="M4.5 17.5H19.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- header area end -->
+
+</header>
+
+<!-- Main Content -->
+<main class="user-main">
+  <!-- Child user routes render here -->
+  <router-outlet></router-outlet>
+</main>
+
+<footer>
+
+  <!-- footer area start -->
+  <div class="togo-footer-sec pt-60">
+    <div class="container">
+      <div class="togo-footer-main-wrapper pb-10">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="togo-footer-widget mb-40 togo-footer-col-1">
+              <h4 class="togo-footer-widget-title mb-25">Contact us</h4>
+              <div class="togo-footer-widget-info mb-15">
+                <div class="togo-footer-widget-info-item">
+                  <a href="mailto:hello@yoursite.com">
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                        <path
+                          d="M1.83398 10.9998C1.83398 7.54287 1.83398 5.81439 3.17641 4.74045C4.51884 3.6665 6.67944 3.6665 11.0007 3.6665C15.3219 3.6665 17.4825 3.6665 18.8249 4.74045C20.1673 5.81439 20.1673 7.54287 20.1673 10.9998C20.1673 14.4568 20.1673 16.1853 18.8249 17.2592C17.4825 18.3332 15.3219 18.3332 11.0007 18.3332C6.67944 18.3332 4.51884 18.3332 3.17641 17.2592C1.83398 16.1853 1.83398 14.4568 1.83398 10.9998Z"
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                          d="M18.9434 4.86768L14.5201 8.98251C12.8365 10.3855 11.9947 11.087 10.9991 11.087C10.0034 11.087 9.16162 10.3855 7.47804 8.98251L3.05469 4.86768"
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                    hello@yoursite.com
+                  </a>
+                </div>
+                <div class="togo-footer-widget-info-item">
+                  <a href="tel:0123456">
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                        <path
+                          d="M14.3 13.3113C12.1046 15.622 6.5045 10.0722 8.70828 7.75274C10.0538 6.33657 8.53383 4.71815 7.69249 3.52856C6.11347 1.29596 2.64707 4.37837 2.75235 6.33915C3.08433 12.5224 9.77308 19.8501 16.2502 19.2109C18.2765 19.011 20.6047 15.3516 18.2805 14.0142C17.1183 13.3454 15.523 12.0241 14.3 13.3113Z"
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span> (00) 238 9836</a>
+                </div>
+                <div class="togo-footer-widget-info-item">
+                  <a href="#">
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                        <path
+                          d="M11.5132 19.0857C11.206 19.3048 10.794 19.3048 10.4868 19.0857C6.06043 15.9292 1.36177 9.43901 6.11114 4.74951C7.40775 3.46924 9.16632 2.75 11 2.75C12.8337 2.75 14.5923 3.46924 15.8889 4.74951C20.6382 9.43901 15.9396 15.9292 11.5132 19.0857Z"
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                          d="M10.9993 11.0002C12.0119 11.0002 12.8327 10.1794 12.8327 9.16683C12.8327 8.15431 12.0119 7.3335 10.9993 7.3335C9.98683 7.3335 9.16602 8.15431 9.16602 9.16683C9.16602 10.1794 9.98683 11.0002 10.9993 11.0002Z"
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                    351 Humberto Plaza, West <br> Ashtynstead, Ohio - 12551, Canada</a>
+                </div>
+              </div>
+              <div class="togo-footer-widget-info-btn">
+                <a class="togo-btn-primary" href="#">Download bruchore</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 col-sm-6">
+            <div class="togo-footer-widget mb-40 togo-footer-col-2">
+              <h4 class="togo-footer-widget-title mb-25">destinations</h4>
+              <div class="togo-footer-widget-menu">
+                <ul>
+                  <li><a class="hover-line" href="#">Singapore</a></li>
+                  <li><a class="hover-line" href="#">Thailand</a></li>
+                  <li><a class="hover-line" href="#">Australia</a></li>
+                  <li><a class="hover-line" href="#">Sri lanka</a></li>
+                  <li><a class="hover-line" href="#">Norway</a></li>
+                  <li><a class="hover-line" href="#">Canada</a></li>
+                  <li><a class="hover-line" href="#">Sweden</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 col-sm-6">
+            <div class="togo-footer-widget mb-40 togo-footer-col-3">
+              <h4 class="togo-footer-widget-title mb-25">Company</h4>
+              <div class="togo-footer-widget-menu">
+                <ul>
+                  <li><a class="hover-line" href="#">About us</a></li>
+                  <li><a class="hover-line" href="#">Carrer</a></li>
+                  <li><a class="hover-line" href="#">Blog</a></li>
+                  <li><a class="hover-line" href="#">Partner</a></li>
+                  <li><a class="hover-line" href="#">Contact</a></li>
+                  <li><a class="hover-line" href="#">Terms & policies</a></li>
+                  <li><a class="hover-line" href="#">Trust Center</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="togo-footer-widget mb-40 togo-footer-col-4">
+              <h4 class="togo-footer-widget-title mb-28">Stay in touch</h4>
+              <div class="togo-footer-widget-input mb-30">
+                <p>Subscribe to our Newsletter for the <br> Latest Updates and Special Offers</p>
+                <div class="p-relative">
+                  <input type="email" placeholder="Enter your email">
+                  <button class="togo-footer-widget-input-btn">
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                        <path
+                          d="M18.5969 2.77847C18.9846 2.64279 19.3572 3.01541 19.2215 3.40306L13.79 18.9217C13.6433 19.3408 13.0597 19.3646 12.8794 18.9589L9.92881 12.32C9.87952 12.2091 9.79085 12.1205 9.67995 12.0712L3.04112 9.1206C2.63543 8.94029 2.65924 8.35666 3.07827 8.21L18.5969 2.77847Z"
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12.832 9.1665L10.082 11.9165" stroke="currentColor" stroke-width="1.5"
+                          stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div class="togo-footer-widget-social-wrap mb-30">
+                <h4 class="togo-footer-widget-title mb-14">Follow us</h4>
+                <div class="togo-footer-widget-social-icon">
+                  <a href="#">
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="20" viewBox="0 0 13 20" fill="none">
+                        <path
+                          d="M0.75 7.75V11.75H3.75V18.75H7.75V11.75H10.75L11.75 7.75H7.75V5.75C7.75 5.20533 8.20533 4.75 8.75 4.75H11.75V0.75H8.75C6.02667 0.75 3.75 3.02667 3.75 5.75V7.75H0.75Z"
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                  </a>
+                  <a href="#"><span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M16.5 3H7.5C5.01472 3 3 5.01472 3 7.5V16.5C3 18.9853 5.01472 21 7.5 21H16.5C18.9853 21 21 18.9853 21 16.5V7.5C21 5.01472 18.9853 3 16.5 3Z"
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                          d="M15.4621 11.4866C15.5701 12.2148 15.4457 12.9585 15.1067 13.612C14.7676 14.2654 14.2311 14.7953 13.5736 15.1263C12.916 15.4573 12.1708 15.5725 11.444 15.4555C10.7171 15.3386 10.0457 14.9954 9.52513 14.4749C9.00457 13.9543 8.66141 13.2829 8.54446 12.556C8.4275 11.8292 8.5427 11.084 8.87368 10.4264C9.20466 9.76886 9.73456 9.23238 10.388 8.89332C11.0415 8.55426 11.7852 8.42988 12.5134 8.53786C13.2562 8.64801 13.9439 8.99414 14.4749 9.52513C15.0059 10.0561 15.352 10.7438 15.4621 11.4866Z"
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M17 6.5H17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </svg>
+                    </span></a>
+                  <a href="#"><span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                        <path
+                          d="M14.5 0.75L9.06391 7.10276M1.66667 15.4167L7.10276 9.06391M7.10276 9.06391L12.4146 15.1021C12.5892 15.3006 12.8577 15.4167 13.1421 15.4167H14.4934C15.2603 15.4167 15.6917 14.6368 15.2208 14.1016L9.06391 7.10276M7.10276 9.06391L0.945838 2.06506C0.475005 1.52984 0.906398 0.75 1.6733 0.75H3.02462C3.30901 0.75 3.57748 0.866089 3.75208 1.06457L9.06391 7.10276"
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span></a>
+                  <a href="#"><span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M10.5 9.90776V14.0923C10.5 14.3174 10.6847 14.5 10.9125 14.5C10.9934 14.5 11.0725 14.4765 11.1399 14.4324L14.3149 12.3582C14.505 12.234 14.5572 11.9811 14.4316 11.7932C14.4016 11.7483 14.3628 11.7097 14.3176 11.6797L11.1426 9.5694C10.9536 9.44378 10.6973 9.49339 10.5702 9.68029C10.5244 9.74755 10.5 9.82675 10.5 9.90776Z"
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                          d="M2 12C2 8.70017 2 7.05025 3.46447 6.02513C4.92893 5 7.28595 5 12 5C16.714 5 19.0711 5 20.5355 6.02513C22 7.05025 22 8.70017 22 12C22 15.2998 22 16.9497 20.5355 17.9749C19.0711 19 16.714 19 12 19C7.28595 19 4.92893 19 3.46447 17.9749C2 16.9497 2 15.2998 2 12Z"
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span></a>
+                  <a href="#"><span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path
+                          d="M7.45281 13.1794C6.34487 10.9183 7.85268 6.5121 12.9247 7.23245C18.5112 8.02588 17.5058 16.7097 12.8479 16.3706C11.374 16.2632 10.8167 15.0418 10.6712 13.794M10.6712 13.794C10.5608 12.8479 10.6872 11.8867 10.8304 11.3844C11.0746 10.5272 11.4794 10.6437 11.1836 11.7775C11.0396 12.3294 10.8639 13.022 10.6712 13.794ZM10.6712 13.794C10.1568 15.8538 9.52071 18.4787 9.04037 20.5019"
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </svg>
+                    </span></a>
+                </div>
+              </div>
+              <div class="togo-footer-widget-payment">
+                <h4 class="togo-footer-widget-title mb-18">Accepted Payment Types</h4>
+                <div class="togo-footer-widget-payment-thumb">
+                  <a href="#">
+                    <img src="assets/user/img/blog/payment-logo.png" alt="">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="togo-footer-top-border pt-35 pb-30">
+        <div class="row align-items-center">
+          <div class="col-6">
+            <div class="togo-footer-copyright-text">
+              <p><a target="_blank" href="#">Yettoexplore</a> © 2026 all
+                right reserved.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="togo-footer-copyright-currence text-end">
+              <div class="togo-footer-copyright-currence-btn">
+                <span>
+                  EN / USD
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <div class="togo-footer-copyright-currence-content">
+                  <h4>Currencies</h4>
+                  <ul class="currence-work">
+                    <li><a href="#">USD</a></li>
+                    <li><a href="#">ERO</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- footer area end -->
+
+</footer>
