@@ -28,6 +28,7 @@ export class UserLayoutComponent implements OnInit, OnDestroy {
         'assets/user/css/bootstrap.css',
       'assets/user/css/swiper-bundle.css',
       'assets/user/css/magnific-popup.css',
+      'assets/user/css/datepicker.css',
       'assets/user/css/font-awesome-pro.css',
       'assets/user/css/main.css',
       );
@@ -41,6 +42,8 @@ export class UserLayoutComponent implements OnInit, OnDestroy {
       'assets/user/js/vendor/incluid-bundle.js',
       'assets/user/js/nice-select.js',
       'assets/user/js/purecounter.js',
+      'assets/user/js/fecha.js',
+      'assets/user/js/hotel-datepicker.js',
       'assets/user/js/scripts.js',
       );
 
@@ -58,6 +61,7 @@ export class UserLayoutComponent implements OnInit, OnDestroy {
       'assets/user/css/bootstrap.css',
       'assets/user/css/swiper-bundle.css',
       'assets/user/css/magnific-popup.css',
+      'assets/user/css/datepicker.css',
       'assets/user/css/font-awesome-pro.css',
       'assets/user/css/main.css',
     );
@@ -69,6 +73,8 @@ export class UserLayoutComponent implements OnInit, OnDestroy {
       'assets/user/js/vendor/incluid-bundle.js',
       'assets/user/js/nice-select.js',
       'assets/user/js/purecounter.js',
+      'assets/user/js/fecha.js',
+      'assets/user/js/hotel-datepicker.js',
       'assets/user/js/scripts.js',
     );
   }
