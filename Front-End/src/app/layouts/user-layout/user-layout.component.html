@@ -102,7 +102,7 @@
     <div class="offcanvas-wrapper">
       <div class="offcanvas-top d-flex align-items-center justify-content-between">
         <div class="offcanvas-logo">
-          <a href="index.html">
+          <a routerLink="">
             <img width="120" src="assets/user/img/logo/logo-light.png" alt="">
           </a>
         </div>
@@ -134,7 +134,7 @@
           <div class="row">
             <div class="col-lg-4">
               <div class="togo-header-2-top-info">
-                <a href="tel:012345678"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"
+                <a href="tel:+60321100689"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"
                     viewBox="0 0 17 17" fill="none">
                     <path
                       d="M11.25 10.3512C9.25415 12.4518 4.16318 7.40653 6.16662 5.29795C7.38985 4.01052 6.00803 2.53923 5.24317 1.45778C3.8077 -0.571854 0.656427 2.23034 0.752132 4.01287C1.05394 9.63404 7.13462 16.2955 13.0229 15.7145C14.865 15.5327 16.9815 12.206 14.8686 10.9902C13.8121 10.3822 12.3618 9.18099 11.25 10.3512Z"
@@ -212,7 +212,7 @@
           <div class="row align-items-center">
             <div class="col-xl-3 col-lg-6 col-6">
               <div class="togo-header-logo">
-                <a href="index.html">
+                <a routerLink="">
                   <img width="180" src="assets/user/img/logo/logo-dark.png" alt="">
                 </a>
               </div>
@@ -222,11 +222,11 @@
                 <div class="togo-header-menu togo-header-submenu">
                   <nav class="togo-mobile-menu">
                     <ul>
-                      <li class="togo" routerLinkActive="active">
-                        <a routerLink="/user/home">Home</a>
+                      <li class="togo" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                        <a routerLink="">Home</a>
                       </li>
                       <li class="togo" routerLinkActive="active">
-                        <a routerLink="/user/about">About</a>
+                        <a routerLink="/about">About</a>
                       </li>
                       <li class="togo-dropdown p-static">
                         <a href="city-details-1.html">Destinations</a>
@@ -718,7 +718,7 @@
                 <div class="col-lg-4 col-md-6">
                   <div class="togo-footer-widget mb-40 togo-footer-col-1">
                     <div class="togo-footer-logo mb-30">
-                      <a routerLink="/user/home">
+                      <a routerLink="">
                         <img data-width="190" src="assets/user/img/logo/logo-dark.png" alt="" style="width: 190px;">
                       </a>
                     </div>
@@ -798,11 +798,11 @@
                     <h4 class="togo-footer-widget-title mb-25">Company</h4>
                     <div class="togo-footer-widget-menu">
                       <ul>
-                        <li><a class="hover-line" href="#">About us</a></li>
+                        <li><a class="hover-line" routerLink="/about">About us</a></li>
                         <li><a class="hover-line" href="#">Carrer</a></li>
                         <li><a class="hover-line" href="#">Blog</a></li>
                         <li><a class="hover-line" href="#">Partner</a></li>
-                        <li><a class="hover-line" href="#">Contact</a></li>
+                        <li><a class="hover-line" routerLink="/contact">Contact</a></li>
                         <li><a class="hover-line" href="#">Terms & policies</a></li>
                         <li><a class="hover-line" href="#">Trust Center</a></li>
                       </ul>
@@ -814,8 +814,8 @@
                     <h4 class="togo-footer-widget-title mb-28">Stay in touch</h4>
                     <div class="togo-footer-widget-input mb-30">
                       <p>Subscribe to our Newsletter for the <br> Latest Updates and Special Offers</p>
-                      <div class="p-relative">
-                        <input type="email" placeholder="Enter your email">
+                      <form class="p-relative" action="#">
+                        <input type="email" placeholder="Enter your email" maxlength="40" minlength="20" required>
                         <button class="togo-footer-widget-input-btn">
                           <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
@@ -829,7 +829,7 @@
                             </svg>
                           </span>
                         </button>
-                      </div>
+                      </form>
                     </div>
                     <div class="togo-footer-widget-social-wrap mb-30 text-white">
                       <h4 class="togo-footer-widget-title mb-14">Follow us</h4>
@@ -911,7 +911,7 @@
               <div class="row align-items-center">
                 <div class="col-6">
                   <div class="togo-footer-copyright-text">
-                    <p><a target="_blank" href="#">Yettoexplore</a> © 2026 all
+                    <p><a target="_blank" routerLink="">Yettoexplore</a> © 2026 all
                       right reserved.</p>
                   </div>
                 </div>

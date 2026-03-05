@@ -6,7 +6,6 @@ export class ScriptLoaderService {
   private loadedScripts = new Map<string, HTMLScriptElement>();
   private pendingScripts = new Map<string, Promise<void>>();
 
-  // Loads scripts SEQUENTIALLY (order guaranteed)
   load(...urls: string[]): Promise<void> {
     return urls.reduce(
       (chain, url) => chain.then(() => this.loadScript(url)),
@@ -15,13 +14,12 @@ export class ScriptLoaderService {
   }
 
   private loadScript(url: string): Promise<void> {
-
-    // Already fully loaded — skip
+    // ✅ Already loaded — skip, don't reload
     if (this.loadedScripts.has(url)) {
       return Promise.resolve();
     }
 
-    // Currently loading — return same promise (avoid duplicate tags)
+    // ✅ Currently loading — return same promise
     if (this.pendingScripts.has(url)) {
       return this.pendingScripts.get(url)!;
     }
@@ -29,34 +27,24 @@ export class ScriptLoaderService {
     const promise = new Promise<void>((resolve, reject) => {
       const script = document.createElement('script');
       script.src = url;
-      script.async = false;        // ← FALSE keeps order guaranteed
-      script.defer = false;        // ← FALSE ensures immediate execution
-
+      script.async = false;
       script.onload = () => {
         this.loadedScripts.set(url, script);
-        this.pendingScripts.delete(url);  // ← Clean up pending
+        this.pendingScripts.delete(url);
         resolve();
       };
-
       script.onerror = () => {
-        this.pendingScripts.delete(url);  // ← Clean up on error too
+        this.pendingScripts.delete(url);
         reject(`Failed to load script: ${url}`);
       };
-
       document.body.appendChild(script);
     });
 
-    // Track as pending while loading
     this.pendingScripts.set(url, promise);
     return promise;
   }
 
-  // Reload a script even if already loaded (force refresh)
-  reload(...urls: string[]): Promise<void> {
-    this.remove(...urls);
-    return this.load(...urls);
-  }
-
+  // ✅ Only call this when switching between DIFFERENT templates
   remove(...urls: string[]): void {
     urls.forEach(url => {
       const el = this.loadedScripts.get(url);
@@ -68,12 +56,10 @@ export class ScriptLoaderService {
     });
   }
 
-  // Check if a script is already loaded
   isLoaded(url: string): boolean {
     return this.loadedScripts.has(url);
   }
 
-  // Remove all loaded scripts at once
   removeAll(): void {
     this.loadedScripts.forEach(el => el.remove());
     this.loadedScripts.clear();

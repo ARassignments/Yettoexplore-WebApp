@@ -7,7 +7,7 @@ export const routes: Routes = [
 
   // ── USER / AUTH ROUTES ──────────────────────────────
   {
-    path: 'user',
+    path: '',
     component: UserLayoutComponent,
     children: [
       {
@@ -34,8 +34,8 @@ export const routes: Routes = [
   },
 
   // ── DEFAULT REDIRECTS ───────────────────────────────
-  { path: '',   redirectTo: '/user/home', pathMatch: 'full' },
-  { path: '**', redirectTo: '/user/home' }
+  { path: '',   redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home' }
 
 ];
 

@@ -12,7 +12,7 @@ export class StyleLoaderService {
 
   private loadStyle(url: string): Promise<void> {
     return new Promise((resolve, reject) => {
-      // Already loaded — resolve immediately
+      // ✅ Already loaded — skip
       if (this.loadedStyles.has(url)) {
         resolve();
         return;
@@ -21,17 +21,11 @@ export class StyleLoaderService {
       const link = document.createElement('link');
       link.rel = 'stylesheet';
       link.href = url;
-
-      // Resolve only after CSS is fully loaded
       link.onload = () => {
         this.loadedStyles.set(url, link);
         resolve();
       };
-
-      link.onerror = () => {
-        reject(`Failed to load style: ${url}`);
-      };
-
+      link.onerror = () => reject(`Failed to load style: ${url}`);
       document.head.appendChild(link);
     });
   }
@@ -39,7 +33,15 @@ export class StyleLoaderService {
   remove(...urls: string[]): void {
     urls.forEach(url => {
       const el = this.loadedStyles.get(url);
-      if (el) { el.remove(); this.loadedStyles.delete(url); }
+      if (el) {
+        el.remove();
+        this.loadedStyles.delete(url);
+      }
     });
+  }
+
+  removeAll(): void {
+    this.loadedStyles.forEach(el => el.remove());
+    this.loadedStyles.clear();
   }
 }
