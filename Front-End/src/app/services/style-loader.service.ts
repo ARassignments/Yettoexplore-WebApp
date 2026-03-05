@@ -5,14 +5,34 @@ export class StyleLoaderService {
 
   private loadedStyles = new Map<string, HTMLLinkElement>();
 
-  load(...urls: string[]): void {
-    urls.forEach(url => {
-      if (this.loadedStyles.has(url)) return;
+  load(...urls: string[]): Promise<void[]> {
+    const promises = urls.map(url => this.loadStyle(url));
+    return Promise.all(promises);
+  }
+
+  private loadStyle(url: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      // Already loaded — resolve immediately
+      if (this.loadedStyles.has(url)) {
+        resolve();
+        return;
+      }
+
       const link = document.createElement('link');
       link.rel = 'stylesheet';
       link.href = url;
+
+      // Resolve only after CSS is fully loaded
+      link.onload = () => {
+        this.loadedStyles.set(url, link);
+        resolve();
+      };
+
+      link.onerror = () => {
+        reject(`Failed to load style: ${url}`);
+      };
+
       document.head.appendChild(link);
-      this.loadedStyles.set(url, link);
     });
   }
 
