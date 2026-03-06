@@ -14,15 +14,8 @@ export class ScriptLoaderService {
   }
 
   private loadScript(url: string): Promise<void> {
-    // ✅ Already loaded — skip, don't reload
-    if (this.loadedScripts.has(url)) {
-      return Promise.resolve();
-    }
-
-    // ✅ Currently loading — return same promise
-    if (this.pendingScripts.has(url)) {
-      return this.pendingScripts.get(url)!;
-    }
+    if (this.loadedScripts.has(url)) return Promise.resolve();
+    if (this.pendingScripts.has(url)) return this.pendingScripts.get(url)!;
 
     const promise = new Promise<void>((resolve, reject) => {
       const script = document.createElement('script');
@@ -35,7 +28,7 @@ export class ScriptLoaderService {
       };
       script.onerror = () => {
         this.pendingScripts.delete(url);
-        reject(`Failed to load script: ${url}`);
+        reject(`Failed: ${url}`);
       };
       document.body.appendChild(script);
     });
@@ -44,14 +37,41 @@ export class ScriptLoaderService {
     return promise;
   }
 
-  // ✅ Only call this when switching between DIFFERENT templates
+  // ✅ Force reload — cache bust with timestamp
+  forceReload(...urls: string[]): Promise<void> {
+    return urls.reduce(
+      (chain, url) => chain.then(() => this.forceReloadScript(url)),
+      Promise.resolve()
+    );
+  }
+
+  private forceReloadScript(url: string): Promise<void> {
+    // Remove existing
+    const existing = this.loadedScripts.get(url);
+    if (existing) {
+      existing.remove();
+      this.loadedScripts.delete(url);
+    }
+    this.pendingScripts.delete(url);
+
+    return new Promise<void>((resolve, reject) => {
+      const script = document.createElement('script');
+      // ✅ Cache bust — timestamp add karo
+      script.src = `${url}?t=${Date.now()}`;
+      script.async = false;
+      script.onload = () => {
+        this.loadedScripts.set(url, script);
+        resolve();
+      };
+      script.onerror = () => reject(`Failed: ${url}`);
+      document.body.appendChild(script);
+    });
+  }
+
   remove(...urls: string[]): void {
     urls.forEach(url => {
       const el = this.loadedScripts.get(url);
-      if (el) {
-        el.remove();
-        this.loadedScripts.delete(url);
-      }
+      if (el) { el.remove(); this.loadedScripts.delete(url); }
       this.pendingScripts.delete(url);
     });
   }

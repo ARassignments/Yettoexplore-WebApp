@@ -32,8 +32,13 @@
 </div> -->
 <!-- Loader End -->
 
-<!-- Loading spinner -->
+<!-- ─── Initial Template Loader (first load) ─── -->
 <div [hidden]="isReady" id="global-loader">
+  <div class="whirly-loader"></div>
+</div>
+
+<!-- ─── Route Change Preloader ─── -->
+<div [hidden]="!isNavigating" id="global-loader">
   <div class="whirly-loader"></div>
 </div>
 
@@ -585,7 +590,7 @@
                       </a>
                     </div>
                     <div class="togo-header-user-menu">
-                      <a routerLink="/dashboard/home" routerLinkActive="active">
+                      <a routerLink="/dashboard" routerLinkActive="active">
                         <span class="togo-svg-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                             viewBox="0 0 22 22" fill="none">
                             <path d="M8.25 3.20831L8.25 18.7916" stroke="currentColor" stroke-width="1.5"

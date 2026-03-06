@@ -1,7 +1,13 @@
-<!-- Loading spinner -->
+<!-- ─── Initial Template Loader (first load) ─── -->
 <div [hidden]="isReady" id="global-loader">
   <div class="whirly-loader"></div>
 </div>
+
+<!-- ─── Route Change Preloader ─── -->
+<div [hidden]="!isNavigating" id="global-loader">
+  <div class="whirly-loader"></div>
+</div>
+
 
 <!-- Main Wrapper -->
 <div [hidden]="!isReady" class="main-wrapper">
@@ -358,7 +364,7 @@
             <a class="dropdown-item" href="sales-report.html"><i class="ti ti-file-text me-2"></i>Reports</a>
             <a class="dropdown-item" href="general-settings.html"><i class="ti ti-settings-2 me-2"></i>Settings</a>
             <hr class="my-2">
-            <a class="dropdown-item logout" routerLink="/"><i class="ti ti-logout me-2"></i>Logout</a>
+            <a class="dropdown-item logout" routerLink=""><i class="ti ti-logout me-2"></i>Logout</a>
           </div>
         </li>
       </ul>
@@ -461,11 +467,12 @@
           <li class="submenu-open">
             <h6 class="submenu-hdr">Main</h6>
             <ul>
+              <li routerLinkActive="active"><a routerLink="/dashboard"><i class="ti ti-layout-grid fs-16 me-2"></i><span>Dashboard</span></a></li>
               <li class="submenu">
-                <a href="javascript:void(0);" class="subdrop" routerLink="/dashboard/home" routerLinkActive="active"><i
+                <a href="javascript:void(0);"><i
                     class="ti ti-layout-grid fs-16 me-2"></i><span>Dashboard</span><span class="menu-arrow"></span></a>
                 <ul>
-                  <li><a routerLink="/dashboard/home" routerLinkActive="active">Admin Dashboard</a></li>
+                  <li><a href="index.html">Admin Dashboard</a></li>
                   <li><a href="admin-dashboard.html">Admin Dashboard 2</a></li>
                   <li><a href="sales-dashboard.html">Sales Dashboard</a></li>
                 </ul>
@@ -3879,7 +3886,7 @@
   </div>
 
   <!-- Add Stock -->
-  <div class="modal fade" id="add-stock">
+  <!-- <div class="modal fade" id="add-stock">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -3941,7 +3948,7 @@
         </form>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- /Add Stock -->
 
 </div>

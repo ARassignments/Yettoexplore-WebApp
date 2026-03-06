@@ -3,7 +3,8 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ScriptLoaderService } from '../../services/script-loader.service';
 import { StyleLoaderService } from '../../services/style-loader.service';
-import { Router, NavigationEnd } from '@angular/router';
+import { PreloaderService } from '../../services/preloader.service';
+import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
@@ -17,6 +18,7 @@ import { Subscription } from 'rxjs';
 export class UserLayoutComponent implements OnInit, OnDestroy {
 
   isReady = false;
+  isNavigating = false;
   private routerSub!: Subscription;
 
   private styles = [
@@ -48,7 +50,8 @@ export class UserLayoutComponent implements OnInit, OnDestroy {
     private scriptLoader: ScriptLoaderService,
     private styleLoader: StyleLoaderService,
     private cdr: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    public preloader: PreloaderService
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -65,28 +68,39 @@ export class UserLayoutComponent implements OnInit, OnDestroy {
       this.cdr.detectChanges();
     }
 
-    // ✅ Re-init template JS on every route change (fixes broken sliders etc.)
-    this.routerSub = this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      this.reloadInitScript();
+    // ✅ Listen to ALL router events for preloader
+    this.routerSub = this.router.events.subscribe(event => {
+
+      if (event instanceof NavigationStart) {
+        // Route change started → show preloader
+        this.isNavigating = true;
+        this.cdr.detectChanges();
+      }
+
+      if (
+        event instanceof NavigationEnd ||
+        event instanceof NavigationCancel ||
+        event instanceof NavigationError
+      ) {
+        // Route change done → reload scripts → hide preloader
+        this.reloadInitScript();
+      }
     });
   }
 
-  private async reloadInitScript(): Promise<void> {
-    // Wait for Angular to finish rendering new route DOM
+  private reloadInitScript(): void {
     setTimeout(async () => {
       try {
-        // ✅ Remove old scripts.js from DOM + cache
         this.scriptLoader.remove(...this.initScript);
-
-        // ✅ Re-inject scripts.js fresh — re-runs all DOM inits
         await this.scriptLoader.load(...this.initScript);
-
       } catch (e) {
         console.warn('scripts.js reload failed:', e);
+      } finally {
+        // Hide preloader after scripts re-init
+        this.isNavigating = false;
+        this.cdr.detectChanges();
       }
-    }, 0); // Delay lets Angular finish rendering DOM first
+    }, 0);
   }
 
   ngOnDestroy(): void {
