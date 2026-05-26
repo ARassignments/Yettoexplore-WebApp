@@ -32,7 +32,8 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/.htaccess"
             ],
             "styles": [
               "src/styles.css"
