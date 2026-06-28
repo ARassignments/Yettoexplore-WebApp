@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+    --primary-theme-color: #e65b24;
+}
+.togo-header-2-sec .navbar-container{
+    background: rgba(255, 255, 255, 0.01) !important;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(20px);
+    padding: 0.5rem 0 !important;
+}
+
+.togo-header-2-sec .navbar-container .togo a:hover{
+    color: var(--primary-theme-color);
+}
