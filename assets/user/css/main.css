@@ -6685,6 +6685,9 @@ body .ui-tooltip {
 .togo-hero-2-active .swiper-slide-active .togo-hero-2-bg {
   transform: scale(1.1);
 }
+.togo-hero-2-active .swiper-slide-active.deactive .togo-hero-2-bg {
+  transform: scale(1.0);
+}
 
 .togo-hero-3-wrapper .togo-hero-2-fraction-wrap {
   right: 50px;

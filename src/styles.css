@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-:root{
+:root {
     --primary-theme-color: #e65b24;
 }
-.togo-header-2-sec .navbar-container{
+
+.togo-header-2-sec .navbar-container {
     background: rgba(255, 255, 255, 0.01) !important;
     position: sticky;
     top: 0;
@@ -10,6 +11,20 @@
     padding: 0.5rem 0 !important;
 }
 
-.togo-header-2-sec .navbar-container .togo a:hover{
+.togo-header-2-sec .navbar-container .togo a:hover {
     color: var(--primary-theme-color);
+}
+
+.togo-hero-8-sec .togo-hero-2-item {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    z-index: 2;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 100vh !important;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: flex-end;
 }
