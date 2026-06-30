@@ -10,6 +10,7 @@
 /*  1.1 Theme Default
 /*----------------------------------------*/
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Marcellus&amp;family=Outfit:wght@100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Jost:ital,wght@0,100..900;1,100..900&amp;display=swap");
+@import url("https://use.hugeicons.com/font/icons.css");
 .togo-back-wrapper, a,
 button,
 p,
@@ -6285,14 +6286,19 @@ body .ui-tooltip {
 }
 
 .togo-offcanvas-hamburger-btn {
-  height: 40px;
+  /* height: 40px;
   width: 40px;
-  border-radius: 6px;
+  border-radius: 6px; */
   line-height: 38px;
   text-align: center;
   transition: 0.3s linear;
-  border: 1px solid rgba(3, 31, 66, 0.2);
-  background-color: var(--togo-common-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  color: #111111;
+  /* border: 1px solid rgba(3, 31, 66, 0.2);
+  background-color: var(--togo-common-white); */
 }
 
 .cart-area.opened .cart-wrapper {

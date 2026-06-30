@@ -92,7 +92,8 @@ body:has(.togo-back-wrapper.togo-back-btn-show) header {
 
 @media (max-width: 767px) {
     header {
-        position: static;
+        background: white;
+        position: sticky;
     }
 
     body:has(.togo-back-wrapper.togo-back-btn-show) header {
