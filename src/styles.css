@@ -1,18 +1,79 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
     --primary-theme-color: #e65b24;
+    --togo-common-black: #111111;
+    --common-transition: all 0.3s ease;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9;
+    width: 100%;
+    transition: var(--common-transition);
 }
 
 .togo-header-2-sec .navbar-container {
     background: rgba(255, 255, 255, 0.01) !important;
-    position: sticky;
-    top: 0;
     backdrop-filter: blur(20px);
     padding: 0.5rem 0 !important;
 }
 
+.togo-header-2-sec .navbar-container .logoContainer img {
+    transition: var(--common-transition);
+    width: 180px;
+}
+
+.togo-header-2-sec .navbar-container .logoContainer img:first-child {
+    position: absolute;
+    opacity: 0;
+}
+
+.togo-header-2-sec .navbar-container .logoContainer img:last-child {
+    opacity: 1;
+}
+
+body:has(.togo-back-wrapper.togo-back-btn-show) .togo-header-2-sec .navbar-container .logoContainer img:first-child {
+    opacity: 1;
+}
+
+body:has(.togo-back-wrapper.togo-back-btn-show) .togo-header-2-sec .navbar-container .logoContainer img:last-child {
+    opacity: 0;
+}
+
 .togo-header-2-sec .navbar-container .togo a:hover {
     color: var(--primary-theme-color);
+}
+
+body:has(.togo-back-wrapper.togo-back-btn-show) .togo-header-2-sec .navbar-container .togo a,
+body:has(.togo-back-wrapper.togo-back-btn-show) .togo-header-2-sec .navbar-container .togo-dropdown a {
+    color: var(--togo-common-black);
+}
+
+body:has(.togo-back-wrapper.togo-back-btn-show) .togo-header-2-sec .togo-header-menu>nav>ul>li.togo-dropdown>a::after {
+    color: var(--togo-common-black) !important;
+}
+
+.togo-header-2-sec .togo-header-menu>nav>ul>li.togo-dropdown>a:hover::after {
+    color: var(--primary-theme-color) !important;
+}
+
+.togo-header-2-sec .togo-header-2-right .togo-header-2-cart svg,
+.togo-header-2-sec .togo-header-2-right .togo-header-user svg {
+    color: white !important;
+    transition: var(--common-transition);
+}
+
+body:has(.togo-back-wrapper.togo-back-btn-show) .togo-header-2-sec .togo-header-2-right .togo-header-2-cart svg,
+body:has(.togo-back-wrapper.togo-back-btn-show) .togo-header-2-sec .togo-header-2-right .togo-header-user svg {
+    color: var(--togo-common-black) !important;
+}
+
+body:has(.togo-back-wrapper.togo-back-btn-show) header {
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
 }
 
 .togo-hero-8-sec .togo-hero-2-item {
@@ -27,4 +88,46 @@
     transform: translateX(-50%);
     display: flex;
     align-items: flex-end;
+}
+
+@media (max-width: 767px) {
+    header {
+        position: static;
+    }
+
+    body:has(.togo-back-wrapper.togo-back-btn-show) header {
+        position: sticky;
+    }
+
+    .togo-header-2-sec .navbar-container {
+        padding: 0rem !important;
+    }
+
+    .togo-header-2-sec .navbar-container .logoContainer img {
+        width: 120px;
+    }
+
+    .togo-header-2-sec .navbar-container .logoContainer img:first-child {
+        opacity: 1;
+    }
+
+    .togo-header-2-sec .navbar-container .logoContainer img:last-child {
+        opacity: 0;
+    }
+
+    .togo-header-2-sec .togo-header-2-right .togo-header-2-cart svg,
+    .togo-header-2-sec .togo-header-2-right .togo-header-user svg {
+        color: var(--togo-common-black) !important;
+    }
+
+    .togo-hero-8-sec {
+        height: 50vh;
+        overflow: hidden;
+    }
+
+    .togo-hero-8-sec .togo-hero-2-item,
+    .togo-hero-8-sec .togo-hero-8-wrapper,
+    .togo-hero-8-sec .togo-hero-8-wrapper .swiper {
+        height: inherit !important;
+    }
 }

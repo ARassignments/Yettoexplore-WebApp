@@ -108,7 +108,7 @@
       <div class="offcanvas-top d-flex align-items-center justify-content-between">
         <div class="offcanvas-logo">
           <a routerLink="">
-            <img width="120" src="assets/user/img/logo/logo-light.png" alt="">
+            <img width="150" src="assets/user/img/logo/logo-light.png" alt="">
           </a>
         </div>
         <div class="offcanvas-close">
@@ -130,10 +130,9 @@
   <div class="body-overlay"></div>
   <!-- offcanvus-area-end -->
 
-
   <header>
     <!-- header area start -->
-    <div class="togo-header-2-sec togo-hdr-transparent">
+    <div class="togo-header-2-sec togo-hdr-transparen">
       <div class="togo-header-2-top d-none d-lg-block" data-bg-color="#111111">
         <div class="container-fluid p-0">
           <div class="row">
@@ -218,7 +217,10 @@
             <div class="col-xl-3 col-lg-6 col-6">
               <div class="togo-header-logo">
                 <a routerLink="">
-                  <img width="180" src="assets/user/img/logo/logo-dark.png" alt="">
+                  <span class="logoContainer">
+                    <img width="180" src="assets/user/img/logo/logo-light.png" alt="">
+                    <img width="180" src="assets/user/img/logo/logo-dark.png" alt="">
+                  </span>
                 </a>
               </div>
             </div>
@@ -306,7 +308,8 @@
                             <div class="col-xl-6">
                               <div class="togo-megamenu-destination">
                                 <div class="togo-megamenu-destination-wrap">
-                                  <span class="togo-megamenu-destination-title">Top destinations in Countries</span>
+                                  <span class="togo-megamenu-destination-title">Top destinations in
+                                    Countries</span>
                                   <div class="row">
                                     <div class="col-xl-6">
                                       <div class="togo-megamenu-destination-item mb-20">
@@ -414,7 +417,8 @@
                                   </div>
                                 </div>
                                 <div class="togo-megamenu-destination-wrap">
-                                  <span class="togo-megamenu-destination-title">Top destinations in Thailand </span>
+                                  <span class="togo-megamenu-destination-title">Top destinations in Thailand
+                                  </span>
                                   <div class="row">
                                     <div class="col-xl-6">
                                       <div class="togo-megamenu-destination-item mb-20">
@@ -499,7 +503,8 @@
                                   </div>
                                 </div>
                                 <div class="togo-megamenu-destination-wrap">
-                                  <span class="togo-megamenu-destination-title">Top destinations in United States</span>
+                                  <span class="togo-megamenu-destination-title">Top destinations in United
+                                    States</span>
                                   <div class="row">
                                     <div class="col-xl-6">
                                       <div class="togo-megamenu-destination-item mb-20">
@@ -563,13 +568,13 @@
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path
                           d="M16.5 21C17.3284 21 18 20.3284 18 19.5C18 18.6716 17.3284 18 16.5 18C15.6716 18 15 18.6716 15 19.5C15 20.3284 15.6716 21 16.5 21Z"
-                          stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         <path
                           d="M8.5 21C9.32843 21 10 20.3284 10 19.5C10 18.6716 9.32843 18 8.5 18C7.67157 18 7 18.6716 7 19.5C7 20.3284 7.67157 21 8.5 21Z"
-                          stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         <path
                           d="M3.70907 5.4H18.9241C20.3017 5.4 21.2968 6.67056 20.9194 7.94783L19.2649 13.5478C19.011 14.4072 18.1965 15 17.2696 15H8.11164C7.18469 15 6.37021 14.4072 6.11631 13.5478L3.70907 5.4ZM3.70907 5.4L3 3"
-                          stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                       </svg>
                     </span>
                   </button>
@@ -579,7 +584,8 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <path
                         d="M14.75 16.95C14.4331 10.7633 5.06692 10.7633 4.75 16.95M12.25 6.84999C12.25 8.2307 11.1307 9.34999 9.74998 9.34999C8.36926 9.34999 7.24997 8.2307 7.24997 6.84999C7.24997 5.46928 8.36926 4.34999 9.74998 4.34999C11.1307 4.34999 12.25 5.46928 12.25 6.84999ZM18.75 9.75C18.75 14.7206 14.7206 18.75 9.75 18.75C4.77944 18.75 0.75 14.7206 0.75 9.75C0.75 4.77944 4.77944 0.75 9.75 0.75C14.7206 0.75 18.75 4.77944 18.75 9.75Z"
-                        stroke="currentColor" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
                     </svg>
                   </span>
                   <div class="togo-header-user-submenu">
@@ -705,12 +711,14 @@
 
   </header>
 
+
   <!-- Main Content -->
   <div id="has-smooth">
     <div id="has-smooth-wrap">
 
       <main class="user-main">
         <!-- Child user routes render here -->
+
         <router-outlet></router-outlet>
       </main>
 
