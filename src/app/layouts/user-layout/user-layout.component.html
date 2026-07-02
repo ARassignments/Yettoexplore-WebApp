@@ -584,8 +584,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <path
                         d="M14.75 16.95C14.4331 10.7633 5.06692 10.7633 4.75 16.95M12.25 6.84999C12.25 8.2307 11.1307 9.34999 9.74998 9.34999C8.36926 9.34999 7.24997 8.2307 7.24997 6.84999C7.24997 5.46928 8.36926 4.34999 9.74998 4.34999C11.1307 4.34999 12.25 5.46928 12.25 6.84999ZM18.75 9.75C18.75 14.7206 14.7206 18.75 9.75 18.75C4.77944 18.75 0.75 14.7206 0.75 9.75C0.75 4.77944 4.77944 0.75 9.75 0.75C14.7206 0.75 18.75 4.77944 18.75 9.75Z"
-                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </span>
                   <div class="togo-header-user-submenu">
@@ -948,5 +947,25 @@
         <!-- footer area end -->
       </footer>
     </div>
+  </div>
+
+  <div class="bottomAppBar">
+    <a class="navItem" data-item="home" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <span class="material-symbols-rounded">
+        home
+      </span>
+    </a>
+    <a class="navItem" data-item="about" routerLink="/about" routerLinkActive="active">
+      <i class="hgi hgi-stroke hgi-rounded hgi-home-03"></i>
+    </a>
+    <a class="navItem" data-item="team" routerLink="/team" routerLinkActive="active">
+      <i class="hgi hgi-stroke hgi-rounded hgi-home-03"></i>
+    </a>
+    <a class="navItem" data-item="blogs" routerLink="/blogs" routerLinkActive="active">
+      <i class="hgi hgi-stroke hgi-rounded hgi-home-03"></i>
+    </a>
+    <a class="navItem" data-item="contact" routerLink="/contact" routerLinkActive="active">
+      <i class="hgi hgi-stroke hgi-rounded hgi-home-03"></i>
+    </a>
   </div>
 </div>

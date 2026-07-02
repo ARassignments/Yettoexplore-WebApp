@@ -5,6 +5,11 @@
     --common-transition: all 0.3s ease;
 }
 
+.user-main{
+    width: 100vw;
+    overflow-x: hidden;
+}
+
 header {
     position: fixed;
     top: 0;
@@ -90,6 +95,73 @@ body:has(.togo-back-wrapper.togo-back-btn-show) header {
     align-items: flex-end;
 }
 
+.togo-back-btn:hover{
+    color: #fff;
+    background-color: var(--primary-theme-color);
+}
+
+.bottomAppBar{
+    display: none;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    background-color: #fff;
+    padding: 20px 0px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+.bottomAppBar::after{
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    z-index: -2;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to top, #fff, transparent);
+}
+
+.bottomAppBar .navItem{
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 0rem;
+    cursor: pointer;
+    color: var(--togo-common-black);
+    transition: var(--common-transition);
+}
+.bottomAppBar .navItem.active{
+    padding-bottom: 0.5rem;
+    color: var(--primary-theme-color);
+}
+.bottomAppBar .navItem::after{
+    content: attr(data-item);
+    position: absolute;
+    bottom: 0rem;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    font-weight: 700;
+    opacity: 0;
+    color: var(--togo-common-black);
+    transition: var(--common-transition);
+}
+.bottomAppBar .navItem.active::after{
+    bottom: 0.4rem;
+    opacity: 1;
+    color: var(--primary-theme-color);
+}
+
 @media (max-width: 767px) {
     header {
         background: white;
@@ -130,5 +202,13 @@ body:has(.togo-back-wrapper.togo-back-btn-show) header {
     .togo-hero-8-sec .togo-hero-8-wrapper,
     .togo-hero-8-sec .togo-hero-8-wrapper .swiper {
         height: inherit !important;
+    }
+
+    .bottomAppBar{
+        display: flex;
+    }
+
+    .togo-back-wrapper.togo-back-btn-show{
+        bottom: 100px !important;
     }
 }
