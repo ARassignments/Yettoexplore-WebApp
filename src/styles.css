@@ -1,11 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
     --primary-theme-color: #e65b24;
+    --primary-theme-color-rgb: 230, 91, 36;
     --togo-common-black: #111111;
     --common-transition: all 0.3s ease;
 }
 
-.user-main{
+.user-main {
     width: 100vw;
     overflow-x: hidden;
 }
@@ -24,6 +25,10 @@ header {
     background: rgba(255, 255, 255, 0.01) !important;
     backdrop-filter: blur(20px);
     padding: 0.5rem 0 !important;
+}
+
+.togo-header-2-sec .togo-header-bar {
+    display: none;
 }
 
 .togo-header-2-sec .navbar-container .logoContainer img {
@@ -95,12 +100,12 @@ body:has(.togo-back-wrapper.togo-back-btn-show) header {
     align-items: flex-end;
 }
 
-.togo-back-btn:hover{
+.togo-back-btn:hover {
     color: #fff;
     background-color: var(--primary-theme-color);
 }
 
-.bottomAppBar{
+.bottomAppBar {
     display: none;
     position: sticky;
     bottom: 0;
@@ -109,41 +114,64 @@ body:has(.togo-back-wrapper.togo-back-btn-show) header {
     z-index: 100;
     width: 100%;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-wrap: nowrap;
     flex-direction: row;
+    gap: 20px;
     background-color: #fff;
-    padding: 20px 0px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-}
-.bottomAppBar::after{
-    content: '';
-    position: absolute;
-    top: -50px;
-    left: 0;
-    right: 0;
-    z-index: -2;
-    width: 100%;
-    height: 50px;
-    background: linear-gradient(to top, #fff, transparent);
+    padding: 10px 0 15px 0;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 20px;
+    border-top: 1px solid #ececec;
+    border-radius: 10px 10px 0 0;
 }
 
-.bottomAppBar .navItem{
+.bottomAppBar .navItem {
     font-size: 1.3rem;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     padding-bottom: 0rem;
+    flex: 1;
     cursor: pointer;
     color: var(--togo-common-black);
     transition: var(--common-transition);
 }
-.bottomAppBar .navItem.active{
+
+.bottomAppBar:has(.navItem.main) .navItem:nth-child(2) {
+    margin-right: 20px;
+}
+
+.bottomAppBar:has(.navItem.main) .navItem:nth-child(4) {
+    margin-left: 20px;
+}
+
+.bottomAppBar .navItem.active {
     padding-bottom: 0.5rem;
     color: var(--primary-theme-color);
 }
-.bottomAppBar .navItem::after{
+
+.bottomAppBar .navItem.main {
+    background-color: var(--primary-theme-color);
+    color: #fff;
+    padding: 15px;
+    font-size: 2.0rem;
+    border-radius: 100%;
+    transform: translateY(-30px);
+    position: absolute;
+    flex-basis: 10px;
+    width: 60px;
+    height: 60px;
+    box-shadow: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: var(--common-transition);
+}
+
+.bottomAppBar .navItem.main:hover {
+    box-shadow: rgba(var(--primary-theme-color-rgb), 0.4) 0px 5px, rgba(var(--primary-theme-color-rgb), 0.3) 0px 10px, rgba(var(--primary-theme-color-rgb), 0.2) 0px 15px, rgba(var(--primary-theme-color-rgb), 0.1) 0px 20px, rgba(var(--primary-theme-color-rgb), 0.05) 0px 25px;
+}
+
+.bottomAppBar .navItem::after {
     content: attr(data-item);
     position: absolute;
     bottom: 0rem;
@@ -156,10 +184,132 @@ body:has(.togo-back-wrapper.togo-back-btn-show) header {
     color: var(--togo-common-black);
     transition: var(--common-transition);
 }
-.bottomAppBar .navItem.active::after{
-    bottom: 0.4rem;
+
+.bottomAppBar .navItem.active::after {
+    bottom: 0.1rem;
     opacity: 1;
     color: var(--primary-theme-color);
+}
+
+.bottomAppBar .navItem.main::after {
+    font-size: 0rem;
+    color: var(--primary-theme-color);
+    bottom: -1.0rem;
+}
+
+.bottomAppBar .navItem.main:hover::after {
+    font-size: 0.65rem;
+    opacity: 1;
+    bottom: -1.6rem;
+}
+
+.bookContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100vh;
+    clip-path: circle(0px at 95.8% 91%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    background-color: var(--primary-theme-color);
+}
+
+.bookContainer:has(#bookContainerToggler:checked) {
+    pointer-events: all;
+    animation: revealIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.bookContainer:not(:has(#bookContainerToggler:checked)) {
+    pointer-events: none;
+    animation: revealOut 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.bookContainer #bookContainerToggler {
+    display: none;
+}
+
+.searchContainerBtn {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 101;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.9rem;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    background-color: var(--primary-theme-color);
+    transition: var(--common-transition);
+    cursor: pointer;
+}
+
+.searchContainerBtn .hgi-search-01 {
+    opacity: 1;
+}
+
+.searchContainerBtn .hgi-cancel-01 {
+    position: absolute;
+    opacity: 0;
+}
+
+body:has(#bookContainerToggler:checked) .searchContainerBtn {
+    color: var(--primary-theme-color);
+    background-color: #fff;
+}
+
+body:has(#bookContainerToggler:checked) .searchContainerBtn .hgi-search-01,
+body:has(:not(#bookContainerToggler:checked)) .searchContainerBtn .hgi-cancel-01 {
+    opacity: 0;
+}
+
+body:has(#bookContainerToggler:checked) .searchContainerBtn .hgi-cancel-01 {
+    opacity: 1;
+}
+
+body:has(#bookContainerToggler:checked) {
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.searchContainerBtn:hover {
+    font-size: 1.9rem;
+    width: 60px;
+    height: 60px;
+}
+
+body:has(.togo-back-wrapper.togo-back-btn-show) .searchContainerBtn {
+    bottom: 120px;
+    right: 50px;
+}
+
+@keyframes revealIn {
+    0% {
+        clip-path: circle(0px at 95.8% 91%);
+    }
+
+    100% {
+        clip-path: circle(150% at 95.8% 91%);
+    }
+}
+
+@keyframes revealOut {
+    0% {
+        clip-path: circle(150% at 95.8% 91%);
+    }
+
+    100% {
+        clip-path: circle(0px at 95.8% 91%);
+    }
 }
 
 @media (max-width: 767px) {
@@ -170,6 +320,10 @@ body:has(.togo-back-wrapper.togo-back-btn-show) header {
 
     body:has(.togo-back-wrapper.togo-back-btn-show) header {
         position: sticky;
+    }
+
+    .togo-header-2-sec .togo-header-bar {
+        display: block;
     }
 
     .togo-header-2-sec .navbar-container {
@@ -204,11 +358,42 @@ body:has(.togo-back-wrapper.togo-back-btn-show) header {
         height: inherit !important;
     }
 
-    .bottomAppBar{
+    .bottomAppBar {
         display: flex;
     }
 
-    .togo-back-wrapper.togo-back-btn-show{
-        bottom: 100px !important;
+
+    .bookContainer {
+        clip-path: circle(0px at 50% 95%);
+        justify-content: start;
+    }
+    .searchContainerBtn{
+        display: none;
+    }
+
+    .togo-back-wrapper.togo-back-btn-show {
+        bottom: 80px !important;
+        right: 10px !important;
+        scale: 0.8;
+    }
+
+    @keyframes revealIn {
+        0% {
+            clip-path: circle(0px at 50% 95%);
+        }
+
+        100% {
+            clip-path: circle(150% at 50% 95%);
+        }
+    }
+
+    @keyframes revealOut {
+        0% {
+            clip-path: circle(150% at 50% 95%);
+        }
+
+        100% {
+            clip-path: circle(0px at 50% 95%);
+        }
     }
 }

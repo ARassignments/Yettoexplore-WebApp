@@ -949,8 +949,116 @@
     </div>
   </div>
 
+  <div class="bookContainer">
+    <input type="checkbox" id="bookContainerToggler">
+    <div class="container">
+      <div class="row justify-content-center py-5">
+          <div class="col-lg-12">
+            <div class="togo-hero-2-heading text-center z-index-1">
+              <h3 class="togo-hero-2-title fade-anim" data-delay=".3">Find next place to visit</h3>
+              <div class="togo-hero-2-text fade-anim" data-delay=".5">
+                <p>Choose from thousands of Organized Adventures</p>
+              </div>
+              <div class="togo-hero-2-search-wrap fade-anim" data-delay=".7">
+                <div class="row justify-content-center">
+                  <div class="col-xl-9">
+                    <div class="togo-hero-2-search-box">
+                      <div class="trip-search-form togo-hero-2-search-input d-flex align-items-center">
+                        <span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
+                            fill="none">
+                            <path
+                              d="M11.5132 19.0857C11.206 19.3048 10.794 19.3048 10.4868 19.0857C6.06043 15.9292 1.36177 9.43901 6.11114 4.74951C7.40775 3.46924 9.16632 2.75 11 2.75C12.8337 2.75 14.5923 3.46924 15.8889 4.74951C20.6382 9.43901 15.9396 15.9292 11.5132 19.0857Z"
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                              d="M11.0013 11C12.0138 11 12.8346 10.1792 12.8346 9.16665C12.8346 8.15412 12.0138 7.33331 11.0013 7.33331C9.98878 7.33331 9.16797 8.15412 9.16797 9.16665C9.16797 10.1792 9.98878 11 11.0013 11Z"
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                        </span>
+                        <input type="text" placeholder="Search destinations">
+                        <div class="field-location__result d-none">
+                          <div class="near-me">
+                            <div class="near-me__icon">
+                              <svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  d="M3.41392 12.0861C2.91626 11.9617 2.84896 11.282 3.31255 11.0624L20.2178 3.05466C20.6817 2.83491 21.1651 3.31834 20.9453 3.78225L12.9376 20.6875C12.718 21.151 12.0383 21.0837 11.9139 20.5861L10.2934 14.1041C10.2445 13.9084 10.0916 13.7555 9.8959 13.7066L3.41392 12.0861Z"
+                                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                  stroke-linejoin="round"></path>
+                              </svg>
+                            </div>
+                            <span class="near-me__text">Near me</span>
+                          </div>
+
+                          <div class="location-list">
+                            <ul>
+                              <li>
+                                <span class="country">France</span>
+                                <ul>
+                                  <li><span class="city">Lyon</span></li>
+                                  <li><span class="city">Marseille</span></li>
+                                  <li><span class="city">Paris</span></li>
+                                  <li><span class="city">Toulouse</span></li>
+                                </ul>
+                              </li>
+                              <li>
+                                <span class="country">Thailand</span>
+                                <ul>
+                                  <li><span class="city">Bangkok</span></li>
+                                  <li><span class="city">Chiang Mai</span></li>
+                                  <li><span class="city">Phuket</span></li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="input-id" class="togo-hero-2-search-input date p-relative d-flex align-items-center">
+                        <span id="demo1-input-description">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
+                            fill="none">
+                            <path
+                              d="M2.75 11C2.75 7.11093 2.75 6.08306 3.95818 4.87487C5.16637 3.66669 7.11091 3.66669 11 3.66669C14.8891 3.66669 16.8336 3.66669 18.0418 4.87487C19.25 6.08306 19.25 7.11093 19.25 11C19.25 14.8891 19.25 16.8337 18.0418 18.0418C16.8336 19.25 14.8891 19.25 11 19.25C7.11091 19.25 5.16637 19.25 3.95818 18.0418C2.75 16.8337 2.75 14.8891 2.75 11Z"
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M15.125 4.58333V2.75" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M6.875 4.58333V2.75" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M2.98047 7.33331H19.0221" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                        </span>
+                        <input type="text" aria-label="Check-in and check-out dates"
+                          aria-describedby="demo1-input-description" placeholder="Add dates">
+                      </div>
+                      <div class="togo-hero-2-search-btn">
+                        <button>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"
+                            fill="none">
+                            <path
+                              d="M15.4838 15.5099L18.3073 18.3334M17.4925 10.616C17.4925 14.454 14.3916 17.5654 10.5666 17.5654C6.74147 17.5654 3.64062 14.454 3.64062 10.616C3.64062 6.77801 6.74147 3.66669 10.5666 3.66669C14.3916 3.66669 17.4925 6.77801 17.4925 10.616Z"
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <label for="bookContainerToggler" class="searchContainerBtn">
+    <i class="hgi hgi-stroke hgi-rounded hgi-search-01"></i>
+    <i class="hgi hgi-stroke hgi-rounded hgi-cancel-01"></i>
+  </label>
+
   <div class="bottomAppBar">
-    <a class="navItem" data-item="home" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+    <a class="navItem" data-item="home" routerLink="" routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
       <span class="material-symbols-rounded">
         home
       </span>
@@ -958,10 +1066,10 @@
     <a class="navItem" data-item="about" routerLink="/about" routerLinkActive="active">
       <i class="hgi hgi-stroke hgi-rounded hgi-home-03"></i>
     </a>
+    <label for="bookContainerToggler" class="navItem main" data-item="">
+      <i class="hgi hgi-stroke hgi-rounded hgi-search-01"></i>
+    </label>
     <a class="navItem" data-item="team" routerLink="/team" routerLinkActive="active">
-      <i class="hgi hgi-stroke hgi-rounded hgi-home-03"></i>
-    </a>
-    <a class="navItem" data-item="blogs" routerLink="/blogs" routerLinkActive="active">
       <i class="hgi hgi-stroke hgi-rounded hgi-home-03"></i>
     </a>
     <a class="navItem" data-item="contact" routerLink="/contact" routerLinkActive="active">
