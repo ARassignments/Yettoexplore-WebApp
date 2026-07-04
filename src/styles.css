@@ -1,9 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 :root {
     --primary-theme-color: #e65b24;
     --primary-theme-color-rgb: 230, 91, 36;
     --togo-common-black: #111111;
     --common-transition: all 0.3s ease;
+    --font-bebas: "Bebas Neue", sans-serif;
 }
 
 .user-main {
@@ -123,6 +126,7 @@ body:has(.togo-back-wrapper.togo-back-btn-show) header {
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 20px;
     border-top: 1px solid #ececec;
     border-radius: 10px 10px 0 0;
+    transition: var(--common-transition);
 }
 
 .bottomAppBar .navItem {
@@ -171,6 +175,17 @@ body:has(.togo-back-wrapper.togo-back-btn-show) header {
     box-shadow: rgba(var(--primary-theme-color-rgb), 0.4) 0px 5px, rgba(var(--primary-theme-color-rgb), 0.3) 0px 10px, rgba(var(--primary-theme-color-rgb), 0.2) 0px 15px, rgba(var(--primary-theme-color-rgb), 0.1) 0px 20px, rgba(var(--primary-theme-color-rgb), 0.05) 0px 25px;
 }
 
+.bottomAppBar .navItem.main .hgi-search-01 {
+    opacity: 1;
+    transition: var(--common-transition);
+}
+
+.bottomAppBar .navItem.main .hgi-cancel-01 {
+    position: absolute;
+    opacity: 0;
+    transition: var(--common-transition);
+}
+
 .bottomAppBar .navItem::after {
     content: attr(data-item);
     position: absolute;
@@ -203,6 +218,28 @@ body:has(.togo-back-wrapper.togo-back-btn-show) header {
     bottom: -1.6rem;
 }
 
+body:has(#bookContainerToggler:checked) .bottomAppBar {
+    bottom: -19px;
+}
+
+body:has(#bookContainerToggler:checked) .bottomAppBar .navItem {
+    pointer-events: none;
+}
+
+body:has(#bookContainerToggler:checked) .bottomAppBar .navItem.main {
+    pointer-events: all;
+    color: var(--primary-theme-color);
+    background-color: #fff;
+}
+
+body:has(#bookContainerToggler:checked) .bottomAppBar .navItem.main .hgi-search-01 {
+    opacity: 0;
+}
+
+body:has(#bookContainerToggler:checked) .bottomAppBar .navItem.main .hgi-cancel-01 {
+    opacity: 1;
+}
+
 .bookContainer {
     position: fixed;
     top: 0;
@@ -230,8 +267,34 @@ body:has(.togo-back-wrapper.togo-back-btn-show) header {
     animation: revealOut 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
+.bookContainer .container {
+    opacity: 0;
+    transition: var(--common-transition);
+}
+
+.bookContainer:has(#bookContainerToggler:checked) .container {
+    opacity: 1;
+}
+
 .bookContainer #bookContainerToggler {
     display: none;
+}
+
+.bookContainer .togo-hero-2-search-box {
+    box-shadow: rgba(255, 255, 255, 0.4) 0px 5px, rgba(255, 255, 255, 0.3) 0px 10px, rgba(255, 255, 255, 0.2) 0px 15px, rgba(255, 255, 255, 0.1) 0px 20px, rgba(255, 255, 255, 0.05) 0px 25px;
+    gap: 20px;
+}
+
+.bookContainer .togo-hero-2-search-box .togo-hero-2-search-input {
+    flex: 1;
+}
+
+.bookContainer .destinationHighlights {
+    font-family: var(--font-bebas) !important;
+    padding-top: 3rem;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5rem;
 }
 
 .searchContainerBtn {
@@ -247,7 +310,7 @@ body:has(.togo-back-wrapper.togo-back-btn-show) header {
     align-items: center;
     justify-content: center;
     font-size: 1.9rem;
-    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    box-shadow: rgba(0, 0, 0, 8.45) 0px 25px 20px -20px;
     background-color: var(--primary-theme-color);
     transition: var(--common-transition);
     cursor: pointer;
@@ -287,9 +350,38 @@ body:has(#bookContainerToggler:checked) {
     height: 60px;
 }
 
+.searchContainerBtn::after {
+    content: 'more destinations...';
+    position: absolute;
+    right: 60px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    background-color: var(--primary-theme-color);
+    padding: 10px 15px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: var(--common-transition);
+    pointer-events: none;
+}
+
+.searchContainerBtn:hover::after {
+    right: 50px;
+    scale: 0.8;
+}
+
 body:has(.togo-back-wrapper.togo-back-btn-show) .searchContainerBtn {
     bottom: 120px;
     right: 50px;
+}
+
+body:has(#bookContainerToggler:checked) .searchContainerBtn::after,
+body:has(.togo-back-wrapper.togo-back-btn-show) .searchContainerBtn::after {
+    opacity: 0;
+}
+
+.hvrWobbleHorizontal {
+    animation: hvrWobbleHorizontal 3.2s ease-in-out infinite both;
 }
 
 @keyframes revealIn {
@@ -309,6 +401,43 @@ body:has(.togo-back-wrapper.togo-back-btn-show) .searchContainerBtn {
 
     100% {
         clip-path: circle(0px at 95.8% 91%);
+    }
+}
+
+@keyframes hvrWobbleHorizontal {
+
+    0%,
+    6% {
+        transform: translateX(0%);
+        transform-origin: 50% 50%;
+    }
+
+    12% {
+        transform: translateX(-30px) rotate(-6deg);
+    }
+
+    18% {
+        transform: translateX(15px) rotate(6deg);
+    }
+
+    24% {
+        transform: translateX(-15px) rotate(-3.6deg);
+    }
+
+    30% {
+        transform: translateX(9px) rotate(2.4deg);
+    }
+
+    36% {
+        transform: translateX(-6px) rotate(-1.2deg);
+    }
+
+    42% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(0%);
     }
 }
 
@@ -362,12 +491,17 @@ body:has(.togo-back-wrapper.togo-back-btn-show) .searchContainerBtn {
         display: flex;
     }
 
-
     .bookContainer {
         clip-path: circle(0px at 50% 95%);
-        justify-content: start;
+        justify-content: center;
+        padding-bottom: 20vh;
     }
-    .searchContainerBtn{
+
+    .bookContainer .togo-hero-2-search-box {
+        gap: 0px;
+    }
+
+    .searchContainerBtn {
         display: none;
     }
 
