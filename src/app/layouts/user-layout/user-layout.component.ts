@@ -22,6 +22,10 @@ export class UserLayoutComponent implements OnInit, OnDestroy {
   private routerSub!: Subscription;
 
   private styles = [
+    'https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Marcellus&amp;family=Outfit:wght@100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Jost:ital,wght@0,100..900;1,100..900&amp;display=swap',
+    'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20,700,1,-25&icon_names=home',
+    'https://use.hugeicons.com/font/icons.css',
+    'assets/user/css/hover.css',
     'assets/user/css/bootstrap.css',
     'assets/user/css/swiper-bundle.css',
     'assets/user/css/magnific-popup.css',
