@@ -1,0 +1,252 @@
+<!-- breadcrumb area start -->
+<div class="togo-breadcrumb-style-2-sec togo-breadcrumb-bg bg-pos"
+    data-background="assets/user/img/breadcrumb/thumb-5.jpg"
+    style="background-image: url('assets/user/img/breadcrumb/thumb-5.jpg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="togo-breadcrumb-heading text-center z-index-1">
+                    <h4 class="togo-breadcrumb-title fade-anim" data-delay=".3">Secure Tour Checkout</h4>
+                    <div class="togo-breadcrumb-text fade-anim" data-delay=".5">
+                        <p>Complete passenger information, verify dates, and confirm your reservation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb area end -->
+
+<div class="togo-checkout-area pt-60 pb-80" data-bg-color="#FBFBFB" style="background-color: #FBFBFB;">
+    <div class="container container-1440">
+
+        <!-- Booking Success State Screen -->
+        <div *ngIf="bookingSuccess" class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="togo-contact-wrapper p-5 bg-white rounded-4 shadow-sm">
+                    <div class="mb-4">
+                        <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                            <i class="hgi hgi-stroke hgi-rounded hgi-checkmark-circle-02 fs-36"></i>
+                        </div>
+                    </div>
+                    <h3 class="togo-section-title fs-28 text-dark mb-2">Booking Confirmed!</h3>
+                    <p class="text-muted fs-16 mb-4">Your trip reservation has been successfully booked with the tour operator.</p>
+
+                    <div class="bg-light p-4 rounded-4 text-start mb-4 border">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Booking Reference:</span>
+                            <span class="fw-bold text-primary">{{ confirmedBookingNumber }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Tour Package:</span>
+                            <span class="fw-semibold text-dark">{{ tour.title }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Departure Date:</span>
+                            <span class="fw-semibold text-dark">{{ draft.travel_date | date:'longDate' }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-muted">Total Passengers:</span>
+                            <span class="fw-semibold text-dark">{{ draft.adults_count }} Adult(s) <span *ngIf="draft.children_count">, {{ draft.children_count }} Child</span></span>
+                        </div>
+                        <div class="d-flex justify-content-between pt-2 border-top">
+                            <span class="fw-bold">Total Paid:</span>
+                            <span class="fw-bold text-success fs-20 font-bebas">${{ totalAmount }}</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <button class="togo-btn-primary py-3 px-4" (click)="goToMyBookings()">
+                            <i class="hgi hgi-stroke hgi-rounded hgi-ticket-02 me-2"></i> View E-Ticket & My Bookings
+                        </button>
+                        <a routerLink="/tours" class="togo-btn-secondary py-3 px-4 btn btn-outline-secondary">
+                            Explore More Tours
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout Form Screen -->
+        <div *ngIf="!bookingSuccess && !isLoading" class="row g-4">
+            
+            <!-- Left: Passenger Information & Payment Methods -->
+            <div class="col-lg-8">
+                
+                <!-- Passenger Info Card -->
+                <div class="togo-checkout-box bg-white shadow-sm mb-30">
+                    <h4 class="togo-checkout-contact-title mb-20 fw-bold">
+                        <i class="hgi hgi-stroke hgi-rounded hgi-user-group text-primary me-2"></i> Passenger Information
+                    </h4>
+
+                    <div class="togo-checkout-contact-form">
+                        <div *ngFor="let passenger of passengers; let i = index" class="p-3 mb-20 rounded-3 border bg-light">
+                            <h6 class="fw-bold text-dark mb-3">
+                                <span class="badge bg-primary me-2">{{ i + 1 }}</span>
+                                {{ passenger.is_lead ? 'Lead Traveler (Primary Contact)' : 'Passenger ' + (i + 1) }}
+                            </h6>
+                            <div class="row gx-20">
+                                <div class="col-md-6">
+                                    <div class="togo-contact-input mb-15">
+                                        <label>Full Name <span class="text-danger">*</span></label>
+                                        <input type="text" placeholder="e.g. Ali Khan" [(ngModel)]="passenger.full_name" [name]="'p_name_' + i" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="togo-contact-input mb-15">
+                                        <label>CNIC / Passport Number</label>
+                                        <input type="text" placeholder="42101-xxxxxxx-x" [(ngModel)]="passenger.cnic_passport" [name]="'p_cnic_' + i">
+                                    </div>
+                                </div>
+                                <div *ngIf="passenger.is_lead" class="col-md-6">
+                                    <div class="togo-contact-input mb-15">
+                                        <label>Phone / WhatsApp <span class="text-danger">*</span></label>
+                                        <input type="tel" placeholder="+92 300 1234567" [(ngModel)]="passenger.phone" [name]="'p_phone_' + i" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="togo-contact-input mb-15">
+                                        <label>Gender</label>
+                                        <div class="togo-tour-grid-select-wrap">
+                                            <div class="togo-tour-grid-select">
+                                                <select class="wide w-100 p-2 rounded-3 border" [(ngModel)]="passenger.gender" [name]="'p_gender_' + i">
+                                                    <option value="male">Male</option>
+                                                    <option value="female">Female</option>
+                                                    <option value="other">Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Selection Card -->
+                <div class="togo-checkout-box togo-checkout-payment bg-white shadow-sm">
+                    <h4 class="togo-checkout-contact-title mb-20 fw-bold">
+                        <i class="hgi hgi-stroke hgi-rounded hgi-credit-card text-primary me-2"></i> Payment Method
+                    </h4>
+
+                    <div class="row g-3 mb-20">
+                        <div class="col-md-4">
+                            <div class="togo-from-checkbox p-3 border rounded-3 bg-light">
+                                <input type="radio" id="payCard" name="pay_opt" value="card" [(ngModel)]="paymentMethod">
+                                <label for="payCard" class="fw-bold fs-14">
+                                    <i class="hgi hgi-stroke hgi-rounded hgi-credit-card text-primary me-1"></i> Card / Stripe
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="togo-from-checkbox p-3 border rounded-3 bg-light">
+                                <input type="radio" id="payBank" name="pay_opt" value="bank" [(ngModel)]="paymentMethod">
+                                <label for="payBank" class="fw-bold fs-14">
+                                    <i class="hgi hgi-stroke hgi-rounded hgi-building-03 text-primary me-1"></i> Bank Wire
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="togo-from-checkbox p-3 border rounded-3 bg-light">
+                                <input type="radio" id="payDeposit" name="pay_opt" value="deposit" [(ngModel)]="paymentMethod">
+                                <label for="payDeposit" class="fw-bold fs-14">
+                                    <i class="hgi hgi-stroke hgi-rounded hgi-coins-swap text-primary me-1"></i> Pay on Trip
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Form Mockup -->
+                    <div *ngIf="paymentMethod === 'card'" class="bg-light p-4 rounded-3 mb-20 border">
+                        <div class="togo-contact-input mb-15">
+                            <label>Card Number</label>
+                            <input type="text" [(ngModel)]="cardDetails.cardNumber" name="cardNumber">
+                        </div>
+                        <div class="row gx-20">
+                            <div class="col-md-6">
+                                <div class="togo-contact-input mb-15">
+                                    <label>Cardholder Name</label>
+                                    <input type="text" [(ngModel)]="cardDetails.cardHolder" name="cardHolder">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="togo-contact-input mb-15">
+                                    <label>Expiry</label>
+                                    <input type="text" [(ngModel)]="cardDetails.expiry" name="cardExpiry">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="togo-contact-input mb-15">
+                                    <label>CVC / CVV</label>
+                                    <input type="password" [(ngModel)]="cardDetails.cvv" name="cardCvv">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right: Order & Price Summary -->
+            <div class="col-lg-4">
+                <div class="togo-contact-wrapper p-4 bg-white rounded-4 shadow-sm sticky-top" style="top: 100px;">
+                    <h5 class="togo-section-title fs-18 mb-3 pb-2 border-bottom">Reservation Summary</h5>
+
+                    <div class="d-flex gap-3 mb-3 align-items-center">
+                        <img [src]="tour.cover_image" class="rounded-3" style="width: 80px; height: 60px; object-fit: cover;">
+                        <div>
+                            <h6 class="fw-bold mb-1 fs-14">{{ tour.title }}</h6>
+                            <span class="fs-12 text-muted"><i class="hgi hgi-stroke hgi-rounded hgi-calendar-03 text-primary me-1"></i> {{ draft.travel_date | date:'mediumDate' }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Price Calculations -->
+                    <div class="py-3 border-top border-bottom mb-3">
+                        <div class="d-flex justify-content-between fs-14 mb-2">
+                            <span class="text-muted">{{ draft.adults_count }} Adult(s) x ${{ unitPrice }}</span>
+                            <span class="fw-semibold">${{ draft.adults_count * unitPrice }}</span>
+                        </div>
+                        <div *ngIf="draft.children_count" class="d-flex justify-content-between fs-14 mb-2">
+                            <span class="text-muted">{{ draft.children_count }} Child(ren) x ${{ tour.child_price }}</span>
+                            <span class="fw-semibold">${{ draft.children_count * (tour.child_price || 0) }}</span>
+                        </div>
+                        <div *ngIf="discountAmount > 0" class="d-flex justify-content-between fs-14 mb-2 text-success">
+                            <span>Promo Discount</span>
+                            <span>-${{ discountAmount }}</span>
+                        </div>
+                        <div class="d-flex justify-content-between fs-16 fw-bold pt-2 border-top">
+                            <span>Grand Total</span>
+                            <span class="text-primary fs-22 font-bebas">${{ totalAmount }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Promo Code -->
+                    <div class="d-flex gap-2 mb-20">
+                        <div class="togo-contact-input flex-grow-1 mb-0">
+                            <input type="text" placeholder="Promo code (e.g. EXPLORE50)" [(ngModel)]="couponCode" name="couponCode">
+                        </div>
+                        <button class="togo-btn-primary py-2 px-3 fs-14" type="button" (click)="applyCoupon()">Apply</button>
+                    </div>
+
+                    <!-- Terms & Submit -->
+                    <div class="togo-from-checkbox mb-20">
+                        <input id="termsCheck" type="checkbox" checked>
+                        <label for="termsCheck" class="fs-12 text-muted">
+                            I agree to the Yettoexplore Terms of Service and 48-hour free cancellation policy.
+                        </label>
+                    </div>
+
+                    <button type="button" 
+                            class="togo-btn-primary w-100 py-3 text-center d-flex align-items-center justify-content-center"
+                            [disabled]="isSubmitting"
+                            (click)="onConfirmPayment()">
+                        <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2" role="status"></span>
+                        {{ isSubmitting ? 'Processing Payment...' : 'Confirm & Pay $' + totalAmount }}
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

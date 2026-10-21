@@ -1,0 +1,903 @@
+<div class="super-admin-dashboard">
+
+  <!-- ── Top Dynamic Welcome Header ── -->
+  <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+    <div>
+      <div class="d-flex align-items-center gap-2 mb-1 flex-wrap">
+        <h1 class="mb-0 fs-24 fw-bold text-dark">
+          <ng-container [ngSwitch]="currentRole()">
+            <span *ngSwitchCase="'super_admin'">Super Admin Command Center</span>
+            <span *ngSwitchCase="'agency_owner'">Agency Partner Portal &bull; {{ auth.currentUser()?.agency?.name || 'NorthVoyagers Pakistan' }}</span>
+            <span *ngSwitchCase="'agency_agent'">Agency Operations Desk &bull; {{ auth.currentUser()?.agency?.name || 'NorthVoyagers' }}</span>
+            <span *ngSwitchCase="'tour_guide'">Tour Guide & Field Operations Portal</span>
+            <span *ngSwitchDefault>Traveler Hub & Bookings</span>
+          </ng-container>
+        </h1>
+        <span class="badge fs-12 px-2 py-1 fw-bold rounded-pill"
+              [class.bg-danger-transparent]="isSuperAdmin()"
+              [class.text-danger]="isSuperAdmin()"
+              [class.bg-teal-transparent]="isAgencyOwner()"
+              [class.text-teal]="isAgencyOwner()"
+              [class.bg-primary-transparent]="isAgencyAgent()"
+              [class.text-primary]="isAgencyAgent()"
+              [class.bg-success-transparent]="isTourGuide()"
+              [class.text-success]="isTourGuide()"
+              [class.bg-secondary-transparent]="isCustomer()"
+              [class.text-secondary]="isCustomer()">
+          <i class="ti ti-shield-check me-1"></i> {{ currentRole() | uppercase }}
+        </span>
+      </div>
+      <p class="text-muted mb-0">
+        Logged in as <strong class="text-dark">{{ auth.currentUser()?.name || 'Authorized User' }}</strong> ({{ auth.currentUser()?.email }}).
+        <span class="text-primary fw-semibold" *ngIf="!isCustomer()">&bull; Non-traveler restricted session active</span>
+      </p>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="d-flex align-items-center gap-2 flex-wrap">
+      <button class="btn btn-outline-primary btn-sm rounded-pill d-inline-flex align-items-center gap-1 shadow-sm" (click)="loadAllData()">
+        <i class="ti ti-refresh fs-14"></i> Sync Live Data
+      </button>
+      <a *ngIf="isCustomer()" routerLink="/tours" class="btn btn-primary btn-sm rounded-pill d-inline-flex align-items-center gap-1 shadow-sm">
+        <i class="ti ti-external-link fs-14"></i> Explore Tours
+      </a>
+      <button *ngIf="!isCustomer()" class="btn btn-outline-danger btn-sm rounded-pill d-inline-flex align-items-center gap-1 shadow-sm" (click)="onLogout()">
+        <i class="ti ti-logout fs-14"></i> Logout
+      </button>
+    </div>
+  </div>
+
+  <!-- ── Role Context Banner ── -->
+  <div class="alert bg-soft-primary border-0 alert-dismissible fade show mb-4 d-flex align-items-center justify-content-between py-3 px-4 shadow-sm rounded-4 flex-wrap gap-2">
+    <div class="d-flex align-items-center gap-3">
+      <span class="avatar avatar-md rounded-circle bg-primary text-white d-flex align-items-center justify-content-center">
+        <i class="ti ti-sparkles fs-20"></i>
+      </span>
+      <div>
+        <h6 class="mb-0 fw-bold text-dark">
+          <span *ngIf="isSuperAdmin()">Platform Super Admin Governance Active</span>
+          <span *ngIf="isAgencyOwner()">Agency SaaS Partner Management &bull; Verified Tier</span>
+          <span *ngIf="isAgencyAgent()">Agency Operations & Passenger Check-In Desk</span>
+          <span *ngIf="isTourGuide()">Field Tour Guide Portal & Manifest Viewer</span>
+          <span *ngIf="isCustomer()">Verified Traveler Account</span>
+        </h6>
+        <p class="fs-13 text-muted mb-0">
+          Backend: Laravel 11 REST API &bull; Sanctum Authenticated &bull; 
+          <strong>{{ isSuperAdmin() ? 'Global Platform Access' : 'Dedicated SaaS Workspace' }}</strong>
+        </p>
+      </div>
+    </div>
+    <span class="badge bg-success-transparent text-success px-3 py-2 fw-semibold rounded-pill">
+      <i class="ti ti-lock me-1"></i> Role Protected
+    </span>
+  </div>
+
+  <!-- ── Primary KPI Cards ── -->
+  <div class="row g-3 mb-4">
+    <!-- GMV / Revenue -->
+    <div class="col-xl-3 col-sm-6 col-12 d-flex">
+      <div class="card bg-primary text-white sale-widget flex-fill border-0 rounded-4 shadow-sm overflow-hidden position-relative">
+        <div class="card-body p-4 d-flex align-items-center">
+          <span class="sale-icon bg-white text-primary rounded-circle d-flex align-items-center justify-content-center me-3 shadow">
+            <i class="ti ti-currency-dollar fs-24"></i>
+          </span>
+          <div>
+            <p class="text-white-50 mb-1 fs-13 fw-semibold">
+              {{ isSuperAdmin() ? 'Platform GMV (Revenue)' : 'Agency Total Revenue' }}
+            </p>
+            <h3 class="text-white fw-bold mb-0">
+              PKR {{ (isSuperAdmin() ? (adminService.stats()?.total_gmv || 242875) : 189875) | number }}
+            </h3>
+            <span class="badge badge-soft-light text-white fs-11 mt-1">
+              <i class="ti ti-arrow-up-right me-1"></i> Verified Settlements
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Agencies / Assigned Agency -->
+    <div class="col-xl-3 col-sm-6 col-12 d-flex">
+      <div class="card bg-teal text-white sale-widget flex-fill border-0 rounded-4 shadow-sm overflow-hidden position-relative" style="background: linear-gradient(135deg, #0d9488, #14b8a6) !important;">
+        <div class="card-body p-4 d-flex align-items-center">
+          <span class="sale-icon bg-white text-teal rounded-circle d-flex align-items-center justify-content-center me-3 shadow" style="color: #0d9488 !important;">
+            <i class="ti ti-building fs-24"></i>
+          </span>
+          <div>
+            <p class="text-white-50 mb-1 fs-13 fw-semibold">
+              {{ isSuperAdmin() ? 'SaaS Travel Agencies' : 'Agency Tier' }}
+            </p>
+            <h3 class="text-white fw-bold mb-0">
+              {{ isSuperAdmin() ? (adminService.stats()?.total_agencies || 2) + ' Registered' : 'PRO PARTNER' }}
+            </h3>
+            <span class="badge badge-soft-light text-white fs-11 mt-1">
+              <i class="ti ti-shield-check me-1"></i> Verified & Active
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Tour Packages -->
+    <div class="col-xl-3 col-sm-6 col-12 d-flex">
+      <div class="card bg-info text-white sale-widget flex-fill border-0 rounded-4 shadow-sm overflow-hidden position-relative" style="background: linear-gradient(135deg, #0284c7, #38bdf8) !important;">
+        <div class="card-body p-4 d-flex align-items-center">
+          <span class="sale-icon bg-white text-info rounded-circle d-flex align-items-center justify-content-center me-3 shadow" style="color: #0284c7 !important;">
+            <i class="ti ti-compass fs-24"></i>
+          </span>
+          <div>
+            <p class="text-white-50 mb-1 fs-13 fw-semibold">
+              {{ isSuperAdmin() ? 'Global Tour Catalog' : 'Active Tour Packages' }}
+            </p>
+            <h3 class="text-white fw-bold mb-0">
+              {{ isSuperAdmin() ? (adminService.stats()?.total_tours || 5) : filteredTours.length }} Packages
+            </h3>
+            <span class="badge badge-soft-light text-white fs-11 mt-1">
+              <i class="ti ti-calendar me-1"></i> Departure Batches
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Confirmed Bookings -->
+    <div class="col-xl-3 col-sm-6 col-12 d-flex">
+      <div class="card bg-secondary text-white sale-widget flex-fill border-0 rounded-4 shadow-sm overflow-hidden position-relative" style="background: linear-gradient(135deg, #7c3aed, #a855f7) !important;">
+        <div class="card-body p-4 d-flex align-items-center">
+          <span class="sale-icon bg-white text-secondary rounded-circle d-flex align-items-center justify-content-center me-3 shadow" style="color: #7c3aed !important;">
+            <i class="ti ti-ticket fs-24"></i>
+          </span>
+          <div>
+            <p class="text-white-50 mb-1 fs-13 fw-semibold">Confirmed Bookings</p>
+            <h3 class="text-white fw-bold mb-0">
+              {{ filteredBookings.length }} Passes
+            </h3>
+            <span class="badge badge-soft-light text-white fs-11 mt-1">
+              <i class="ti ti-qrcode me-1"></i> QR Verified
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Navigation Tabs ── -->
+  <div class="card border-0 rounded-4 shadow-sm mb-4">
+    <div class="card-body p-2">
+      <ul class="nav nav-pills nav-justified gap-1 flex-nowrap overflow-auto" id="adminTabs">
+        <li class="nav-item">
+          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2"
+                  [class.active]="activeTab() === 'overview'"
+                  (click)="setTab('overview')">
+            <i class="ti ti-layout-dashboard fs-18"></i> Overview
+          </button>
+        </li>
+        <li class="nav-item" *ngIf="isSuperAdmin()">
+          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2"
+                  [class.active]="activeTab() === 'agencies'"
+                  (click)="setTab('agencies')">
+            <i class="ti ti-building fs-18"></i> Agencies ({{ adminService.agencies().length || 2 }})
+          </button>
+        </li>
+        <li class="nav-item" *ngIf="!isTourGuide() && !isCustomer()">
+          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2"
+                  [class.active]="activeTab() === 'tours'"
+                  (click)="setTab('tours')">
+            <i class="ti ti-map-pin fs-18"></i> Tour Packages ({{ filteredTours.length }})
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2"
+                  [class.active]="activeTab() === 'bookings'"
+                  (click)="setTab('bookings')">
+            <i class="ti ti-ticket fs-18"></i> {{ isCustomer() ? 'My Bookings & Passes' : 'Bookings & Passes' }} ({{ filteredBookings.length }})
+          </button>
+        </li>
+        <li class="nav-item" *ngIf="isSuperAdmin() || isAgencyOwner()">
+          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2"
+                  [class.active]="activeTab() === 'users'"
+                  (click)="setTab('users')">
+            <i class="ti ti-users fs-18"></i> {{ isSuperAdmin() ? 'Users & Roles' : 'Staff & Guides' }}
+          </button>
+        </li>
+        <li class="nav-item" *ngIf="isSuperAdmin() || isAgencyOwner()">
+          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2"
+                  [class.active]="activeTab() === 'coupons'"
+                  (click)="setTab('coupons')">
+            <i class="ti ti-gift fs-18"></i> Promo Coupons
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- TAB 1: OVERVIEW & ANALYTICS                               -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div *ngIf="activeTab() === 'overview'" class="tab-content-area animate__animated animate__fadeIn">
+    <div class="row g-4 mb-4">
+      
+      <!-- Top Agencies Leaderboard / Agency Overview -->
+      <div class="col-xl-6 col-12 d-flex">
+        <div class="card border-0 rounded-4 shadow-sm flex-fill">
+          <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0 d-flex align-items-center justify-content-between">
+            <h5 class="fw-bold mb-0 text-dark d-flex align-items-center gap-2">
+              <i class="ti ti-trophy text-warning fs-20"></i>
+              {{ isSuperAdmin() ? 'Top Performing Agencies' : 'Agency Profile & Credentials' }}
+            </h5>
+            <button class="btn btn-link btn-sm text-primary fw-semibold p-0 text-decoration-none" (click)="setTab('agencies')" *ngIf="isSuperAdmin()">
+              View All <i class="ti ti-arrow-right"></i>
+            </button>
+          </div>
+          <div class="card-body p-4">
+            <div class="agency-item d-flex align-items-center justify-content-between p-3 rounded-3 bg-light mb-3"
+                 *ngFor="let ag of (isSuperAdmin() ? adminService.agencies() : [adminService.agencies()[0]])">
+              <div class="d-flex align-items-center gap-3">
+                <img [src]="ag.logo || 'assets/user/img/team/team-2.jpg'" alt="" class="avatar avatar-md rounded-circle object-fit-cover shadow-sm">
+                <div>
+                  <h6 class="mb-0 fw-bold text-dark d-flex align-items-center gap-1">
+                    {{ ag.name }}
+                    <i class="ti ti-circle-check-filled text-primary fs-14" *ngIf="ag.is_verified" title="Verified Agency"></i>
+                  </h6>
+                  <span class="fs-12 text-muted">{{ ag.city || 'Pakistan' }} &bull; {{ ag.tours_count || 4 }} Tours Listed</span>
+                </div>
+              </div>
+              <div class="text-end">
+                <span class="badge bg-success-transparent text-success fw-bold px-2 py-1 fs-12 mb-1 d-block">
+                  PKR {{ (ag.bookings_sum_total_amount || 189875) | number }}
+                </span>
+                <span class="fs-12 text-muted">{{ ag.subscription_tier | uppercase }} &bull; {{ ag.commission_rate }}% Comm.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Destinations Breakdown -->
+      <div class="col-xl-6 col-12 d-flex">
+        <div class="card border-0 rounded-4 shadow-sm flex-fill">
+          <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0 d-flex align-items-center justify-content-between">
+            <h5 class="fw-bold mb-0 text-dark d-flex align-items-center gap-2">
+              <i class="ti ti-map-2 text-primary fs-20"></i> Pakistan Destinations Active
+            </h5>
+          </div>
+          <div class="card-body p-4">
+            <div class="row g-3">
+              <div class="col-6">
+                <div class="p-3 border rounded-3 text-center bg-light">
+                  <span class="badge bg-primary-transparent text-primary mb-2">Hunza Valley</span>
+                  <h5 class="fw-bold mb-0">Gilgit-Baltistan</h5>
+                  <p class="fs-12 text-muted mb-0">Rakaposhi, Attabad Lake</p>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="p-3 border rounded-3 text-center bg-light">
+                  <span class="badge bg-info-transparent text-info mb-2">Skardu & Deosai</span>
+                  <h5 class="fw-bold mb-0">Gilgit-Baltistan</h5>
+                  <p class="fs-12 text-muted mb-0">Shangrila, Land of Giants</p>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="p-3 border rounded-3 text-center bg-light">
+                  <span class="badge bg-success-transparent text-success mb-2">Fairy Meadows</span>
+                  <h5 class="fw-bold mb-0">Diamer Region</h5>
+                  <p class="fs-12 text-muted mb-0">Nanga Parbat 8,126m Base</p>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="p-3 border rounded-3 text-center bg-light">
+                  <span class="badge bg-warning-transparent text-warning mb-2">Swat Valley</span>
+                  <h5 class="fw-bold mb-0">KPK Province</h5>
+                  <p class="fs-12 text-muted mb-0">Malam Jabba, Emerald Slopes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Bookings Stream -->
+    <div class="card border-0 rounded-4 shadow-sm mb-4">
+      <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0 d-flex align-items-center justify-content-between">
+        <h5 class="fw-bold mb-0 text-dark d-flex align-items-center gap-2">
+          <i class="ti ti-clock text-info fs-20"></i> Live Bookings Stream
+        </h5>
+        <button class="btn btn-outline-primary btn-sm rounded-pill" (click)="setTab('bookings')">
+          View All Bookings
+        </button>
+      </div>
+      <div class="card-body p-4">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th class="border-0">Booking #</th>
+                <th class="border-0">Traveler</th>
+                <th class="border-0">Tour Package</th>
+                <th class="border-0">Agency</th>
+                <th class="border-0">Total Amount</th>
+                <th class="border-0">Payment</th>
+                <th class="border-0">Status</th>
+                <th class="border-0 text-end">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let b of filteredBookings | slice:0:5">
+                <td>
+                  <span class="badge bg-dark-transparent text-dark fw-bold">{{ b.booking_number }}</span>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="avatar avatar-sm rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fs-12 fw-bold">
+                      {{ (b.user?.name || 'T')[0] }}
+                    </span>
+                    <div>
+                      <h6 class="mb-0 fs-13 fw-semibold">{{ b.user?.name || 'Traveler' }}</h6>
+                      <span class="fs-11 text-muted">{{ b.passengers?.length || b.adults_count }} Passenger(s)</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="fw-semibold text-dark fs-13">{{ b.tour?.title || 'Tour Package' }}</span>
+                </td>
+                <td>
+                  <span class="text-muted fs-13">{{ b.agency?.name || 'NorthVoyagers' }}</span>
+                </td>
+                <td>
+                  <strong class="text-dark">PKR {{ b.total_amount | number }}</strong>
+                </td>
+                <td>
+                  <span class="badge bg-success-transparent text-success rounded-pill px-2 py-1 fs-11">
+                    <i class="ti ti-check me-1"></i> {{ b.payment_method | uppercase }}
+                  </span>
+                </td>
+                <td>
+                  <span class="badge bg-primary-transparent text-primary rounded-pill px-2 py-1 fs-11">
+                    {{ b.status | uppercase }}
+                  </span>
+                </td>
+                <td class="text-end">
+                  <button class="btn btn-sm btn-outline-primary rounded-pill" (click)="openBookingPass(b)">
+                    <i class="ti ti-qrcode me-1"></i> QR Pass
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- TAB 2: AGENCIES MANAGEMENT (Super Admin Only)             -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div *ngIf="activeTab() === 'agencies'" class="tab-content-area animate__animated animate__fadeIn">
+    <div class="card border-0 rounded-4 shadow-sm mb-4">
+      <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0 d-flex align-items-center justify-content-between flex-wrap gap-3">
+        <div>
+          <h5 class="fw-bold mb-1 text-dark">SaaS Travel Agency Partners</h5>
+          <p class="fs-13 text-muted mb-0">Manage partner licenses, commission splits, and verification approvals.</p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <div class="input-group input-group-sm" style="width: 250px;">
+            <span class="input-group-text bg-light border-0"><i class="ti ti-search"></i></span>
+            <input type="text" class="form-control bg-light border-0" placeholder="Search agencies..." [ngModel]="agencySearch()" (ngModelChange)="agencySearch.set($event)">
+          </div>
+        </div>
+      </div>
+      <div class="card-body p-4">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th class="border-0">Agency Name</th>
+                <th class="border-0">City & Contact</th>
+                <th class="border-0">Tier</th>
+                <th class="border-0">Commission Rate</th>
+                <th class="border-0">Tours & Revenue</th>
+                <th class="border-0">Verification</th>
+                <th class="border-0">Status</th>
+                <th class="border-0 text-end">Controls</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ag of filteredAgencies">
+                <td>
+                  <div class="d-flex align-items-center gap-3">
+                    <img [src]="ag.logo || 'assets/user/img/team/team-2.jpg'" alt="" class="avatar avatar-md rounded-3 object-fit-cover shadow-sm">
+                    <div>
+                      <h6 class="mb-0 fw-bold text-dark">{{ ag.name }}</h6>
+                      <span class="fs-12 text-muted">Lic: {{ ag.license_number || 'DTS-REG-2024' }}</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="d-block text-dark fs-13">{{ ag.city || 'Islamabad' }}</span>
+                  <span class="fs-12 text-muted">{{ ag.email }} &bull; {{ ag.phone }}</span>
+                </td>
+                <td>
+                  <span class="badge bg-secondary-transparent text-secondary rounded-pill px-3 py-1 fw-bold">
+                    {{ (ag.subscription_tier || 'starter') | uppercase }}
+                  </span>
+                </td>
+                <td>
+                  <strong class="text-primary">{{ ag.commission_rate || 10.00 }}%</strong>
+                </td>
+                <td>
+                  <span class="d-block fw-semibold text-dark">{{ ag.tours_count || 4 }} Tours</span>
+                  <span class="fs-12 text-success fw-bold">PKR {{ (ag.bookings_sum_total_amount || 189875) | number }} GMV</span>
+                </td>
+                <td>
+                  <button class="btn btn-sm rounded-pill fw-semibold"
+                          [class.btn-success]="ag.is_verified"
+                          [class.btn-outline-secondary]="!ag.is_verified"
+                          (click)="toggleAgencyVerification(ag)">
+                    <i class="ti" [class.ti-check]="ag.is_verified" [class.ti-x]="!ag.is_verified"></i>
+                    {{ ag.is_verified ? 'Verified' : 'Unverified' }}
+                  </button>
+                </td>
+                <td>
+                  <span class="badge rounded-pill px-3 py-1"
+                        [class.bg-success-transparent]="ag.status === 'active'"
+                        [class.text-success]="ag.status === 'active'"
+                        [class.bg-warning-transparent]="ag.status !== 'active'"
+                        [class.text-warning]="ag.status !== 'active'">
+                    {{ ag.status | uppercase }}
+                  </span>
+                </td>
+                <td class="text-end">
+                  <div class="dropdown">
+                    <button class="btn btn-light btn-sm rounded-circle p-2" data-bs-toggle="dropdown">
+                      <i class="ti ti-dots-vertical"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                      <li><a class="dropdown-item" href="javascript:void(0);" (click)="toggleAgencyStatus(ag, 'active')"><i class="ti ti-check text-success me-2"></i> Set Active</a></li>
+                      <li><a class="dropdown-item" href="javascript:void(0);" (click)="toggleAgencyStatus(ag, 'suspended')"><i class="ti ti-ban text-danger me-2"></i> Suspend Agency</a></li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- TAB 3: TOURS & PACKAGES                                   -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div *ngIf="activeTab() === 'tours'" class="tab-content-area animate__animated animate__fadeIn">
+    <div class="card border-0 rounded-4 shadow-sm mb-4">
+      <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0 d-flex align-items-center justify-content-between flex-wrap gap-3">
+        <div>
+          <h5 class="fw-bold mb-1 text-dark">
+            {{ isSuperAdmin() ? 'Global Tour Packages Catalog' : 'Agency Tour Packages' }}
+          </h5>
+          <p class="fs-13 text-muted mb-0">Review listed itineraries, batches, pricing, and spotlight featured packages.</p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <div class="input-group input-group-sm" style="width: 250px;">
+            <span class="input-group-text bg-light border-0"><i class="ti ti-search"></i></span>
+            <input type="text" class="form-control bg-light border-0" placeholder="Search tours..." [ngModel]="tourSearch()" (ngModelChange)="tourSearch.set($event)">
+          </div>
+        </div>
+      </div>
+      <div class="card-body p-4">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th class="border-0">Tour Title</th>
+                <th class="border-0">Destination</th>
+                <th class="border-0">Agency</th>
+                <th class="border-0">Duration</th>
+                <th class="border-0">Price</th>
+                <th class="border-0">Featured</th>
+                <th class="border-0">Status</th>
+                <th class="border-0 text-end">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let t of filteredTours">
+                <td>
+                  <div class="d-flex align-items-center gap-3">
+                    <img [src]="t.cover_image || 'assets/user/img/tour/tour-1.jpg'" alt="" class="avatar avatar-md rounded-3 object-fit-cover shadow-sm">
+                    <div>
+                      <h6 class="mb-0 fw-bold text-dark">{{ t.title }}</h6>
+                      <span class="fs-12 text-muted">{{ t.category || 'Adventure' }} &bull; {{ t.difficulty || 'Moderate' }}</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="fw-semibold text-dark fs-13">{{ t.destination?.name || 'Pakistan' }}</span>
+                </td>
+                <td>
+                  <span class="badge bg-light text-dark">{{ t.agency?.name || 'NorthVoyagers' }}</span>
+                </td>
+                <td>
+                  <span class="fs-13 fw-semibold">{{ t.duration_days }}D / {{ t.duration_nights }}N</span>
+                </td>
+                <td>
+                  <strong class="text-primary">PKR {{ (t.discount_price || t.base_price) | number }}</strong>
+                </td>
+                <td>
+                  <button class="btn btn-sm rounded-pill"
+                          [class.btn-warning]="t.is_featured"
+                          [class.btn-outline-secondary]="!t.is_featured"
+                          (click)="toggleTourFeatured(t)">
+                    <i class="ti ti-star"></i> {{ t.is_featured ? 'Featured' : 'Standard' }}
+                  </button>
+                </td>
+                <td>
+                  <span class="badge bg-success-transparent text-success rounded-pill px-3 py-1">
+                    {{ t.status | uppercase }}
+                  </span>
+                </td>
+                <td class="text-end">
+                  <span class="badge bg-primary-transparent text-primary px-2 py-1 fs-12">
+                    {{ t.batches?.length || 2 }} Batches
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- TAB 4: BOOKINGS & QR PASSES                               -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div *ngIf="activeTab() === 'bookings'" class="tab-content-area animate__animated animate__fadeIn">
+    <div class="card border-0 rounded-4 shadow-sm mb-4">
+      <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0 d-flex align-items-center justify-content-between flex-wrap gap-3">
+        <div>
+          <h5 class="fw-bold mb-1 text-dark">
+            {{ isCustomer() ? 'My Bookings & Verified Boarding Passes' : 'Bookings Ledger & Digital Passes' }}
+          </h5>
+          <p class="fs-13 text-muted mb-0">Passenger booking records, settlements, and digital QR tokens.</p>
+        </div>
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <select class="form-select form-select-sm bg-light border-0" style="width: 140px;" [ngModel]="bookingFilterStatus()" (ngModelChange)="bookingFilterStatus.set($event)">
+            <option value="all">All Statuses</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="completed">Completed</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+          <div class="input-group input-group-sm" style="width: 220px;">
+            <span class="input-group-text bg-light border-0"><i class="ti ti-search"></i></span>
+            <input type="text" class="form-control bg-light border-0" placeholder="Search booking #..." [ngModel]="bookingSearch()" (ngModelChange)="bookingSearch.set($event)">
+          </div>
+        </div>
+      </div>
+      <div class="card-body p-4">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th class="border-0">Booking #</th>
+                <th class="border-0">Customer</th>
+                <th class="border-0">Tour Package</th>
+                <th class="border-0">Departure</th>
+                <th class="border-0">Amount</th>
+                <th class="border-0">Payment Method</th>
+                <th class="border-0">Status</th>
+                <th class="border-0 text-end">Boarding Pass</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let b of filteredBookings">
+                <td>
+                  <strong class="text-primary fs-13">{{ b.booking_number }}</strong>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="avatar avatar-sm rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center fs-12 fw-bold">
+                      {{ (b.user?.name || 'T')[0] }}
+                    </span>
+                    <div>
+                      <h6 class="mb-0 fs-13 fw-semibold">{{ b.user?.name || 'Sarah Khan' }}</h6>
+                      <span class="fs-11 text-muted">{{ b.user?.phone || '+92 300 0000000' }}</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="fw-semibold text-dark fs-13">{{ b.tour?.title || 'Expedition' }}</span>
+                </td>
+                <td>
+                  <span class="fs-12 text-muted">{{ b.travel_date | date:'mediumDate' }}</span>
+                </td>
+                <td>
+                  <strong class="text-dark">PKR {{ b.total_amount | number }}</strong>
+                  <span class="fs-11 text-success d-block" *ngIf="b.discount_amount > 0">-PKR {{ b.discount_amount | number }} Promo</span>
+                </td>
+                <td>
+                  <span class="badge bg-light text-dark">{{ b.payment_method | uppercase }}</span>
+                </td>
+                <td>
+                  <span class="badge bg-success-transparent text-success rounded-pill px-3 py-1">
+                    {{ b.status | uppercase }}
+                  </span>
+                </td>
+                <td class="text-end">
+                  <button class="btn btn-sm btn-primary rounded-pill d-inline-flex align-items-center gap-1" (click)="openBookingPass(b)">
+                    <i class="ti ti-qrcode"></i> Digital Pass
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- TAB 5: USERS & STAFF                                      -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div *ngIf="activeTab() === 'users'" class="tab-content-area animate__animated animate__fadeIn">
+    <div class="card border-0 rounded-4 shadow-sm mb-4">
+      <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0 d-flex align-items-center justify-content-between flex-wrap gap-3">
+        <div>
+          <h5 class="fw-bold mb-1 text-dark">
+            {{ isSuperAdmin() ? 'Platform Users & Role Governance' : 'Agency Staff & Guides' }}
+          </h5>
+          <p class="fs-13 text-muted mb-0">Oversee Super Admins, Agency Partners, Tour Guides, and Travelers.</p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <div class="input-group input-group-sm" style="width: 250px;">
+            <span class="input-group-text bg-light border-0"><i class="ti ti-search"></i></span>
+            <input type="text" class="form-control bg-light border-0" placeholder="Search users..." [ngModel]="userSearch()" (ngModelChange)="userSearch.set($event)">
+          </div>
+        </div>
+      </div>
+      <div class="card-body p-4">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th class="border-0">User Profile</th>
+                <th class="border-0">Email Address</th>
+                <th class="border-0">Phone</th>
+                <th class="border-0">Role</th>
+                <th class="border-0">Associated Agency</th>
+                <th class="border-0">Account State</th>
+                <th class="border-0 text-end" *ngIf="isSuperAdmin()">Toggle Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let u of filteredUsers">
+                <td>
+                  <div class="d-flex align-items-center gap-3">
+                    <img [src]="u.avatar || 'assets/user/img/team/team-2.jpg'" alt="" class="avatar avatar-md rounded-circle object-fit-cover shadow-sm">
+                    <div>
+                      <h6 class="mb-0 fw-bold text-dark">{{ u.name }}</h6>
+                      <span class="fs-11 text-muted">ID #{{ u.id }}</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="text-dark fs-13">{{ u.email }}</span>
+                </td>
+                <td>
+                  <span class="text-muted fs-13">{{ u.phone || 'N/A' }}</span>
+                </td>
+                <td>
+                  <span class="badge rounded-pill px-3 py-1 fw-bold"
+                        [class.bg-danger-transparent]="u.role === 'super_admin'"
+                        [class.text-danger]="u.role === 'super_admin'"
+                        [class.bg-teal-transparent]="u.role === 'agency_owner'"
+                        [class.text-teal]="u.role === 'agency_owner'"
+                        [class.bg-primary-transparent]="u.role === 'customer'"
+                        [class.text-primary]="u.role === 'customer'">
+                    {{ u.role | uppercase }}
+                  </span>
+                </td>
+                <td>
+                  <span class="text-muted fs-13">{{ u.agency?.name || 'Direct / Platform' }}</span>
+                </td>
+                <td>
+                  <span class="badge rounded-pill px-3 py-1"
+                        [class.bg-success-transparent]="u.is_active"
+                        [class.text-success]="u.is_active"
+                        [class.bg-danger-transparent]="!u.is_active"
+                        [class.text-danger]="!u.is_active">
+                    {{ u.is_active ? 'ACTIVE' : 'DEACTIVATED' }}
+                  </span>
+                </td>
+                <td class="text-end" *ngIf="isSuperAdmin()">
+                  <button class="btn btn-sm rounded-pill"
+                          [class.btn-outline-danger]="u.is_active"
+                          [class.btn-outline-success]="!u.is_active"
+                          (click)="toggleUserStatus(u)">
+                    <i class="ti" [class.ti-lock]="u.is_active" [class.ti-lock-open]="!u.is_active"></i>
+                    {{ u.is_active ? 'Deactivate' : 'Activate' }}
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- TAB 6: PROMO COUPONS MANAGEMENT                           -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div *ngIf="activeTab() === 'coupons'" class="tab-content-area animate__animated animate__fadeIn">
+    <div class="row g-4">
+      <!-- Create Coupon Form -->
+      <div class="col-xl-4 col-12">
+        <div class="card border-0 rounded-4 shadow-sm">
+          <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0">
+            <h5 class="fw-bold mb-1 text-dark d-flex align-items-center gap-2">
+              <i class="ti ti-tag text-primary fs-20"></i> Create Promo Coupon
+            </h5>
+            <p class="fs-13 text-muted mb-0">Launch promotional discount campaigns.</p>
+          </div>
+          <div class="card-body p-4">
+            <div class="alert alert-success py-2 px-3 fs-13 rounded-3 mb-3" *ngIf="couponSuccessMsg()">
+              <i class="ti ti-check me-1"></i> {{ couponSuccessMsg() }}
+            </div>
+
+            <form (ngSubmit)="submitCreateCoupon()">
+              <div class="mb-3">
+                <label class="form-label fs-13 fw-semibold">Coupon Code</label>
+                <input type="text" class="form-control" placeholder="e.g. AUTUMN15" [(ngModel)]="newCoupon.code" name="code" required style="text-transform: uppercase;">
+              </div>
+              <div class="row g-2 mb-3">
+                <div class="col-6">
+                  <label class="form-label fs-13 fw-semibold">Type</label>
+                  <select class="form-select" [(ngModel)]="newCoupon.discount_type" name="discount_type">
+                    <option value="percentage">Percentage (%)</option>
+                    <option value="fixed">Fixed (PKR)</option>
+                  </select>
+                </div>
+                <div class="col-6">
+                  <label class="form-label fs-13 fw-semibold">Value</label>
+                  <input type="number" class="form-control" placeholder="10" [(ngModel)]="newCoupon.discount_value" name="discount_value" required>
+                </div>
+              </div>
+              <div class="row g-2 mb-3">
+                <div class="col-6">
+                  <label class="form-label fs-13 fw-semibold">Min Spend (PKR)</label>
+                  <input type="number" class="form-control" placeholder="10000" [(ngModel)]="newCoupon.min_spend" name="min_spend">
+                </div>
+                <div class="col-6">
+                  <label class="form-label fs-13 fw-semibold">Max Discount (PKR)</label>
+                  <input type="number" class="form-control" placeholder="5000" [(ngModel)]="newCoupon.max_discount" name="max_discount">
+                </div>
+              </div>
+              <div class="mb-4">
+                <label class="form-label fs-13 fw-semibold">Usage Limit</label>
+                <input type="number" class="form-control" placeholder="100" [(ngModel)]="newCoupon.usage_limit" name="usage_limit">
+              </div>
+              <button type="submit" class="btn btn-primary w-100 rounded-pill py-2 fw-semibold">
+                <i class="ti ti-plus me-1"></i> Create Promo Coupon
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Coupons List -->
+      <div class="col-xl-8 col-12">
+        <div class="card border-0 rounded-4 shadow-sm">
+          <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0">
+            <h5 class="fw-bold mb-1 text-dark">Active Promo Coupons</h5>
+            <p class="fs-13 text-muted mb-0">Coupons currently accepted at traveler checkout.</p>
+          </div>
+          <div class="card-body p-4">
+            <div class="row g-3">
+              <div class="col-md-6 col-12" *ngFor="let c of adminService.coupons()">
+                <div class="coupon-card p-3 border rounded-4 bg-light position-relative overflow-hidden">
+                  <div class="d-flex align-items-center justify-content-between mb-2">
+                    <span class="badge bg-primary px-3 py-2 fs-13 fw-bold rounded-pill text-white tracking-wider">
+                      {{ c.code }}
+                    </span>
+                    <span class="badge bg-success-transparent text-success rounded-pill px-2 py-1 fs-11">
+                      ACTIVE
+                    </span>
+                  </div>
+                  <h4 class="fw-bold text-dark mb-1">
+                    {{ c.discount_type === 'percentage' ? c.discount_value + '% OFF' : 'PKR ' + (c.discount_value | number) + ' OFF' }}
+                  </h4>
+                  <p class="fs-12 text-muted mb-2">
+                    Min Spend: PKR {{ (c.min_spend || 0) | number }} &bull; Max Cap: PKR {{ (c.max_discount || c.discount_value) | number }}
+                  </p>
+                  <div class="d-flex align-items-center justify-content-between fs-11 text-muted border-top pt-2">
+                    <span>Redeemed: <strong>{{ c.used_count || 0 }}</strong> times</span>
+                    <span>Limit: {{ c.usage_limit || 500 }} uses</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- DIGITAL QR BOARDING PASS MODAL                            -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div class="modal fade show d-block" *ngIf="selectedBooking()" style="background: rgba(0,0,0,0.6);" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+        <div class="modal-header bg-primary text-white py-3 px-4">
+          <div class="d-flex align-items-center gap-2">
+            <i class="ti ti-qrcode fs-20"></i>
+            <h5 class="modal-title fw-bold text-white mb-0">Verified Digital Boarding Pass</h5>
+          </div>
+          <button type="button" class="btn-close btn-close-white" (click)="closeBookingPass()"></button>
+        </div>
+        <div class="modal-body p-4 bg-light">
+          <div class="boarding-pass-card bg-white p-4 rounded-4 border shadow-sm">
+            <div class="d-flex align-items-center justify-content-between border-bottom pb-3 mb-3 flex-wrap gap-2">
+              <div>
+                <span class="badge bg-primary-transparent text-primary mb-1 fw-bold">YETTOEXPLORE BOARDING PASS</span>
+                <h4 class="fw-bold text-dark mb-0">{{ selectedBooking()?.tour?.title }}</h4>
+                <p class="fs-12 text-muted mb-0">Agency: <strong>{{ selectedBooking()?.agency?.name }}</strong></p>
+              </div>
+              <div class="text-end">
+                <span class="fs-12 text-muted d-block">Booking Reference</span>
+                <h5 class="fw-bold text-primary mb-0">{{ selectedBooking()?.booking_number }}</h5>
+              </div>
+            </div>
+
+            <div class="row g-3 mb-4">
+              <div class="col-sm-3 col-6">
+                <span class="fs-11 text-muted d-block">Lead Traveler</span>
+                <strong class="text-dark">{{ selectedBooking()?.user?.name }}</strong>
+              </div>
+              <div class="col-sm-3 col-6">
+                <span class="fs-11 text-muted d-block">Travel Date</span>
+                <strong class="text-dark">{{ selectedBooking()?.travel_date | date:'mediumDate' }}</strong>
+              </div>
+              <div class="col-sm-3 col-6">
+                <span class="fs-11 text-muted d-block">Total Passengers</span>
+                <strong class="text-dark">{{ selectedBooking()?.passengers?.length || selectedBooking()?.adults_count }} Persons</strong>
+              </div>
+              <div class="col-sm-3 col-6">
+                <span class="fs-11 text-muted d-block">Total Paid</span>
+                <strong class="text-success">PKR {{ selectedBooking()?.total_amount | number }}</strong>
+              </div>
+            </div>
+
+            <!-- QR Simulation Box -->
+            <div class="text-center p-4 rounded-3 border bg-light mb-3">
+              <div class="qr-mock d-inline-block p-3 bg-white border rounded-3 shadow-sm mb-2">
+                <i class="ti ti-qrcode" style="font-size: 110px; color: #0f172a;"></i>
+              </div>
+              <p class="fs-12 text-muted mb-0 font-monospace">{{ selectedBooking()?.qr_code_token }}</p>
+              <span class="badge bg-success-transparent text-success mt-1">
+                <i class="ti ti-check me-1"></i> Scan to Verify at Airport & Coaster Departure
+              </span>
+            </div>
+
+            <!-- Passenger Manifest -->
+            <h6 class="fw-bold text-dark mb-2">Passenger Manifest</h6>
+            <ul class="list-group list-group-flush rounded-3 border">
+              <li class="list-group-item d-flex align-items-center justify-content-between py-2 px-3 fs-13" *ngFor="let p of selectedBooking()?.passengers">
+                <span><strong>{{ p.full_name }}</strong> ({{ p.gender }}, {{ p.age }} yrs)</span>
+                <span class="text-muted">{{ p.cnic_passport || 'Verified CNIC' }} &bull; {{ p.is_lead ? 'Lead' : 'Co-Traveler' }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="modal-footer bg-light py-2 px-4 border-0">
+          <button type="button" class="btn btn-secondary rounded-pill px-4" (click)="closeBookingPass()">Close</button>
+          <button type="button" class="btn btn-primary rounded-pill px-4" onclick="window.print()">
+            <i class="ti ti-printer me-1"></i> Print Pass
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

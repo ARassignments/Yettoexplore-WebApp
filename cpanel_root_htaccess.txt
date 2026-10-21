@@ -1,0 +1,25 @@
+<IfModule mod_headers.c>
+    # Enable CORS for all domains, web portals and localhost dev
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS, PATCH"
+    Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-XSRF-TOKEN, X-Client-Version, Range"
+    Header set Access-Control-Expose-Headers "Content-Length, Content-Range"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    Options -Indexes
+
+    # -------------------------------------------------------------
+    # 1. Allow Laravel API & Public Uploads (/api/...) to pass through
+    # -------------------------------------------------------------
+    RewriteCond %{REQUEST_URI} ^/api(/.*)?$ [NC]
+    RewriteRule ^ - [L]
+
+    # -------------------------------------------------------------
+    # 2. If visiting root domain or frontend pages
+    # -------------------------------------------------------------
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /index.html [L]
+</IfModule>

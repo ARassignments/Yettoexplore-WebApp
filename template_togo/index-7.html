@@ -1,0 +1,1866 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+
+<!-- Mirrored from togo.ibthemespro.com/togo/index-7.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Mar 2026 17:23:36 GMT -->
+<head>
+
+   <meta charset="utf-8">
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <title>Togo – Travel & Tour Booking HTML Template</title>
+   <meta name="description" content="">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <!-- Place favicon.ico in the root directory -->
+   <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo/favicon.png">
+
+   <!-- CSS here -->
+   <link rel="stylesheet" href="assets/css/bootstrap.css">
+   <link rel="stylesheet" href="assets/css/swiper-bundle.css">
+   <link rel="stylesheet" href="assets/css/magnific-popup.css">
+   <link rel="stylesheet" href="assets/css/datepicker.css">
+   <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
+   <link rel="stylesheet" href="assets/css/main.css">
+
+</head>
+
+ 
+
+<body data-bg-color="#FFFBF8">
+
+      <!-- Loader Start -->
+   <div class="togo-loader">
+      <div class="togo-preloader p-relative">
+         <span style="--i: 1"></span>
+         <span style="--i: 2"></span>
+         <span style="--i: 3"></span>
+         <span style="--i: 4"></span>
+         <span style="--i: 5"></span>
+         <span style="--i: 6"></span>
+         <span style="--i: 7"></span>
+         <span style="--i: 8"></span>
+         <span style="--i: 9"></span>
+         <span style="--i: 10"></span>
+         <span style="--i: 11"></span>
+         <span style="--i: 12"></span>
+         <span style="--i: 13"></span>
+         <span style="--i: 14"></span>
+         <span style="--i: 15"></span>
+         <span style="--i: 16"></span>
+         <span style="--i: 17"></span>
+         <span style="--i: 18"></span>
+         <span style="--i: 19"></span>
+         <span style="--i: 20"></span>
+         <div class="plane">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="80" height="80" fill="currentColor">
+               <path d="M407.72 208c-2.72 0-14.44.08-18.67.31l-57.77 1.52L198.06 48h-62.81l74.59 164.61-97.31 1.44L68.25 160H16.14l20.61 94.18c.15.54.33 1.07.53 1.59a.26.26 0 010 .15 15.42 15.42 0 00-.53 1.58L15.86 352h51.78l45.45-55 96.77 2.17L135.24 464h63l133-161.75 57.77 1.54c4.29.23 16 .31 18.66.31 24.35 0 44.27-3.34 59.21-9.94C492.22 283 496 265.46 496 256c0-30.06-33-48-88.28-48zm-71.29 87.9z"></path>
+            </svg>
+         </div>
+      </div>
+   </div>
+   <!-- Loader End -->
+   
+
+   <!-- back btn start -->
+   <div class="togo-back-wrapper">
+      <button id="back-btn-top" type="button" class="togo-back-btn">
+         <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+         </svg>
+      </button>
+   </div>
+   <!-- back btn end -->
+
+
+   <!-- cart-area-start -->
+   <div class="cart-area">
+      <div class="cart-wrapper">
+         <div class="cart-top">
+            <div class="cart-title-wrap">
+               <h4 class="cart-title">Your Cart </h4>
+            </div> 
+            <div class="cart-close">
+               <button class="offcanvas-close-btn">
+                  <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M9.19141 9.80762L27.5762 28.1924" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                     <path d="M9.19141 28.1924L27.5762 9.80761" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+               </button>
+            </div>
+         </div>
+         <div class="cart-empty-content">
+            <span class="cart-empty-icon">
+               <svg width="70" height="78" fill="none"> <path fill="#888" fill-rule="evenodd" d="m2.357 32.177.732 3.764a1.13 1.13 0 1 1-2.216.433L.14 32.609c-.891-4.581 2.577-8.87 7.23-8.87H62.63c4.597 0 8.053 4.194 7.254 8.738l-6.933 39.386C62.329 75.406 59.278 78 55.698 78H15.73c-3.438 0-6.41-2.398-7.179-5.767l-1.08-4.735a1.129 1.129 0 1 1 2.201-.504l1.08 4.735c.538 2.355 2.607 4.01 4.978 4.01h39.968c2.468 0 4.594-1.79 5.03-4.268l6.933-39.386C68.22 28.899 65.798 26 62.63 26H7.37c-3.206 0-5.638 2.965-5.013 6.177Z" clip-rule="evenodd"></path> <path fill="#888" d="M32.633 2.802a1.805 1.805 0 0 0-.489-2.496 1.786 1.786 0 0 0-2.485.49L11.027 28.684a1.805 1.805 0 0 0 .489 2.497A1.786 1.786 0 0 0 14 30.689L32.633 2.802ZM56.038 30.501a1.786 1.786 0 0 0 2.447-.657c.495-.86.203-1.96-.654-2.458L35.096 14.172a1.786 1.786 0 0 0-2.447.656c-.495.86-.203 1.96.654 2.459L56.038 30.5Z"></path> <path fill="#888" fill-rule="evenodd" d="M35.012 53.02c-.298.07-.663.362-.897.674-.514.683-1.412.76-2.008.17-.595-.588-.662-1.62-.148-2.303.477-.635 1.358-1.48 2.488-1.742a2.917 2.917 0 0 1 1.943.207c.67.319 1.247.882 1.727 1.643.46.731.319 1.752-.318 2.281-.637.53-1.527.366-1.988-.365-.237-.375-.42-.498-.51-.54a.412.412 0 0 0-.29-.025Z" clip-rule="evenodd"></path> <path fill="#888" d="M25.402 47.478a1.695 1.695 0 1 0-.002-3.389 1.695 1.695 0 0 0 .003 3.39ZM44.596 47.478c.936 0 1.693-.759 1.693-1.695a1.694 1.694 0 1 0-3.387 0c0 .936.758 1.695 1.694 1.695Z"></path></svg>
+            </span>
+            <h4 class="cart-empty-title">Your cart is currently empty!</h4>
+            <div class="cart-empty-text">
+               <p>You may check out all the available trips and book one that suits you.</p>
+            </div>
+            <div class="cart-empty-btn">
+               <a class="togo-btn-primary" href="shop.html">Continue Browsing Trips</a>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- cart-area-end -->
+
+
+   <!-- offcanvus-area-start -->
+   <div class="offcanvas-area ">
+      <div class="offcanvas-wrapper">
+         <div class="offcanvas-top d-flex align-items-center justify-content-between">
+            <div class="offcanvas-logo">
+               <a href="index.html">
+                  <img width="120" src="assets/img/logo/logo-black.png" alt="">
+               </a>
+            </div>
+            <div class="offcanvas-close">
+               <button class="offcanvas-close-btn">
+                  <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M9.19141 9.80762L27.5762 28.1924" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                     <path d="M9.19141 28.1924L27.5762 9.80761" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+               </button>
+            </div>
+         </div>
+         <div class="offcanvas-content">
+            <div class="togo-mobilemenu-content fix mb-30"></div>
+         </div>
+      </div>
+   </div>
+   <div class="body-overlay"></div>
+   <!-- offcanvus-area-end -->
+
+   <header>
+
+      <!-- header area start -->
+      <div class="togo-header-7-sec togo-hdr-transparent">
+         <div class="togo-header-6-top style-7 d-none d-xl-block">
+            <div class="container container-1850">
+               <div class="row align-items-center">
+                  <div class="col-lg-6">
+                    <div class="togo-header-logo">
+                        <a href="index.html">
+                           <img width="120" src="assets/img/logo/logo-black.png" alt="">
+                        </a>
+                     </div>
+                  </div>
+                  <div class="col-lg-6">
+                     <div class="togo-header-6-top-right style-7 justify-content-lg-end">
+                        <div class="togo-header-6-top-content">
+                           <span>Quick Questions? Email Us</span>
+                           <a href="mailto:email@example.com">email@example.com</a>
+                        </div>
+                        <div class="togo-header-6-top-content">
+                           <span>Talk to an Expert</span>
+                           <a href="tel:0123456789">+01-123-456-7890</a>
+                        </div>
+                        
+                        <div class="togo-header-6-btn ml-24">
+                           <a class="togo-btn-primary" href="contact.html">Book Tour</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container-fluid p-0 gx-0">
+            <div class="togo-header-7-wrapper">
+               <div class="row align-items-center">
+                  <div class="col-6 d-block d-xl-none">
+                     <div class="togo-header-logo">
+                        <a href="index.html">
+                           <img width="120" src="assets/img/logo/logo-black.png" alt="">
+                        </a>
+                     </div>
+                  </div>
+                  <div class="col-xl-8 d-none d-xl-block">
+                     <div class="togo-header-7-style">
+                        <div class="togo-header-menu togo-header-submenu">
+                           <nav class="togo-mobile-menu">
+                              <ul>
+                                 <li class="togo-dropdown">
+                                    <a href="index.html">Demo</a>
+                                    <ul class="togo-submenu mobile-slide">
+                                       <li><a href="index.html">Home 1</a></li>
+                                       <li><a href="index-2.html">Home 2</a></li>
+                                       <li><a href="index-3.html">Home 3</a></li>
+                                       <li><a href="index-4.html">Home 4</a></li>
+                                       <li><a href="index-5.html">Home 5</a></li>
+                                       <li><a href="index-6.html">Home 6</a></li>
+                                       <li><a href="index-7.html">Home 7</a></li>
+                                       <li><a href="index-8.html">Home 8</a></li>
+                                       <li><a href="index-9.html">Home 9</a></li>
+                                       <li><a href="index-10.html">Home 10</a></li>
+                                       <li><a href="index-11.html">Home 11</a></li>
+                                       <li><a href="index-12.html">Home 12</a></li>
+                                    </ul>
+                                 </li>
+                                 <li class="togo-dropdown p-static">
+                                    <a href="city-details-1.html">Destinations</a>
+                                    <div class="togo-megamenu mobile-slide">
+                                       <div class="row">
+                                          <div class="col-xl-3">
+                                             <div class="togo-megamenu-nav">
+                                                <ul>
+                                                   <li class="active">
+                                                      <a href="#">Top destinations
+                                                         <span>
+                                                            <svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                               <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </svg>
+                                                         </span>
+                                                      </a>
+                                                   </li>
+                                                   <li>
+                                                      <a href="#">France
+                                                         <span>
+                                                            <svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                               <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </svg>
+                                                         </span>
+                                                      </a>
+                                                   </li>
+                                                   <li>
+                                                      <a href="#">Thailand
+                                                         <span>
+                                                            <svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                               <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </svg>
+                                                         </span>
+                                                      </a>
+                                                   </li>
+                                                   <li>
+                                                      <a href="#">United Kingdom
+                                                         <span>
+                                                            <svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                               <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </svg>
+                                                         </span>
+                                                      </a>
+                                                   </li>
+                                                   <li>
+                                                      <a href="#">United States
+                                                         <span>
+                                                            <svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                               <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </svg>
+                                                         </span>
+                                                      </a>
+                                                   </li>
+                                                </ul>
+                                                <div class="togo-megamenu-show d-none d-xl-block">
+                                                   <a class="togo-tour-btn line-border" href="city-details-1.html">
+                                                      <span>View all</span>
+                                                   </a>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="col-xl-6">
+                                             <div class="togo-megamenu-destination">
+                                                <div class="togo-megamenu-destination-wrap">
+                                                   <span class="togo-megamenu-destination-title">Top destinations in Countries</span>
+                                                   <div class="row">
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-1.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-1.html">Ha Noi</a>
+                                                            </div>
+                                                         </div>
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-3.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-2.html">Ho Chi Minh</a>
+                                                            </div>
+                                                         </div>
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-5.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-3.html">Hue</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-2.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-2.html">Hoi An</a>
+                                                            </div>
+                                                         </div>
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-4.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-3.html">Da Nang</a>
+                                                            </div>
+                                                         </div>
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-6.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-1.html">Ha Long Bay</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="togo-megamenu-show d-none d-xl-block">
+                                                   <a class="togo-tour-btn line-border" href="city-details-1.html">
+                                                      <span>View all</span>
+                                                   </a>
+                                                </div>
+                                                </div>
+                                                <div class="togo-megamenu-destination-wrap">
+                                                   <span class="togo-megamenu-destination-title">Top destinations in France</span>
+                                                   <div class="row">
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-1.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-1.html">Ha Noi</a>
+                                                            </div>
+                                                         </div>
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-3.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-2.html">Ho Chi Minh</a>
+                                                            </div>
+                                                         </div>
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-5.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-3.html">Hue</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-2.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-2.html">Hoi An</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="togo-megamenu-show d-none d-xl-block">
+                                                   <a class="togo-tour-btn line-border" href="city-details-1.html">
+                                                      <span>View all</span>
+                                                   </a>
+                                                </div>
+                                                </div>
+                                                <div class="togo-megamenu-destination-wrap">
+                                                   <span class="togo-megamenu-destination-title">Top destinations in Thailand </span>
+                                                   <div class="row">
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-1.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-1.html">Ha Noi</a>
+                                                            </div>
+                                                         </div>
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-3.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-2.html">Ho Chi Minh</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-2.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-3.html">Hoi An</a>
+                                                            </div>
+                                                         </div>
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-5.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-2.html">Hue</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="togo-megamenu-show d-none d-xl-block">
+                                                   <a class="togo-tour-btn line-border" href="city-details-1.html">
+                                                      <span>View all</span>
+                                                   </a>
+                                                </div>
+                                                </div>
+                                                <div class="togo-megamenu-destination-wrap">
+                                                   <span class="togo-megamenu-destination-title">Top destinations in United Kingdom</span>
+                                                   <div class="row">
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-1.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-2.html">Ha Noi</a>
+                                                            </div>
+                                                         </div>
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-3.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-3.html">Ho Chi Minh</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-2.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-1.html">Hoi An</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="togo-megamenu-show d-none d-xl-block">
+                                                   <a class="togo-tour-btn line-border" href="city-details-1.html">
+                                                      <span>View all</span>
+                                                   </a>
+                                                </div>
+                                                </div>
+                                                <div class="togo-megamenu-destination-wrap">
+                                                   <span class="togo-megamenu-destination-title">Top destinations in United States</span>
+                                                   <div class="row">
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-1.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-2.html">Ha Noi</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-2.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-3.html">Hoi An</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="togo-megamenu-show d-none d-xl-block">
+                                                   <a class="togo-tour-btn line-border" href="city-details-1.html">
+                                                      <span>View all</span>
+                                                   </a>
+                                                </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="col-xl-3">
+                                             <div class="togo-megamenu-banner" data-background="assets/img/banner/home-10/megamenu-1.jpg">
+                                                <h4 class="togo-megamenu-banner-title">Togo <br> Travel Booking <br> Html</h4>
+                                                <p>The most complete Tour Management System</p>
+                                                <a class="togo-btn-primary" href="contact.html">Get it now</a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <li class="togo-dropdown">
+                                    <a href="#">Tour listing</a>
+                                    <ul class="togo-submenu mobile-slide">
+                                       <li><a href="tour-grid.html">Left Filter – Grid</a></li>
+                                       <li><a href="tour-list.html">Left Filter – List</a></li>
+                                       <li><a href="tour-filter-list-map.html">Half Maps – List</a></li>
+                                       <li><a href="tour-filter-grid-map.html">Half Maps – Grid</a></li>
+                                       <li><a href="tour-filter-list.html">Top Filter – List</a></li>
+                                       <li><a href="tour-filter-grid.html">Top Filter – Grid</a></li>
+                                       <li><a href="tour-details-1.html">Tour Detail – Layout 1</a></li>
+                                       <li><a href="tour-details-2.html">Tour Detail – Layout 2</a></li>
+                                       <li><a href="tour-details-3.html">Tour Detail – Layout 3</a></li>
+                                       <li><a href="tour-details-4.html">Tour Detail – Layout 4</a></li>
+                                       <li><a href="tour-details-5.html">Tour Detail – Layout 5</a></li>
+                                       <li><a href="tour-details-6.html">Tour Detail – Layout 6</a></li>
+                                    </ul>
+                                 </li>
+                                 <li class="togo-dropdown">
+                                    <a href="#">Pages</a>
+                                    <ul class="togo-submenu mobile-slide">
+                                       <li><a href="city-details-1.html">City Details 1</a></li>
+                                       <li><a href="city-details-2.html">City Details 2</a></li>
+                                       <li><a href="city-details-3.html">City Details 3</a></li>
+                                       <li><a href="about.html">About Us</a></li>
+                                       <li><a href="faq.html">FAQ's</a></li>
+                                       <li><a href="team.html">Teams</a></li>
+                                       <li><a href="carrer.html">Carrer</a></li>
+                                       <li><a href="error.html">Error</a></li>
+                                       <li><a href="contact.html">Contact Us</a></li>
+                                       <li><a href="partner-details.html">Partner Details</a></li>
+                                       <li><a href="privacy.html">Privacy Policy</a></li>
+                                       <li class="togo-dropdown">
+                                          <a href="blog-sidebar.html">Blog</a>
+                                          <ul class="togo-submenu mobile-slide">
+                                             <li><a href="blog-sidebar.html">Blog Sidebar</a></li>
+                                             <li><a href="blog-details.html">Blog Details</a></li>
+                                          </ul>
+                                       </li>
+                                       <li class="togo-dropdown">
+                                          <a href="shop.html">Shop</a>
+                                          <ul class="togo-submenu mobile-slide">
+                                             <li><a href="shop.html">Shop</a></li>
+                                             <li><a href="shop-details.html">Shop Details</a></li>
+                                             <li><a href="sign-in.html">Sign In</a></li>
+                                             <li><a href="sign-up.html">Sign Up</a></li>
+                                          </ul>
+                                       </li>
+                                    </ul>
+                                 </li>
+                                 <li class="togo-dropdown">
+                                    <a href="#">Dashboard</a>
+                                    <ul class="togo-submenu mobile-slide">
+                                       <li class="togo-dropdown"><a href="dashboard-my-account.html">Normal User</a>
+                                          <ul class="togo-submenu mobile-slide">
+                                             <li><a href="dashboard-my-account.html">Dashboard</a></li>
+                                             <li><a href="dashboard-booking.html">Booking</a></li>
+                                             <li><a href="dashboard-wishlist.html">Wishlist</a></li>
+                                             <li><a href="dashboard-review.html">Review</a></li>
+                                             <li><a href="dashboard-setting.html">Setting</a></li>
+                                          </ul>
+                                       </li>
+                                       <li class="togo-dropdown"><a href="partner-dashboard-my-account.html">Partner User</a>
+                                          <ul class="togo-submenu mobile-slide">
+                                             <li><a href="partner-dashboard-my-account.html">Dashboard</a></li>
+                                             <li><a href="partner-dashboard-booking.html">Booking</a></li>
+                                             <li><a href="partner-dashboard-wishlist.html">Wishlist</a></li>
+                                             <li><a href="partner-dashboard-review.html">Review</a></li>
+                                             <li><a href="partner-dashboard-earning.html">Earning</a></li>
+                                             <li><a href="partner-dashboard-tour-manage.html">Tour</a></li>
+                                             <li><a href="partner-dashboard-coupon.html">Coupon</a></li>
+                                             <li><a href="partner-dashboard-setting.html">Setting</a></li>
+                                          </ul>
+                                       </li>
+                                    </ul>
+                                 </li>
+                              </ul>
+                           </nav>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-6 col-6">
+                     <div class="togo-header-7-right d-flex align-items-center justify-content-end">
+                        <div class="togo-footer-copyright-currence-btn bottom-style d-none d-md-block">
+                           <span>
+                              EN / USD 
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                              <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                              </svg>
+                           </span>
+                           <div class="togo-footer-copyright-currence-content">
+                              <h4>Currencies</h4>
+                              <ul class="currence-work">
+                                 <li><a href="#">USD</a></li>
+                                 <li><a href="#">ERO</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="togo-header-6-cart ml-20">
+                           <button class="togo-header-6-cart-btn cart-open-btn">
+                              <span>
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                 <path d="M1.45907 3.15018H16.6741C18.0517 3.15018 19.0468 4.42075 18.6694 5.69802L17.0149 11.298C16.761 12.1574 15.9465 12.7502 15.0196 12.7502H5.86164C4.93469 12.7502 4.12021 12.1574 3.86631 11.298L1.45907 3.15018ZM1.45907 3.15018L0.75 0.750183M15.75 17.2502C15.75 18.0786 15.0784 18.7502 14.25 18.7502C13.4216 18.7502 12.75 18.0786 12.75 17.2502C12.75 16.4218 13.4216 15.7502 14.25 15.7502C15.0784 15.7502 15.75 16.4218 15.75 17.2502ZM7.75 17.2502C7.75 18.0786 7.07843 18.7502 6.25 18.7502C5.42157 18.7502 4.75 18.0786 4.75 17.2502C4.75 16.4218 5.42157 15.7502 6.25 15.7502C7.07843 15.7502 7.75 16.4218 7.75 17.2502Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                 </svg>
+                              </span>
+                           </button>
+                        </div>
+                        <div class="togo-header-user ml-20">
+                           <span>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                              <path d="M14.75 16.95C14.4331 10.7633 5.06692 10.7633 4.75 16.95M12.25 6.84999C12.25 8.2307 11.1307 9.34999 9.74998 9.34999C8.36926 9.34999 7.24997 8.2307 7.24997 6.84999C7.24997 5.46928 8.36926 4.34999 9.74998 4.34999C11.1307 4.34999 12.25 5.46928 12.25 6.84999ZM18.75 9.75C18.75 14.7206 14.7206 18.75 9.75 18.75C4.77944 18.75 0.75 14.7206 0.75 9.75C0.75 4.77944 4.77944 0.75 9.75 0.75C14.7206 0.75 18.75 4.77944 18.75 9.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
+                           </span>
+                           <div class="togo-header-user-submenu">
+                              <div class="togo-header-user-thumb mb-20">
+                                 <a href="dashboard-my-account.html">
+                                    <img class="mr-5" src="assets/img/tour/partner/author-2.jpg" alt="">
+                                    <span>Sara Mia</span>
+                                 </a>
+                              </div>
+                              <div class="togo-header-user-menu">
+                                 <a href="dashboard-my-account.html">
+                                    <span class="togo-svg-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                    <path d="M8.25 3.20831L8.25 18.7916" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M18.7943 8.70831H3.21094" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M2.75 11C2.75 7.11091 2.75 5.16637 3.95818 3.95818C5.16637 2.75 7.11091 2.75 11 2.75C14.8891 2.75 16.8336 2.75 18.0418 3.95818C19.25 5.16637 19.25 7.11091 19.25 11C19.25 14.8891 19.25 16.8336 18.0418 18.0418C16.8336 19.25 14.8891 19.25 11 19.25C7.11091 19.25 5.16637 19.25 3.95818 18.0418C2.75 16.8336 2.75 14.8891 2.75 11Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg></span>
+                                    Dashboard
+                                 </a>
+                                 <a href="dashboard-booking.html">
+                                    <span class="togo-svg-icon"><svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 19C20.1046 19 21 18.1046 21 17V14C19.8954 14 19 13.1046 19 12C19 10.8954 19.8954 10 21 10V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V10C4.10457 10 5 10.8954 5 12C5 13.1046 4.10457 14 3 14V17C3 18.1046 3.89543 19 5 19H19Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M12 11.75L12 12.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M12 8L12 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M12 15.5L12 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg></span>
+                                    Bookings
+                                 </a>
+                                 <a href="dashboard-wishlist.html">
+                                    <span class="togo-svg-icon "><svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.75 3.5C5.12665 3.5 3 5.75956 3 8.54688C3 14.125 12 20.5 12 20.5C12 20.5 21 14.125 21 8.54688C21 5.09375 18.8734 3.5 16.25 3.5C14.39 3.5 12.7796 4.63593 12 6.2905C11.2204 4.63593 9.61003 3.5 7.75 3.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg></span>
+                                    Wishlist
+                                 </a>
+                                 <a href="dashboard-review.html">
+                                    <span class="togo-svg-icon "><svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.8541 3.50067C12.4862 2.83311 11.5138 2.83311 11.1459 3.50067C10.9456 3.86432 10.7534 4.23285 10.5695 4.60602C9.99049 5.78115 9.49447 7.00233 9.08879 8.26238C8.95002 8.69339 8.53768 8.99275 8.06577 9.00528C6.9521 9.03484 5.84047 9.12648 4.73814 9.28206C4.42331 9.32649 4.11016 9.37595 3.79877 9.43035C3.02451 9.56562 2.73398 10.4484 3.2838 10.9864C3.40922 11.1091 3.5357 11.2308 3.66323 11.3515C4.61689 12.2537 5.62918 13.0978 6.69404 13.8779C7.06131 14.1469 7.21228 14.6084 7.07191 15.0297C6.63214 16.3496 6.29178 17.713 6.05943 19.1116C6.01284 19.3921 5.97058 19.674 5.93274 19.9573C5.83193 20.7119 6.64048 21.2448 7.3423 20.885C7.59281 20.7566 7.84111 20.6247 8.08712 20.4893C9.21586 19.8679 10.2965 19.1736 11.3222 18.4128C11.7204 18.1175 12.2796 18.1175 12.6778 18.4128C13.7035 19.1736 14.7841 19.8679 15.9129 20.4893C16.1589 20.6247 16.4072 20.7566 16.6577 20.885C17.3595 21.2448 18.1681 20.7119 18.0673 19.9573C18.0294 19.674 17.9872 19.3921 17.9406 19.1116C17.7082 17.713 17.3679 16.3496 16.9281 15.0297C16.7877 14.6084 16.9387 14.1469 17.306 13.8779C18.3708 13.0978 19.3831 12.2537 20.3368 11.3515C20.4643 11.2308 20.5908 11.1091 20.7162 10.9864C21.266 10.4484 20.9755 9.56562 20.2012 9.43035C19.8898 9.37595 19.5767 9.32649 19.2619 9.28206C18.1595 9.12648 17.0479 9.03484 15.9342 9.00528C15.4623 8.99275 15.05 8.69339 14.9112 8.26237C14.5055 7.00233 14.0095 5.78115 13.4305 4.60602C13.2466 4.23285 13.0544 3.86432 12.8541 3.50067Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg></span>
+                                    Reviews
+                                 </a>
+                                 <a href="dashboard-setting.html">
+                                    <span class="togo-svg-icon "><svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.11 3.9005C10.1611 3.38929 10.5912 3 11.105 3H12.895C13.4088 3 13.8389 3.38929 13.89 3.9005L13.9233 4.23269C14.712 4.42735 15.4547 4.739 16.1318 5.1482L16.3908 4.93631C16.7884 4.61099 17.3678 4.63989 17.7311 5.00316L18.9969 6.2689C19.3601 6.63218 19.389 7.21163 19.0637 7.60925L18.8518 7.86823C19.261 8.54533 19.5727 9.28799 19.7673 10.0767L20.0995 10.1099C20.6107 10.1611 21 10.5912 21 11.105V12.895C21 13.4088 20.6107 13.8389 20.0995 13.89L19.7673 13.9233C19.5727 14.712 19.261 15.4547 18.8518 16.1318L19.0637 16.3908C19.389 16.7884 19.3601 17.3679 18.9968 17.7311L17.7311 18.9969C17.3678 19.3601 16.7884 19.389 16.3908 19.0637L16.1318 18.8518C15.4547 19.261 14.712 19.5727 13.9233 19.7673L13.89 20.0995C13.8389 20.6107 13.4088 21 12.895 21H11.105C10.5912 21 10.1611 20.6107 10.11 20.0995L10.0767 19.7673C9.28799 19.5727 8.54533 19.261 7.86822 18.8518L7.60929 19.0637C7.21167 19.389 6.63222 19.3601 6.26894 18.9968L5.00321 17.7311C4.63993 17.3678 4.61103 16.7884 4.93636 16.3907L5.1482 16.1318C4.73901 15.4547 4.42735 14.712 4.23269 13.9233L3.9005 13.89C3.38929 13.8389 3 13.4088 3 12.895V11.105C3 10.5912 3.38929 10.1611 3.9005 10.11L4.23269 10.0767C4.42734 9.28799 4.73899 8.54533 5.14818 7.86822L4.93632 7.60929C4.611 7.21167 4.6399 6.63222 5.00317 6.26894L6.26891 5.00321C6.63219 4.63993 7.21164 4.61103 7.60926 4.93636L7.86818 5.1482C8.5453 4.73901 9.28797 4.42735 10.0767 4.23269L10.11 3.9005Z" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="1" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <circle cx="2.5" cy="2.5" r="2.5" transform="matrix(1 0 0 -1 9.5 14.5)" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="1" stroke-linecap="round" stroke-linejoin="round"></circle>
+                                    </svg></span>
+                                    Settings
+                                 </a>
+                                 <a href="sign-in.html">
+                                    <span class="togo-svg-icon"><svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.4958 21H6.5C5.39543 21 4.5 19.8487 4.5 18.4286V5.57143C4.5 4.15127 5.39543 3 6.5 3H13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M16 15.5L19.5 12L16 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M9.5 11.9958H19.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                                    Logout
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="togo-header-7-bar ml-20 d-block d-xl-none">
+                           <button class="togo-offcanvas-2-open-btn offcanvas-open-btn">
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M4.5 6.5H19.5" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M4.5 12H19.5" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M4.5 17.5H19.5" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- header area end -->
+
+   </header>
+
+   <div id="has-smooth">
+      <div id="has-smooth-wrap">
+      
+         <main>
+
+
+            <!-- hero area start -->
+            <div class="togo-hero-7-sec pt-200 pb-100">
+               <div class="container container-1440">
+                  <div class="row justify-content-center">
+                     <div class="col-lg-10">
+                        <div class="togo-hero-7-wrapper text-center">
+                           <div class="togo-hero-7-heading mb-80 fade-anim" data-delay=".3">
+                              <h3 class="togo-section-title ff-playfair fs-56 fw-400">Your vacation, your way.</h3>
+                           </div>
+                           <div class="togo-hero-7-thumb-wrap p-relative">
+                              <img src="assets/img/hero/home-7/bg-hero.jpg" alt="">
+                              <div class="togo-hero-7-input-box">
+                                 <div class="row justify-content-center">
+                                    <div class="col-lg-7">
+                                       <div class="togo-hero-2-search-box p-relative">
+                                          <div class="togo-hero-2-search-input trip-search-form d-flex align-items-center">
+                                             <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                                   <path d="M11.5132 19.0857C11.206 19.3048 10.794 19.3048 10.4868 19.0857C6.06043 15.9292 1.36177 9.43901 6.11114 4.74951C7.40775 3.46924 9.16632 2.75 11 2.75C12.8337 2.75 14.5923 3.46924 15.8889 4.74951C20.6382 9.43901 15.9396 15.9292 11.5132 19.0857Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                   <path d="M11.0013 11C12.0138 11 12.8346 10.1792 12.8346 9.16665C12.8346 8.15412 12.0138 7.33331 11.0013 7.33331C9.98878 7.33331 9.16797 8.15412 9.16797 9.16665C9.16797 10.1792 9.98878 11 11.0013 11Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                             </span>
+                                             <input type="text" placeholder="Search destinations">
+                                             <div class="field-location__result d-none">
+                                                <div class="near-me">
+                                                   <div class="near-me__icon">
+                                                      <svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                         <path d="M3.41392 12.0861C2.91626 11.9617 2.84896 11.282 3.31255 11.0624L20.2178 3.05466C20.6817 2.83491 21.1651 3.31834 20.9453 3.78225L12.9376 20.6875C12.718 21.151 12.0383 21.0837 11.9139 20.5861L10.2934 14.1041C10.2445 13.9084 10.0916 13.7555 9.8959 13.7066L3.41392 12.0861Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                      </svg>
+                                                   </div>
+                                                   <span class="near-me__text">Near me</span>
+                                                </div>
+
+                                                <div class="location-list">
+                                                   <ul>
+                                                   <li>
+                                                      <span class="country">France</span>
+                                                      <ul>
+                                                         <li><span class="city">Lyon</span></li>
+                                                         <li><span class="city">Marseille</span></li>
+                                                         <li><span class="city">Paris</span></li>
+                                                         <li><span class="city">Toulouse</span></li>
+                                                      </ul>
+                                                   </li>
+                                                   <li>
+                                                      <span class="country">Thailand</span>
+                                                      <ul>
+                                                         <li><span class="city">Bangkok</span></li>
+                                                         <li><span class="city">Chiang Mai</span></li>
+                                                         <li><span class="city">Phuket</span></li>
+                                                      </ul>
+                                                   </li>
+                                                   </ul>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div id="input-id" class="togo-hero-2-search-input date p-relative d-flex align-items-center">
+                                             <span id="demo1-input-description">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                                   <path d="M2.75 11C2.75 7.11093 2.75 6.08306 3.95818 4.87487C5.16637 3.66669 7.11091 3.66669 11 3.66669C14.8891 3.66669 16.8336 3.66669 18.0418 4.87487C19.25 6.08306 19.25 7.11093 19.25 11C19.25 14.8891 19.25 16.8337 18.0418 18.0418C16.8336 19.25 14.8891 19.25 11 19.25C7.11091 19.25 5.16637 19.25 3.95818 18.0418C2.75 16.8337 2.75 14.8891 2.75 11Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                   <path d="M15.125 4.58333V2.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                   <path d="M6.875 4.58333V2.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                   <path d="M2.98047 7.33331H19.0221" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                             </span>
+                                             <input type="text" aria-label="Check-in and check-out dates" aria-describedby="demo1-input-description" placeholder="Add dates">
+                                          </div>
+                                          <div class="togo-hero-2-search-btn">
+                                             <button>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                                   <path d="M15.4838 15.5099L18.3073 18.3334M17.4925 10.616C17.4925 14.454 14.3916 17.5654 10.5666 17.5654C6.74147 17.5654 3.64062 14.454 3.64062 10.616C3.64062 6.77801 6.74147 3.66669 10.5666 3.66669C14.3916 3.66669 17.4925 6.77801 17.4925 10.616Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                             </button>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- hero area end -->
+
+
+            <!-- destination area start -->
+            <div class="togo-destination-7-sec fix pb-100">
+               <div class="container-fluid gx-0 p-0">
+                  <div class="row gx-0">
+                     <div class="col-lg-12">
+                        <div class="togo-destination-7-heading text-center mb-80">
+                           <h4 class="togo-section-title ff-playfair fw-400 mb-20 fade-anim" data-delay=".3">Welcome to Togo travel</h4>
+                           <div class="togo-destination-7-text fade-anim" data-delay=".5">
+                              <p class="fs-18">
+                                 Are you dreaming of white sand beaches, turquoise blue waters and a tropical <br> vibe? Soak up the sun, relax on a lounger and enjoy incredible service and a <br> beautiful atmosphere on one of our luxury holidays
+                              </p>
+                           </div>
+                           <div class="togo-destination-7-btn fade-anim" data-delay=".7">
+                              <a class="togo-btn-primary" href="contact.html">Book Tour</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row row-cols-xxl-6 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 align-items-center">
+                     <div class="col">
+                        <div class="togo-destination-7-item">
+                           <img class="rds-1" src="assets/img/destination/home-7/thumb-1.jpg" alt="">
+                        </div>
+                     </div>
+                     <div class="col">
+                        <div class="togo-destination-7-item">
+                           <img class="rds-2" src="assets/img/destination/home-7/thumb-2.jpg" alt="">
+                        </div>
+                     </div>
+                     <div class="col">
+                        <div class="togo-destination-7-item">
+                           <img class="rds-3" src="assets/img/destination/home-7/thumb-3.jpg" alt="">
+                        </div>
+                     </div>
+                     <div class="col">
+                        <div class="togo-destination-7-item">
+                           <img class="rds-4" src="assets/img/destination/home-7/thumb-4.jpg" alt="">
+                        </div>
+                     </div>
+                     <div class="col">
+                        <div class="togo-destination-7-item">
+                           <img class="rds-5" src="assets/img/destination/home-7/thumb-5.jpg" alt="">
+                        </div>
+                     </div>
+                     <div class="col">
+                        <div class="togo-destination-7-item">
+                           <img class="rds-6" src="assets/img/destination/home-7/thumb-6.jpg" alt="">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- destination area end -->
+
+
+            <!-- tour area start -->
+             <div class="togo-tour-7-sec pt-60 pb-55" data-bg-color="#FEF5EF">
+               <div class="container container-1440">
+                  <div class="row align-items-center">
+                     <div class="col-lg-6">
+                        <div class="togo-tour-7-heading mb-40">
+                           <h3 class="togo-section-title ff-playfair fw-400 mb-10 fade-anim" data-delay=".3">Explore Popular Tours</h3>
+                           <div class="togo-tour-7-text fade-anim" data-delay=".5">
+                              <p>Get started with handpicked top rated trips.</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-6"> 
+                        <div class="togo-tour-7-right d-flex justify-content-lg-end align-items-center mb-40 fade-anim" data-delay=".5">
+                           <a class="togo-tour-btn line-border" href="#">
+                              <span>View more</span>
+                           </a>
+                           <div class="togo-destination-arrows d-flex align-items-center pl-35">
+                              <button class="togo-destination-prev">
+                                 <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="13" viewBox="0 0 7 13" fill="none">
+                                    <path d="M6.25 0.75L0.75 6.25L6.25 11.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                 </span>
+                              </button>
+                              <button class="togo-destination-next">
+                                 <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="13" viewBox="0 0 7 13" fill="none">
+                                    <path d="M0.75 11.75L6.25 6.25L0.75 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                 </span>
+                              </button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="togo-tour-7-slider-wrapper">
+                           <div class="swiper togo-destination-active">
+                              <div class="swiper-wrapper togo-slide-transtion">
+                                 <div class="swiper-slide">
+                                    <div class="togo-tour-card mb-24">
+                                       <div class="togo-tour-card-thumb p-relative mb-20">
+                                          <a href="tour-details-6.html">
+                                             <img src="assets/img/tour/tour-thumb-1.jpg" alt="">
+                                          </a>
+                                          <div class="togo-tour-card-wishlist">
+                                             <span>
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7.75 3.5C5.12665 3.5 3 5.75956 3 8.54688C3 14.125 12 20.5 12 20.5C12 20.5 21 14.125 21 8.54688C21 5.09375 18.8734 3.5 16.25 3.5C14.39 3.5 12.7796 4.63593 12 6.2905C11.2204 4.63593 9.61003 3.5 7.75 3.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                             </span>
+                                          </div>
+                                       </div>
+                                       <div class="togo-tour-card-content">
+                                          <h4 class="togo-tour-card-title">
+                                             <a href="tour-details-6.html">Bangkok by Night: Temples, Markets and Tuk-Tuk Tour</a>
+                                          </h4>
+                                          <div class="togo-tour-card-meta-wrap">
+                                             <h5 class="togo-tour-card-meta">
+                                                <span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M9.41993 15.6155C9.16852 15.7948 8.83148 15.7948 8.58007 15.6155C4.95853 13.033 1.11418 7.72283 5.00003 3.88596C6.06088 2.83847 7.49972 2.25 9 2.25C10.5003 2.25 11.9391 2.83847 13 3.88596C16.8858 7.72283 13.0415 13.033 9.41993 15.6155Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M9 9C9.82843 9 10.5 8.32843 10.5 7.5C10.5 6.67157 9.82843 6 9 6C8.17157 6 7.5 6.67157 7.5 7.5C7.5 8.32843 8.17157 9 9 9Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg></span>
+                                                Bangkok
+                                             </h5>
+                                             <h5 class="togo-tour-card-meta">
+                                                <span>
+                                                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                   <path d="M9 4.5V9L7.125 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                   <circle cx="9" cy="9" r="6.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                   </svg>
+                                                </span>
+                                                2 days
+                                             </h5>
+                                          </div>
+                                          <div class="togo-tour-card-desc mb-25">
+                                             <p>Let us be a part of your journey and help you ...</p>
+                                          </div>
+                                          <div class="togo-tour-card-price-wrap">
+                                             <div class="togo-tour-card-review">
+                                                <span class="togo-tour-card-rating">
+                                                   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                                                <path d="M8.14444 1.1255C7.86859 0.624834 7.13922 0.624834 6.86337 1.1255C6.7131 1.39824 6.56892 1.67464 6.43102 1.95452C5.99678 2.83586 5.62475 3.75175 5.3205 4.69678C5.21642 5.02005 4.90717 5.24456 4.55323 5.25396C3.71798 5.27613 2.88426 5.34486 2.05751 5.46154C1.82139 5.49487 1.58653 5.53196 1.35299 5.57276C0.77229 5.67422 0.554393 6.33631 0.966756 6.7398C1.06082 6.83184 1.15568 6.92312 1.25133 7.01361C1.96657 7.6903 2.72579 8.32337 3.52443 8.90839C3.79989 9.11016 3.91312 9.45632 3.80784 9.77228C3.47801 10.7622 3.22274 11.7847 3.04848 12.8337C3.01353 13.0441 2.98184 13.2555 2.95346 13.4679C2.87786 14.0339 3.48427 14.4336 4.01063 14.1638C4.19851 14.0675 4.38474 13.9685 4.56925 13.8669C5.4158 13.401 6.22628 12.8802 6.99559 12.3096C7.29418 12.0881 7.71363 12.0881 8.01222 12.3096C8.78154 12.8802 9.59201 13.401 10.4386 13.8669C10.6231 13.9685 10.8093 14.0675 10.9972 14.1638C11.5235 14.4336 12.13 14.0339 12.0543 13.4679C12.026 13.2555 11.9943 13.0441 11.9593 12.8337C11.7851 11.7847 11.5298 10.7622 11.2 9.77228C11.0947 9.45632 11.2079 9.11016 11.4834 8.90839C12.282 8.32337 13.0412 7.6903 13.7565 7.01361C13.8521 6.92312 13.947 6.83184 14.0411 6.7398C14.4534 6.3363 14.2355 5.67422 13.6548 5.57276C13.4213 5.53196 13.1864 5.49487 12.9503 5.46154C12.1236 5.34486 11.2898 5.27613 10.4546 5.25396C10.1006 5.24456 9.79139 5.02005 9.68732 4.69678C9.38306 3.75175 9.01104 2.83586 8.57679 1.95452C8.43889 1.67464 8.29472 1.39824 8.14444 1.1255Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                5.0</span>
+                                                <span class="togo-tour-card-rating-count">
+                                                   (39)
+                                                </span>
+                                             </div>
+                                             <div class="togo-tour-card-price">
+                                                <span class="togo-tour-card-price-prefix">from</span>
+                                                <span class="togo-tour-card-price-regular">$60</span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="togo-tour-card mb-24">
+                                       <div class="togo-tour-card-thumb p-relative mb-20">
+                                          <a href="tour-details-6.html">
+                                             <img src="assets/img/tour/tour-thumb-2.jpg" alt="">
+                                          </a>
+                                          <div class="togo-tour-card-wishlist">
+                                             <span>
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7.75 3.5C5.12665 3.5 3 5.75956 3 8.54688C3 14.125 12 20.5 12 20.5C12 20.5 21 14.125 21 8.54688C21 5.09375 18.8734 3.5 16.25 3.5C14.39 3.5 12.7796 4.63593 12 6.2905C11.2204 4.63593 9.61003 3.5 7.75 3.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                             </span>
+                                          </div>
+                                       </div>
+                                       <div class="togo-tour-card-content">
+                                          <h4 class="togo-tour-card-title">
+                                             <a href="tour-details-6.html">Doi Inthanon National Park Eco-Friendly Tour</a>
+                                          </h4>
+                                          <div class="togo-tour-card-meta-wrap">
+                                             <h5 class="togo-tour-card-meta">
+                                                <span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M9.41993 15.6155C9.16852 15.7948 8.83148 15.7948 8.58007 15.6155C4.95853 13.033 1.11418 7.72283 5.00003 3.88596C6.06088 2.83847 7.49972 2.25 9 2.25C10.5003 2.25 11.9391 2.83847 13 3.88596C16.8858 7.72283 13.0415 13.033 9.41993 15.6155Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M9 9C9.82843 9 10.5 8.32843 10.5 7.5C10.5 6.67157 9.82843 6 9 6C8.17157 6 7.5 6.67157 7.5 7.5C7.5 8.32843 8.17157 9 9 9Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg></span>
+                                                Chiang Mai
+                                             </h5>
+                                             <h5 class="togo-tour-card-meta">
+                                                <span>
+                                                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                   <path d="M9 4.5V9L7.125 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                   <circle cx="9" cy="9" r="6.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                   </svg>
+                                                </span>
+                                                3 - 6 hours
+                                             </h5>
+                                          </div>
+                                          <div class="togo-tour-card-desc mb-25">
+                                             <p>Let us be a part of your journey and help you ...</p>
+                                          </div>
+                                          <div class="togo-tour-card-price-wrap">
+                                             <div class="togo-tour-card-review">
+                                                <span class="togo-tour-card-rating">
+                                                   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                                                   <path d="M8.14444 1.1255C7.86859 0.624834 7.13922 0.624834 6.86337 1.1255C6.7131 1.39824 6.56892 1.67464 6.43102 1.95452C5.99678 2.83586 5.62475 3.75175 5.3205 4.69678C5.21642 5.02005 4.90717 5.24456 4.55323 5.25396C3.71798 5.27613 2.88426 5.34486 2.05751 5.46154C1.82139 5.49487 1.58653 5.53196 1.35299 5.57276C0.77229 5.67422 0.554393 6.33631 0.966756 6.7398C1.06082 6.83184 1.15568 6.92312 1.25133 7.01361C1.96657 7.6903 2.72579 8.32337 3.52443 8.90839C3.79989 9.11016 3.91312 9.45632 3.80784 9.77228C3.47801 10.7622 3.22274 11.7847 3.04848 12.8337C3.01353 13.0441 2.98184 13.2555 2.95346 13.4679C2.87786 14.0339 3.48427 14.4336 4.01063 14.1638C4.19851 14.0675 4.38474 13.9685 4.56925 13.8669C5.4158 13.401 6.22628 12.8802 6.99559 12.3096C7.29418 12.0881 7.71363 12.0881 8.01222 12.3096C8.78154 12.8802 9.59201 13.401 10.4386 13.8669C10.6231 13.9685 10.8093 14.0675 10.9972 14.1638C11.5235 14.4336 12.13 14.0339 12.0543 13.4679C12.026 13.2555 11.9943 13.0441 11.9593 12.8337C11.7851 11.7847 11.5298 10.7622 11.2 9.77228C11.0947 9.45632 11.2079 9.11016 11.4834 8.90839C12.282 8.32337 13.0412 7.6903 13.7565 7.01361C13.8521 6.92312 13.947 6.83184 14.0411 6.7398C14.4534 6.3363 14.2355 5.67422 13.6548 5.57276C13.4213 5.53196 13.1864 5.49487 12.9503 5.46154C12.1236 5.34486 11.2898 5.27613 10.4546 5.25396C10.1006 5.24456 9.79139 5.02005 9.68732 4.69678C9.38306 3.75175 9.01104 2.83586 8.57679 1.95452C8.43889 1.67464 8.29472 1.39824 8.14444 1.1255Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                   </svg>
+                                                4.5</span>
+                                                <span class="togo-tour-card-rating-count">
+                                                   (35)
+                                                </span>
+                                             </div>
+                                             <div class="togo-tour-card-price">
+                                                <span class="togo-tour-card-price-prefix">from</span>
+                                                <span class="togo-tour-card-price-regular">$50</span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="togo-tour-card mb-24">
+                                       <div class="togo-tour-card-thumb p-relative mb-20">
+                                          <a href="tour-details-6.html">
+                                             <img src="assets/img/tour/tour-thumb-3.jpg" alt="">
+                                          </a>
+                                          <div class="togo-tour-card-wishlist">
+                                             <span>
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7.75 3.5C5.12665 3.5 3 5.75956 3 8.54688C3 14.125 12 20.5 12 20.5C12 20.5 21 14.125 21 8.54688C21 5.09375 18.8734 3.5 16.25 3.5C14.39 3.5 12.7796 4.63593 12 6.2905C11.2204 4.63593 9.61003 3.5 7.75 3.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                             </span>
+                                          </div>
+                                       </div>
+                                       <div class="togo-tour-card-content">
+                                          <h4 class="togo-tour-card-title">
+                                             <a href="tour-details-6.html">Grand Palace, Wat Pho, and Wat Arun Guided Tour</a>
+                                          </h4>
+                                          <div class="togo-tour-card-meta-wrap">
+                                             <h5 class="togo-tour-card-meta">
+                                                <span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M9.41993 15.6155C9.16852 15.7948 8.83148 15.7948 8.58007 15.6155C4.95853 13.033 1.11418 7.72283 5.00003 3.88596C6.06088 2.83847 7.49972 2.25 9 2.25C10.5003 2.25 11.9391 2.83847 13 3.88596C16.8858 7.72283 13.0415 13.033 9.41993 15.6155Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M9 9C9.82843 9 10.5 8.32843 10.5 7.5C10.5 6.67157 9.82843 6 9 6C8.17157 6 7.5 6.67157 7.5 7.5C7.5 8.32843 8.17157 9 9 9Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg></span>
+                                                Phuket
+                                             </h5>
+                                             <h5 class="togo-tour-card-meta">
+                                                <span>
+                                                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                   <path d="M9 4.5V9L7.125 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                   <circle cx="9" cy="9" r="6.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                   </svg>
+                                                </span>
+                                                0 - 3 hours
+                                             </h5>
+                                          </div>
+                                          <div class="togo-tour-card-desc mb-25">
+                                             <p>Enjoy Phuket rich history and spiritual heritage with...</p>
+                                          </div>
+                                          <div class="togo-tour-card-price-wrap">
+                                             <div class="togo-tour-card-review">
+                                                <span class="togo-tour-card-rating">
+                                                   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                                                   <path d="M8.14444 1.1255C7.86859 0.624834 7.13922 0.624834 6.86337 1.1255C6.7131 1.39824 6.56892 1.67464 6.43102 1.95452C5.99678 2.83586 5.62475 3.75175 5.3205 4.69678C5.21642 5.02005 4.90717 5.24456 4.55323 5.25396C3.71798 5.27613 2.88426 5.34486 2.05751 5.46154C1.82139 5.49487 1.58653 5.53196 1.35299 5.57276C0.77229 5.67422 0.554393 6.33631 0.966756 6.7398C1.06082 6.83184 1.15568 6.92312 1.25133 7.01361C1.96657 7.6903 2.72579 8.32337 3.52443 8.90839C3.79989 9.11016 3.91312 9.45632 3.80784 9.77228C3.47801 10.7622 3.22274 11.7847 3.04848 12.8337C3.01353 13.0441 2.98184 13.2555 2.95346 13.4679C2.87786 14.0339 3.48427 14.4336 4.01063 14.1638C4.19851 14.0675 4.38474 13.9685 4.56925 13.8669C5.4158 13.401 6.22628 12.8802 6.99559 12.3096C7.29418 12.0881 7.71363 12.0881 8.01222 12.3096C8.78154 12.8802 9.59201 13.401 10.4386 13.8669C10.6231 13.9685 10.8093 14.0675 10.9972 14.1638C11.5235 14.4336 12.13 14.0339 12.0543 13.4679C12.026 13.2555 11.9943 13.0441 11.9593 12.8337C11.7851 11.7847 11.5298 10.7622 11.2 9.77228C11.0947 9.45632 11.2079 9.11016 11.4834 8.90839C12.282 8.32337 13.0412 7.6903 13.7565 7.01361C13.8521 6.92312 13.947 6.83184 14.0411 6.7398C14.4534 6.3363 14.2355 5.67422 13.6548 5.57276C13.4213 5.53196 13.1864 5.49487 12.9503 5.46154C12.1236 5.34486 11.2898 5.27613 10.4546 5.25396C10.1006 5.24456 9.79139 5.02005 9.68732 4.69678C9.38306 3.75175 9.01104 2.83586 8.57679 1.95452C8.43889 1.67464 8.29472 1.39824 8.14444 1.1255Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                   </svg>
+                                                4.0</span>
+                                                <span class="togo-tour-card-rating-count">
+                                                   (5)
+                                                </span>
+                                             </div>
+                                             <div class="togo-tour-card-price">
+                                                <span class="togo-tour-card-price-prefix">from</span>
+                                                <span class="togo-tour-card-price-regular">$30</span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="togo-tour-card mb-24">
+                                       <div class="togo-tour-card-thumb p-relative mb-20">
+                                          <a href="tour-details-6.html">
+                                             <img src="assets/img/tour/tour-thumb-4.jpg" alt="">
+                                          </a>
+                                          <div class="togo-tour-card-wishlist">
+                                             <span>
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7.75 3.5C5.12665 3.5 3 5.75956 3 8.54688C3 14.125 12 20.5 12 20.5C12 20.5 21 14.125 21 8.54688C21 5.09375 18.8734 3.5 16.25 3.5C14.39 3.5 12.7796 4.63593 12 6.2905C11.2204 4.63593 9.61003 3.5 7.75 3.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                             </span>
+                                          </div>
+                                       </div>
+                                       <div class="togo-tour-card-content">
+                                          <h4 class="togo-tour-card-title">
+                                             <a href="tour-details-6.html">Private Walking Tour with a Local</a>
+                                          </h4>
+                                          <div class="togo-tour-card-meta-wrap">
+                                             <h5 class="togo-tour-card-meta">
+                                                <span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M9.41993 15.6155C9.16852 15.7948 8.83148 15.7948 8.58007 15.6155C4.95853 13.033 1.11418 7.72283 5.00003 3.88596C6.06088 2.83847 7.49972 2.25 9 2.25C10.5003 2.25 11.9391 2.83847 13 3.88596C16.8858 7.72283 13.0415 13.033 9.41993 15.6155Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M9 9C9.82843 9 10.5 8.32843 10.5 7.5C10.5 6.67157 9.82843 6 9 6C8.17157 6 7.5 6.67157 7.5 7.5C7.5 8.32843 8.17157 9 9 9Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg></span>
+                                                Bangkok
+                                             </h5>
+                                             <h5 class="togo-tour-card-meta">
+                                                <span>
+                                                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                   <path d="M9 4.5V9L7.125 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                   <circle cx="9" cy="9" r="6.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                   </svg>
+                                                </span>
+                                                2 days
+                                             </h5>
+                                          </div>
+                                          <div class="togo-tour-card-desc mb-25">
+                                             <p>Let us be a part of your journey and help you ...</p>
+                                          </div>
+                                          <div class="togo-tour-card-price-wrap">
+                                             <div class="togo-tour-card-review">
+                                                <span class="togo-tour-card-rating">
+                                                   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                                                   <path d="M8.14444 1.1255C7.86859 0.624834 7.13922 0.624834 6.86337 1.1255C6.7131 1.39824 6.56892 1.67464 6.43102 1.95452C5.99678 2.83586 5.62475 3.75175 5.3205 4.69678C5.21642 5.02005 4.90717 5.24456 4.55323 5.25396C3.71798 5.27613 2.88426 5.34486 2.05751 5.46154C1.82139 5.49487 1.58653 5.53196 1.35299 5.57276C0.77229 5.67422 0.554393 6.33631 0.966756 6.7398C1.06082 6.83184 1.15568 6.92312 1.25133 7.01361C1.96657 7.6903 2.72579 8.32337 3.52443 8.90839C3.79989 9.11016 3.91312 9.45632 3.80784 9.77228C3.47801 10.7622 3.22274 11.7847 3.04848 12.8337C3.01353 13.0441 2.98184 13.2555 2.95346 13.4679C2.87786 14.0339 3.48427 14.4336 4.01063 14.1638C4.19851 14.0675 4.38474 13.9685 4.56925 13.8669C5.4158 13.401 6.22628 12.8802 6.99559 12.3096C7.29418 12.0881 7.71363 12.0881 8.01222 12.3096C8.78154 12.8802 9.59201 13.401 10.4386 13.8669C10.6231 13.9685 10.8093 14.0675 10.9972 14.1638C11.5235 14.4336 12.13 14.0339 12.0543 13.4679C12.026 13.2555 11.9943 13.0441 11.9593 12.8337C11.7851 11.7847 11.5298 10.7622 11.2 9.77228C11.0947 9.45632 11.2079 9.11016 11.4834 8.90839C12.282 8.32337 13.0412 7.6903 13.7565 7.01361C13.8521 6.92312 13.947 6.83184 14.0411 6.7398C14.4534 6.3363 14.2355 5.67422 13.6548 5.57276C13.4213 5.53196 13.1864 5.49487 12.9503 5.46154C12.1236 5.34486 11.2898 5.27613 10.4546 5.25396C10.1006 5.24456 9.79139 5.02005 9.68732 4.69678C9.38306 3.75175 9.01104 2.83586 8.57679 1.95452C8.43889 1.67464 8.29472 1.39824 8.14444 1.1255Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                   </svg>
+                                                4.5</span>
+                                                <span class="togo-tour-card-rating-count">
+                                                   (3)
+                                                </span>
+                                             </div>
+                                             <div class="togo-tour-card-price">
+                                                <span class="togo-tour-card-price-prefix">from</span>
+                                                <span class="togo-tour-card-price-regular">$220</span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+             </div>
+            <!-- tour area end -->
+
+
+            <!-- about area start -->
+            <div class="togo-about-7-sec pt-110 pb-90">
+               <div class="container container-1440">
+                  <div class="row align-items-center">
+                     <div class="col-lg-6">
+                        <div class="togo-about-7-heading mb-30">
+                           <span class="togo-section-subtitle mb-15 fade-anim" data-delay=".3">WHO WE ARE</span>
+                           <h4 class="togo-section-title ff-playfair mb-15 fade-anim" data-delay=".5">Bringing Your Travel <br> Dreams to Life</h4>
+                           <div class="togo-about-7-text fade-anim" data-delay=".7">
+                              <p class="fs-18 mb-25">Togo Travel is a dynamic travel company dedicated to crafting unforgettable experiences for adventurers, explorers, and vacationers alike. With a passion for personalized service and a commitment to excellence, Togo Travel specializes in curating bespoke travel itineraries tailored to individual preferences and interests.</p>
+                           </div>
+                           <div class="togo-guide-2-btn-box d-flex align-items-center fade-anim" data-delay=".9">
+                              <a class="togo-btn-primary" href="contact.html">Contact Us</a>
+                              <a class="togo-btn-tel" href="tel:012345678">
+                                 <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                    <path d="M14.3 13.3113C12.1046 15.622 6.5045 10.0722 8.70828 7.75274C10.0538 6.33657 8.53383 4.71815 7.69249 3.52856C6.11347 1.29596 2.64707 4.37837 2.75235 6.33915C3.08433 12.5224 9.77308 19.8501 16.2502 19.2109C18.2765 19.011 20.6047 15.3516 18.2805 14.0142C17.1183 13.3454 15.523 12.0241 14.3 13.3113Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M13.75 6.875L17.875 2.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M14.668 2.75L17.8763 2.75L17.8763 5.95833" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                 </span>
+                                 + (00) 234 777
+                              </a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-6">
+                        <div class="togo-about-7-thumb-wrap mb-30">
+                           <div class="togo-about-7-thumb-shape d-none d-md-block fade-anim" data-delay=".4">
+                              <img src="assets/img/about/home-7/about-shape.svg" alt="">
+                           </div>
+                           <div class="togo-about-7-thumb bdr-1 fade-anim" data-delay=".6">
+                              <img src="assets/img/about/home-7/thumb-1.jpg" alt="">
+                           </div>
+                           <div class="togo-about-7-thumb bdr-2 fade-anim" data-delay=".8">
+                              <img src="assets/img/about/home-7/thumb-2.jpg" alt="">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- about area end -->
+
+
+            <!-- trending area start -->
+            <div class="togo-trand-7-sec pb-100">
+               <div class="container container-1440">
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="togo-trand-7-heading text-center mb-50">
+                           <h4 class="togo-section-title ff-playfair mb-15 fade-anim" data-delay=".3">Trending Activities</h4>
+                           <div class="togo-trand-7-text fade-anim" data-delay=".5">
+                              <p class="fs-18 mb-25">Lorem ipsum dolor sit amet consectetur. Dui aenean velit sit nulla <br> ullamcorper leo. Volutpat nunc</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1">
+                     <div class="col">
+                        <div class="togo-trand-7-item mb-24">
+                           <div class="togo-trand-7-item-thumb">
+                              <a href="city-details-2.html">
+                                 <img src="assets/img/trand/home-7/thumb-1.jpg" alt="">
+                              </a>
+                           </div>
+                           <div class="togo-trand-7-item-content">
+                              <h4 class="togo-trand-7-item-title"><a class="hover-line" href="city-details-2.html">
+                                 Scuba diving
+                              </a></h4>
+                              <span>12 tours</span>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col">
+                        <div class="togo-trand-7-item mb-24">
+                           <div class="togo-trand-7-item-thumb">
+                              <a href="city-details-2.html">
+                                 <img src="assets/img/trand/home-7/thumb-2.jpg" alt="">
+                              </a>
+                           </div>
+                           <div class="togo-trand-7-item-content">
+                              <h4 class="togo-trand-7-item-title"><a class="hover-line" href="city-details-2.html">
+                                 Kayaking
+                              </a></h4>
+                              <span>12 tours</span>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col">
+                        <div class="togo-trand-7-item mb-24">
+                           <div class="togo-trand-7-item-thumb">
+                              <a href="city-details-2.html">
+                                 <img src="assets/img/trand/home-7/thumb-3.jpg" alt="">
+                              </a>
+                           </div>
+                           <div class="togo-trand-7-item-content">
+                              <h4 class="togo-trand-7-item-title"><a class="hover-line" href="city-details-2.html">
+                                 Island hopping
+                              </a></h4>
+                              <span>12 tours</span>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col">
+                        <div class="togo-trand-7-item mb-24">
+                           <div class="togo-trand-7-item-thumb">
+                              <a href="city-details-2.html">
+                                 <img src="assets/img/trand/home-7/thumb-4.jpg" alt="">
+                              </a>
+                           </div>
+                           <div class="togo-trand-7-item-content">
+                              <h4 class="togo-trand-7-item-title"><a class="hover-line" href="city-details-2.html">
+                                  Sailing
+                              </a></h4>
+                              <span>12 tours</span>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col">
+                        <div class="togo-trand-7-item mb-24">
+                           <div class="togo-trand-7-item-thumb">
+                              <a href="city-details-2.html">
+                                 <img src="assets/img/trand/home-7/thumb-5.jpg" alt="">
+                              </a>
+                           </div>
+                           <div class="togo-trand-7-item-content">
+                              <h4 class="togo-trand-7-item-title"><a class="hover-line" href="city-details-2.html">
+                                 Visiting seafood market
+                              </a></h4>
+                              <span>12 tours</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- trending area end -->
+
+
+            <!-- banner area start -->
+             <div class="togo-banner-7-sec ">
+               <div class="container container-1440">
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="togo-banner-7-wrapper p-relative">
+                           <div class="togo-banner-7-thumb">
+                              <img src="assets/img/banner/home-7/thumb-1.jpg" alt="">
+                           </div>
+                           <div class="togo-banner-5-video togo-banner-7-video">
+                              <a class="popup-video" href="https://vimeo.com/356282008">
+                                 <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="13" viewBox="0 0 10 13" fill="none">
+                                       <path d="M6.78297 3.41036C8.26099 4.61606 9 5.21891 9 6.25C9 7.28109 8.26099 7.88394 6.78296 9.08965C6.37495 9.42249 5.97027 9.73586 5.5984 9.99699C5.27216 10.2261 4.90269 10.463 4.52016 10.6957C3.0456 11.5923 2.30833 12.0407 1.64707 11.5443C0.985814 11.0479 0.925717 10.0088 0.805524 7.93046C0.771533 7.34271 0.75 6.76653 0.75 6.25C0.75 5.73347 0.771533 5.15729 0.805524 4.56954C0.925718 2.49124 0.985814 1.45209 1.64707 0.955699C2.30833 0.45931 3.0456 0.907653 4.52016 1.80434C4.90269 2.03695 5.27216 2.27393 5.5984 2.50301C5.97027 2.76414 6.37495 3.07752 6.78297 3.41036Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                 </span>
+                                 Play Video
+                              </a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+             </div>
+            <!-- banner area end -->
+
+
+            <!-- review area start -->
+             <div class="togo-review-sec" data-bg-color="#FEF5EF">
+               <div class="container container-1440">
+                  <div class="row">
+                     <div class="col-lg-6">
+                        <div class="togo-review-heading mb-30">
+                           <h4 class="togo-review-title fade-anim" data-delay=".3">Trusted the 20,000+ happy <br> travelers since 2012</h4>
+                           <a class="togo-btn-primary fade-anim" data-delay=".5" href="tour-grid.html">Choose A Tour</a>
+                        </div>
+                     </div>
+                     <div class="col-lg-6">
+                        <div class="togo-review-wrapper mb-30">
+                           <div class="togo-review-item-wrap d-flex align-items-center mb-10 fade-anim" data-delay=".3">
+                              <div class="togo-review-item">
+                                 <h4 class="togo-review-item-title">
+                                    <span>
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
+                                          <path d="M12.75 24.75C14.4508 26.0107 16.5191 26.75 18.75 26.75C20.9809 26.75 23.0492 26.0107 24.75 24.75M13.75 15.75V14.75M23.75 15.75V14.75M36.75 18.75C36.75 28.6911 28.6911 36.75 18.75 36.75C8.80887 36.75 0.75 28.6911 0.75 18.75C0.75 8.80887 8.80887 0.75 18.75 0.75C28.6911 0.75 36.75 8.80887 36.75 18.75Z" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       </svg>
+                                    </span>
+                                    10k+
+                                 </h4>
+                                 <p class="fs-18">Lorem ipsum dolor sit amet .</p>
+                              </div>
+                              <div class="togo-review-item">
+                                 <h4 class="togo-review-item-title">
+                                    <span>
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
+                                          <path d="M20.462 1.75133C19.7264 0.416223 17.7814 0.416223 17.0458 1.75133C16.6451 2.47864 16.2606 3.2157 15.8929 3.96204C14.7349 6.3123 13.7428 8.75465 12.9315 11.2748C12.6539 12.1368 11.8293 12.7355 10.8854 12.7606C8.6581 12.8197 6.43484 13.003 4.23018 13.3141C3.60053 13.403 2.97423 13.5019 2.35145 13.6107C0.802929 13.8812 0.221872 15.6468 1.3215 16.7228C1.57234 16.9683 1.8253 17.2116 2.08036 17.453C3.98768 19.2575 6.01227 20.9457 8.14198 22.5057C8.87652 23.0438 9.17847 23.9669 8.89774 24.8094C8.01818 27.4491 7.33746 30.1759 6.87278 32.9732C6.77958 33.5341 6.69507 34.098 6.61939 34.6645C6.41777 36.1738 8.03487 37.2395 9.4385 36.5201C9.93953 36.2633 10.4361 35.9994 10.9282 35.7285C13.1856 34.4859 15.3469 33.0972 17.3984 31.5755C18.1946 30.9849 19.3132 30.9849 20.1094 31.5755C22.1609 33.0972 24.3222 34.4859 26.5797 35.7285C27.0717 35.9994 27.5683 36.2633 28.0693 36.5201C29.4729 37.2395 31.09 36.1738 30.8884 34.6645C30.8127 34.098 30.7282 33.5342 30.635 32.9732C30.1703 30.1759 29.4896 27.4491 28.6101 24.8094C28.3293 23.9669 28.6313 23.0438 29.3658 22.5057C31.4955 20.9457 33.5201 19.2575 35.4275 17.453C35.6825 17.2116 35.9355 16.9683 36.1863 16.7228C37.2859 15.6468 36.7049 13.8812 35.1564 13.6107C34.5336 13.5019 33.9073 13.403 33.2776 13.3141C31.073 13.003 28.8497 12.8197 26.6224 12.7606C25.6785 12.7355 24.8539 12.1368 24.5763 11.2747C23.765 8.75465 22.7729 6.3123 21.6149 3.96204C21.2472 3.2157 20.8627 2.47864 20.462 1.75133Z" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       </svg>
+                                    </span>
+                                    4.8
+                                 </h4>
+                                 <p class="fs-18">Lorem ipsum dolor sit amet .</p>
+                              </div>
+                           </div>
+                           <div class="togo-review-user fade-anim" data-delay=".5">
+                              <img src="assets/img/banner/home-7/user.png" alt="">
+                              <p class="fs-18">“Lorem ipsum dolor sit amet consectetur.”</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+             </div>
+            <!-- review area end -->
+
+
+             <!-- step area start -->
+            <div class="togo-step-7-sec pt-120 pb-120">
+               <div class="container container-1440">
+                  <div class="row">
+                     <div class="col-lg-7">
+                        <div class="togo-step-7-thumb-wrapper p-relative mb-30 pl-100">
+                           <div class="togo-step-7-thumb p-relative">
+                              <img src="assets/img/step/home-7/thumb-1.jpg" alt="">
+                              <div class="togo-step-7-thumb-shape">
+                                 <img src="assets/img/step/home-7/shape-1.png" alt="" class="shape-1">
+                                 <img src="assets/img/step/home-7/shape-2.svg" alt="" class="shape-2">
+                              </div>
+                           </div>
+                           <div class="togo-step-7-contact text-center" data-speed="1.1">
+                              <div class="togo-step-7-contact-icon mb-20">
+                                 <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
+                                       <path d="M36.75 28.75V18.75C36.75 8.80887 28.6911 0.75 18.75 0.75C8.80888 0.75 0.75 8.80887 0.75 18.75V28.75M28.8057 36.6636C27.932 36.4765 27.2116 35.8069 26.9054 34.8975C26.75 34.436 26.75 33.8327 26.75 32.6262V24.6657C26.75 23.6439 26.75 23.133 26.8673 22.7273C27.1384 21.7891 27.8464 21.0775 28.7276 20.8573C31.2726 20.2216 31.7881 22.587 33.6138 23.3214C33.6598 23.3399 33.7059 23.3589 33.7521 23.3783C35.7362 24.2117 36.747 26.3348 36.742 28.4868L36.7403 29.1991C36.7359 31.1002 35.7237 32.87 34.0351 33.7436C32.1586 34.7145 31.5327 37.2477 28.8057 36.6636ZM8.69435 20.8364C9.56799 21.0235 10.2884 21.6931 10.5946 22.6025C10.75 23.064 10.75 23.6673 10.75 24.8738V32.8343C10.75 33.8561 10.75 34.367 10.6328 34.7727C10.3616 35.7109 9.65366 36.4225 8.77241 36.6427C6.22748 37.2784 5.71191 34.913 3.88622 34.1786C3.84503 34.162 3.80378 34.1451 3.7625 34.1278C1.7661 33.2928 0.753042 31.1664 0.758075 29.014L0.759778 28.286C0.764204 26.3933 1.77546 24.6305 3.46492 23.7564C5.34144 22.7855 5.96736 20.2523 8.69435 20.8364Z" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                 </span>
+                              </div>
+                              <h5 class="togo-step-7-contact-title">Need Help?</h5>
+                              <p>Our support team is here 24/7 to <br> guide you through your booking.</p>
+                              <a href="contact.html" class="togo-btn-primary">Contact Us</a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-5">
+                        <div class="togo-step-7-wrapper">
+                           <div class="togo-step-7-heading fade-anim" data-delay=".3">
+                              <h4 class="togo-section-title ff-playfair fw-400">How it works in 3 simple <br> steps</h4>
+                           </div>
+                           <div class="togo-step-7-item-box pl-35">
+                              <div class="togo-step-7-item mb-45 fade-anim" data-delay=".5" data-bg-color="#FFF1F0">
+                                 <div class="togo-step-7-item-icon">
+                                    <span><img src="assets/img/step/home-7/icon-1.svg" alt=""></span>
+                                 </div>
+                                 <div class="togo-step-7-item-content">
+                                    <h5>Select tour &  Fill information</h5>
+                                    <p>Lorem ipsum dolor sit amet consectetur. <br> Pellentesque urna tortor</p>
+                                 </div>
+                              </div>
+                              <div class="togo-step-7-item mb-45 ml-100 fade-anim" data-delay=".7" data-bg-color="#FCF0B2">
+                                 <div class="togo-step-7-item-icon">
+                                    <span><img src="assets/img/step/home-7/icon-2.svg" alt=""></span>
+                                 </div>
+                                 <div class="togo-step-7-item-content">
+                                    <h5>Process payment</h5>
+                                    <p>Lorem ipsum dolor sit amet consectetur. <br> Pellentesque urna tortor</p>
+                                 </div>
+                              </div>
+                              <div class="togo-step-7-item mb-45 fade-anim" data-delay=".9" data-bg-color="#E2E3F5">
+                                 <div class="togo-step-7-item-icon">
+                                    <span><img src="assets/img/step/home-7/icon-3.svg" alt=""></span>
+                                 </div>
+                                 <div class="togo-step-7-item-content">
+                                    <h5>Get confirmation & Enjoy the trip!</h5>
+                                    <p>Lorem ipsum dolor sit amet consectetur. <br> Pellentesque urna tortor</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+             <!-- step area start -->
+
+
+            <!-- testimonial area start -->
+             <div class="togo-testimonial-5-sec pt-60 pb-60" data-bg-color="#FEF5EF">
+               <div class="container container-1440">
+                  <div class="row">
+                     <div class="col-lg-6">
+                        <div class="togo-testimonial-5-heading fade-anim" data-delay=".3">
+                           <h3 class="togo-section-title ff-marcellus"><span class="d-inline-block mr-20">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+                                 <path d="M28 56C43.4385 56 56 43.4385 56 28C56 12.5615 43.4385 0 28 0C12.5615 0 0 12.5615 0 28C0 43.4385 12.5615 56 28 56ZM28 1.75C42.4743 1.75 54.25 13.5258 54.25 28C54.25 42.4743 42.4743 54.25 28 54.25C13.5258 54.25 1.75 42.4743 1.75 28C1.75 13.5258 13.5258 1.75 28 1.75Z" fill="#FD4621"/>
+                                 <path d="M18.7849 23.8831C19.6722 24.1718 20.5944 24.0388 21.4642 23.4946C21.8719 23.2391 21.9979 22.6983 21.7407 22.2888C21.4852 21.8811 20.9462 21.7551 20.5349 22.0123C20.1132 22.2748 19.7072 22.3413 19.3309 22.2206C18.9302 22.0893 18.5522 21.7516 18.2354 21.2441C17.9519 20.7926 17.8609 20.2571 17.9799 19.7373C18.1007 19.2158 18.4157 18.7748 18.8689 18.4913C19.9504 17.8088 21.3574 18.1991 22.2692 18.8833C23.8109 20.0366 24.5004 22.0421 24.5004 25.3776C24.5004 30.3021 22.2604 36.4253 17.9782 38.5971C17.5477 38.8158 17.3744 39.3426 17.5932 39.7748C17.7507 40.0776 18.0569 40.2526 18.3754 40.2526C18.5084 40.2526 18.6432 40.2211 18.7727 40.1581C23.9089 37.5523 26.2504 30.6678 26.2504 25.3776C26.2504 21.4891 25.3194 18.9813 23.3192 17.4816C21.6532 16.2268 19.4902 16.0396 17.9414 17.0073C17.0927 17.5376 16.5012 18.3671 16.2772 19.3436C16.0514 20.3201 16.2212 21.3246 16.7514 22.1716C17.2887 23.0291 17.9904 23.6206 18.7849 23.8831Z" fill="#FD4621"/>
+                                 <path d="M32.7849 23.8831C33.6704 24.1718 34.5944 24.0388 35.4642 23.4946C35.8719 23.2391 35.9979 22.6983 35.7407 22.2888C35.4852 21.8811 34.9462 21.7551 34.5349 22.0123C34.1149 22.2748 33.7072 22.3413 33.3309 22.2206C32.9302 22.0893 32.5522 21.7516 32.2354 21.2441C31.9519 20.7926 31.8609 20.2571 31.9799 19.7373C32.1007 19.2158 32.4157 18.7748 32.8689 18.4913C33.9522 17.8088 35.3592 18.1991 36.2692 18.8833C37.8109 20.0366 38.5004 22.0421 38.5004 25.3776C38.5004 30.3021 36.2604 36.4253 31.9782 38.5971C31.5477 38.8158 31.3744 39.3426 31.5932 39.7748C31.7507 40.0776 32.0569 40.2526 32.3754 40.2526C32.5084 40.2526 32.6432 40.2211 32.7727 40.1581C37.9089 37.5523 40.2504 30.6678 40.2504 25.3776C40.2504 21.4891 39.3194 18.9813 37.3192 17.4816C35.6532 16.2268 33.4902 16.0396 31.9414 17.0073C31.0927 17.5376 30.5012 18.3671 30.2772 19.3436C30.0514 20.3201 30.2212 21.3246 30.7514 22.1716C31.2887 23.0291 31.9904 23.6206 32.7849 23.8831Z" fill="#FD4621"/>
+                              </svg>
+                           </span>What travellers say </h3>
+                        </div>
+                     </div>
+                     <div class="col-lg-6">
+                        <div class="togo-destination-arrows d-flex align-items-center justify-content-lg-end togo-blog-4-slider-arrow fade-anim" data-delay=".5">
+                           <button class="togo-testimonial-prev">
+                              <span>
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="7" height="13" viewBox="0 0 7 13" fill="none">
+                                 <path d="M6.25 0.75L0.75 6.25L6.25 11.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                 </svg>
+                              </span>
+                           </button>
+                           <button class="togo-testimonial-next">
+                              <span>
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="7" height="13" viewBox="0 0 7 13" fill="none">
+                                 <path d="M0.75 11.75L6.25 6.25L0.75 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                 </svg>
+                              </span>
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <div class="togo-testimonial-5-slider-wrapper">
+                           <div class="togo-testimonial-5-active swiper">
+                              <div class="swiper-wrapper">
+                                 <div class="swiper-slide">
+                                 <div class="togo-testimonial-2-item tes-style-5">
+                                    <div class="togo-testimonial-2-item-rating mb-12">
+                                       <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                       <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       </svg></span>
+                                       <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                       <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       </svg></span>
+                                       <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                       <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       </svg></span>
+                                       <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                       <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       </svg></span>
+                                       <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                       <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       </svg></span>
+                                    </div>
+                                    <h4 class="togo-testimonial-2-item-title">The theme works perfectly and looks great</h4>
+                                    <div class="togo-testimonial-2-item-content mb-28">
+                                       <p>It works perfect and has many functions included where other themes needs to use plugins.The support can't be better. All my issues were answered within 24 hours. Great theme, great support!!!</p>
+                                    </div>
+                                    <div class="togo-testimonial-2-item-user d-flex">
+                                       <div class="togo-testimonial-2-item-user-thumb">
+                                          <img src="assets/img/testimonial/home-2/user-1.jpg" alt="">
+                                       </div>
+                                       <div class="togo-testimonial-2-item-user-content">
+                                          <h4>Sani Laura</h4>
+                                          <span>Spain</span>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="togo-testimonial-2-item tes-style-5">
+                                       <div class="togo-testimonial-2-item-rating mb-12">
+                                          <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                          <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg></span>
+                                          <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                          <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg></span>
+                                          <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                          <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg></span>
+                                          <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                          <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg></span>
+                                          <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                          <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg></span>
+                                       </div>
+                                       <h4 class="togo-testimonial-2-item-title">Excellent theme and excellent support :)</h4>
+                                       <div class="togo-testimonial-2-item-content mb-28">
+                                          <p>It works perfect and has many functions included where other themes needs to use plugins.The support can't be better. All my issues were answered within 24 hours. Great theme, great support!!!</p>
+                                       </div>
+                                       <div class="togo-testimonial-2-item-user d-flex">
+                                          <div class="togo-testimonial-2-item-user-thumb">
+                                             <img src="assets/img/testimonial/home-2/user-2.jpg" alt="">
+                                          </div>
+                                          <div class="togo-testimonial-2-item-user-content">
+                                             <h4>Sani Laura</h4>
+                                             <span>Spain</span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="togo-testimonial-2-item tes-style-5">
+                                       <div class="togo-testimonial-2-item-rating mb-12">
+                                          <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                          <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg></span>
+                                          <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                          <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg></span>
+                                          <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                          <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg></span>
+                                          <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                          <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg></span>
+                                          <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                          <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg></span>
+                                       </div>
+                                       <h4 class="togo-testimonial-2-item-title">The best travel theme for WordPress. Very fast support.</h4>
+                                       <div class="togo-testimonial-2-item-content mb-28">
+                                          <p>It works perfect and has many functions included where other themes needs to use plugins.The support can't be better. All my issues were answered within 24 hours. Great theme, great support!!!</p>
+                                       </div>
+                                       <div class="togo-testimonial-2-item-user d-flex">
+                                          <div class="togo-testimonial-2-item-user-thumb">
+                                             <img src="assets/img/testimonial/home-2/user-3.jpg" alt="">
+                                          </div>
+                                          <div class="togo-testimonial-2-item-user-content">
+                                             <h4>Sani Laura</h4>
+                                             <span>Spain</span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="togo-testimonial-2-item tes-style-5">
+                                       <div class="togo-testimonial-2-item-rating mb-12">
+                                          <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                          <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg></span>
+                                          <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                          <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg></span>
+                                          <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                          <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg></span>
+                                          <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                          <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg></span>
+                                          <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                          <path d="M7.32327 1.08378C7.07807 0.638741 6.42974 0.638741 6.18454 1.08378C6.05096 1.32621 5.92281 1.5719 5.80023 1.82068C5.41424 2.6041 5.08355 3.41822 4.8131 4.25825C4.72059 4.5456 4.4457 4.74517 4.13108 4.75352C3.38864 4.77323 2.64755 4.83432 1.91266 4.93804C1.70278 4.96766 1.49401 5.00063 1.28642 5.0369C0.770247 5.12708 0.576561 5.7156 0.943106 6.07427C1.02672 6.15608 1.11104 6.23721 1.19606 6.31765C1.83183 6.91916 2.50669 7.48188 3.2166 8.0019C3.46144 8.18126 3.5621 8.48895 3.46852 8.7698C3.17533 9.6497 2.94843 10.5586 2.79353 11.4911C2.76246 11.678 2.7343 11.866 2.70907 12.0548C2.64186 12.5579 3.1809 12.9132 3.64877 12.6734C3.81578 12.5878 3.98131 12.4998 4.14532 12.4095C4.89781 11.9953 5.61824 11.5324 6.30207 11.0252C6.56749 10.8283 6.94033 10.8283 7.20574 11.0252C7.88958 11.5324 8.61 11.9953 9.36249 12.4095C9.5265 12.4998 9.69203 12.5878 9.85904 12.6734C10.3269 12.9132 10.866 12.5579 10.7987 12.0548C10.7735 11.866 10.7453 11.678 10.7143 11.4911C10.5594 10.5586 10.3325 9.6497 10.0393 8.7698C9.94572 8.48895 10.0464 8.18126 10.2912 8.0019C11.0011 7.48188 11.676 6.91916 12.3118 6.31765C12.3968 6.23721 12.4811 6.15608 12.5647 6.07427C12.9313 5.7156 12.7376 5.12708 12.2214 5.0369C12.0138 5.00063 11.805 4.96766 11.5951 4.93804C10.8603 4.83432 10.1192 4.77323 9.37673 4.75352C9.06212 4.74517 8.78723 4.5456 8.69471 4.25825C8.42426 3.41822 8.09358 2.6041 7.70758 1.82068C7.585 1.5719 7.45685 1.32621 7.32327 1.08378Z" fill="#FD4621" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg></span>
+                                       </div>
+                                       <h4 class="togo-testimonial-2-item-title">The theme works perfectly and looks great</h4>
+                                       <div class="togo-testimonial-2-item-content mb-28">
+                                          <p>It works perfect and has many functions included where other themes needs to use plugins.The support can't be better. All my issues were answered within 24 hours. Great theme, great support!!!</p>
+                                       </div>
+                                       <div class="togo-testimonial-2-item-user d-flex">
+                                          <div class="togo-testimonial-2-item-user-thumb">
+                                             <img src="assets/img/testimonial/home-2/user-4.jpg" alt="">
+                                          </div>
+                                          <div class="togo-testimonial-2-item-user-content">
+                                             <h4>Sani Laura</h4>
+                                             <span>Spain</span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+             </div>
+            <!-- testimonial area end -->
+
+
+            <!-- cta area start -->
+            <div class="togo-cta-4-sec togo-cta-7-border p-relative mt-100">
+               <div class="container">
+                  <div class="row align-items-center">
+                     <div class="col-lg-6">
+                        <div class="togo-cta-4-wrapper p-relative mb-40">
+                           <h4 class="togo-section-title ff-playfair mb-20 fade-anim" data-delay=".3">Download the Togo app</h4>
+                           <div class="togo-cta-4-list fade-anim" data-delay=".5">
+                              <ul>
+                                 <li>
+                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M9.71278 3.64026C10.2941 3.14489 10.5847 2.8972 10.8886 2.75195C11.5915 2.41602 12.4085 2.41602 13.1114 2.75195C13.4153 2.8972 13.7059 3.14489 14.2872 3.64026C14.8856 4.15023 15.4938 4.40761 16.2939 4.47146C17.0552 4.53222 17.4359 4.56259 17.7535 4.67477C18.488 4.93421 19.0658 5.51198 19.3252 6.24652C19.4374 6.5641 19.4678 6.94476 19.5285 7.70608C19.5924 8.50621 19.8498 9.11436 20.3597 9.71278C20.8551 10.2941 21.1028 10.5847 21.248 10.8886C21.584 11.5915 21.584 12.4085 21.248 13.1114C21.1028 13.4153 20.8551 13.7059 20.3597 14.2872C19.8391 14.8981 19.5911 15.5102 19.5285 16.2939C19.4678 17.0552 19.4374 17.4359 19.3252 17.7535C19.0658 18.488 18.488 19.0658 17.7535 19.3252C17.4359 19.4374 17.0552 19.4678 16.2939 19.5285C15.4938 19.5924 14.8856 19.8498 14.2872 20.3597C13.7059 20.8551 13.4153 21.1028 13.1114 21.248C12.4085 21.584 11.5915 21.584 10.8886 21.248C10.5847 21.1028 10.2941 20.8551 9.71278 20.3597C9.10185 19.8391 8.48984 19.5911 7.70608 19.5285C6.94476 19.4678 6.5641 19.4374 6.24652 19.3252C5.51198 19.0658 4.93421 18.488 4.67477 17.7535C4.56259 17.4359 4.53222 17.0552 4.47146 16.2939C4.40761 15.4938 4.15023 14.8856 3.64026 14.2872C3.14489 13.7059 2.8972 13.4153 2.75195 13.1114C2.41602 12.4085 2.41602 11.5915 2.75195 10.8886C2.8972 10.5847 3.14489 10.2941 3.64026 9.71278C4.16089 9.10185 4.40892 8.48984 4.47146 7.70608C4.53222 6.94476 4.56259 6.5641 4.67477 6.24652C4.93421 5.51198 5.51198 4.93421 6.24652 4.67477C6.5641 4.56259 6.94476 4.53222 7.70608 4.47146C8.50621 4.40761 9.11436 4.15023 9.71278 3.64026Z" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.66797 12.6331L10.1738 14.3541C10.5972 14.838 11.3606 14.8023 11.7371 14.2811L15.3346 9.2998" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg></span>
+                                    Book Flights and Accomodations
+                                 </li>
+                                 <li>
+                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M9.71278 3.64026C10.2941 3.14489 10.5847 2.8972 10.8886 2.75195C11.5915 2.41602 12.4085 2.41602 13.1114 2.75195C13.4153 2.8972 13.7059 3.14489 14.2872 3.64026C14.8856 4.15023 15.4938 4.40761 16.2939 4.47146C17.0552 4.53222 17.4359 4.56259 17.7535 4.67477C18.488 4.93421 19.0658 5.51198 19.3252 6.24652C19.4374 6.5641 19.4678 6.94476 19.5285 7.70608C19.5924 8.50621 19.8498 9.11436 20.3597 9.71278C20.8551 10.2941 21.1028 10.5847 21.248 10.8886C21.584 11.5915 21.584 12.4085 21.248 13.1114C21.1028 13.4153 20.8551 13.7059 20.3597 14.2872C19.8391 14.8981 19.5911 15.5102 19.5285 16.2939C19.4678 17.0552 19.4374 17.4359 19.3252 17.7535C19.0658 18.488 18.488 19.0658 17.7535 19.3252C17.4359 19.4374 17.0552 19.4678 16.2939 19.5285C15.4938 19.5924 14.8856 19.8498 14.2872 20.3597C13.7059 20.8551 13.4153 21.1028 13.1114 21.248C12.4085 21.584 11.5915 21.584 10.8886 21.248C10.5847 21.1028 10.2941 20.8551 9.71278 20.3597C9.10185 19.8391 8.48984 19.5911 7.70608 19.5285C6.94476 19.4678 6.5641 19.4374 6.24652 19.3252C5.51198 19.0658 4.93421 18.488 4.67477 17.7535C4.56259 17.4359 4.53222 17.0552 4.47146 16.2939C4.40761 15.4938 4.15023 14.8856 3.64026 14.2872C3.14489 13.7059 2.8972 13.4153 2.75195 13.1114C2.41602 12.4085 2.41602 11.5915 2.75195 10.8886C2.8972 10.5847 3.14489 10.2941 3.64026 9.71278C4.16089 9.10185 4.40892 8.48984 4.47146 7.70608C4.53222 6.94476 4.56259 6.5641 4.67477 6.24652C4.93421 5.51198 5.51198 4.93421 6.24652 4.67477C6.5641 4.56259 6.94476 4.53222 7.70608 4.47146C8.50621 4.40761 9.11436 4.15023 9.71278 3.64026Z" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.66797 12.6331L10.1738 14.3541C10.5972 14.838 11.3606 14.8023 11.7371 14.2811L15.3346 9.2998" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg></span>
+                                    Navigate your itinerary from A to Z
+                                 </li>
+                                 <li>
+                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M9.71278 3.64026C10.2941 3.14489 10.5847 2.8972 10.8886 2.75195C11.5915 2.41602 12.4085 2.41602 13.1114 2.75195C13.4153 2.8972 13.7059 3.14489 14.2872 3.64026C14.8856 4.15023 15.4938 4.40761 16.2939 4.47146C17.0552 4.53222 17.4359 4.56259 17.7535 4.67477C18.488 4.93421 19.0658 5.51198 19.3252 6.24652C19.4374 6.5641 19.4678 6.94476 19.5285 7.70608C19.5924 8.50621 19.8498 9.11436 20.3597 9.71278C20.8551 10.2941 21.1028 10.5847 21.248 10.8886C21.584 11.5915 21.584 12.4085 21.248 13.1114C21.1028 13.4153 20.8551 13.7059 20.3597 14.2872C19.8391 14.8981 19.5911 15.5102 19.5285 16.2939C19.4678 17.0552 19.4374 17.4359 19.3252 17.7535C19.0658 18.488 18.488 19.0658 17.7535 19.3252C17.4359 19.4374 17.0552 19.4678 16.2939 19.5285C15.4938 19.5924 14.8856 19.8498 14.2872 20.3597C13.7059 20.8551 13.4153 21.1028 13.1114 21.248C12.4085 21.584 11.5915 21.584 10.8886 21.248C10.5847 21.1028 10.2941 20.8551 9.71278 20.3597C9.10185 19.8391 8.48984 19.5911 7.70608 19.5285C6.94476 19.4678 6.5641 19.4374 6.24652 19.3252C5.51198 19.0658 4.93421 18.488 4.67477 17.7535C4.56259 17.4359 4.53222 17.0552 4.47146 16.2939C4.40761 15.4938 4.15023 14.8856 3.64026 14.2872C3.14489 13.7059 2.8972 13.4153 2.75195 13.1114C2.41602 12.4085 2.41602 11.5915 2.75195 10.8886C2.8972 10.5847 3.14489 10.2941 3.64026 9.71278C4.16089 9.10185 4.40892 8.48984 4.47146 7.70608C4.53222 6.94476 4.56259 6.5641 4.67477 6.24652C4.93421 5.51198 5.51198 4.93421 6.24652 4.67477C6.5641 4.56259 6.94476 4.53222 7.70608 4.47146C8.50621 4.40761 9.11436 4.15023 9.71278 3.64026Z" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.66797 12.6331L10.1738 14.3541C10.5972 14.838 11.3606 14.8023 11.7371 14.2811L15.3346 9.2998" stroke="#FD4621" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg></span>
+                                    Enhance every step of your adventure with audio guide
+                                 </li>
+                              </ul>
+                           </div>
+                           <div class="togo-cta-4-rd mb-30 fade-anim" data-delay=".7">
+                              <div class="togo-cta-4-rd-item d-flex">
+                                 <div class="togo-cta-4-rd-item-icon">
+                                    <span>
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                       <path d="M12.8541 3.50067C12.4862 2.83311 11.5138 2.83311 11.1459 3.50067C10.9456 3.86432 10.7534 4.23285 10.5695 4.60602C9.99049 5.78115 9.49447 7.00233 9.08879 8.26238C8.95002 8.69339 8.53768 8.99275 8.06577 9.00528C6.9521 9.03484 5.84047 9.12648 4.73814 9.28206C4.42331 9.32649 4.11016 9.37595 3.79877 9.43035C3.02451 9.56562 2.73398 10.4484 3.2838 10.9864C3.40922 11.1091 3.5357 11.2308 3.66323 11.3515C4.61689 12.2537 5.62918 13.0978 6.69404 13.8779C7.06131 14.1469 7.21228 14.6084 7.07191 15.0297C6.63214 16.3496 6.29178 17.713 6.05943 19.1116C6.01284 19.3921 5.97058 19.674 5.93274 19.9573C5.83193 20.7119 6.64048 21.2448 7.3423 20.885C7.59281 20.7566 7.84111 20.6247 8.08712 20.4893C9.21586 19.8679 10.2965 19.1736 11.3222 18.4128C11.7204 18.1175 12.2796 18.1175 12.6778 18.4128C13.7035 19.1736 14.7841 19.8679 15.9129 20.4893C16.1589 20.6247 16.4072 20.7566 16.6577 20.885C17.3595 21.2448 18.1681 20.7119 18.0673 19.9573C18.0294 19.674 17.9872 19.3921 17.9406 19.1116C17.7082 17.713 17.3679 16.3496 16.9281 15.0297C16.7877 14.6084 16.9387 14.1469 17.306 13.8779C18.3708 13.0978 19.3831 12.2537 20.3368 11.3515C20.4643 11.2308 20.5908 11.1091 20.7162 10.9864C21.266 10.4484 20.9755 9.56562 20.2012 9.43035C19.8898 9.37595 19.5767 9.32649 19.2619 9.28206C18.1595 9.12648 17.0479 9.03484 15.9342 9.00528C15.4623 8.99275 15.05 8.69339 14.9112 8.26237C14.5055 7.00233 14.0095 5.78115 13.4305 4.60602C13.2466 4.23285 13.0544 3.86432 12.8541 3.50067Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       </svg>
+                                    </span>
+                                 </div>
+                                 <div class="togo-cta-4-rd-item-content">
+                                    <span>Review</span>
+                                    <h4>4.8</h4>
+                                 </div>
+                              </div>
+                              <div class="togo-cta-4-rd-item d-flex">
+                                 <div class="togo-cta-4-rd-item-icon">
+                                    <span>
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                       <path d="M4 16.0042V17C4 18.6569 5.34315 20 7 20H17C18.6569 20 20 18.6569 20 17V16" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       <path d="M12 4.5V15.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       <path d="M15.5 12L12 15.5L8.5 12" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       </svg>
+                                    </span>
+                                 </div>
+                                 <div class="togo-cta-4-rd-item-content">
+                                    <span>Download</span>
+                                    <h4>350K+</h4>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="togo-cta-4-dwn-btn fade-anim" data-delay=".9">
+                              <span>Available to download</span>
+                              <div class="togo-cta-4-dwn-btn-box">
+                                 <a href="#">
+                                    <img src="assets/img/cta/home-4/app-store.png" alt="">
+                                 </a>
+                                 <a href="#">
+                                    <img src="assets/img/cta/home-4/google-play.png" alt="">
+                                 </a>
+                              </div>
+                           </div>
+                           <div class="togo-cta-4-shape">
+                              <img src="assets/img/cta/home-4/cta-shape.png" alt="">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-6">
+                        <div class="togo-cta-thumb mb-85 fade-anim" data-delay=".5">
+                           <img src="assets/img/cta/home-4/cta-thumb.png" alt="">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- cta area end -->
+
+
+         </main>
+      
+         <footer>
+
+            <!-- footer area start -->
+             <div class="togo-footer-sec pt-60">
+               <div class="container">
+                  <div class="togo-footer-main-wrapper pb-10">
+                     <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                           <div class="togo-footer-widget mb-40 togo-footer-col-1">
+                              <h4 class="togo-footer-widget-title mb-25">Contact us</h4>
+                              <div class="togo-footer-widget-info mb-15">
+                                 <div class="togo-footer-widget-info-item">
+                                    <a href="mailto:hello@yoursite.com">
+                                       <span>
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                             <path d="M1.83398 10.9998C1.83398 7.54287 1.83398 5.81439 3.17641 4.74045C4.51884 3.6665 6.67944 3.6665 11.0007 3.6665C15.3219 3.6665 17.4825 3.6665 18.8249 4.74045C20.1673 5.81439 20.1673 7.54287 20.1673 10.9998C20.1673 14.4568 20.1673 16.1853 18.8249 17.2592C17.4825 18.3332 15.3219 18.3332 11.0007 18.3332C6.67944 18.3332 4.51884 18.3332 3.17641 17.2592C1.83398 16.1853 1.83398 14.4568 1.83398 10.9998Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                             <path d="M18.9434 4.86768L14.5201 8.98251C12.8365 10.3855 11.9947 11.087 10.9991 11.087C10.0034 11.087 9.16162 10.3855 7.47804 8.98251L3.05469 4.86768" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg>
+                                       </span>
+                                       hello@yoursite.com
+                                    </a>
+                                 </div>
+                                 <div class="togo-footer-widget-info-item">
+                                    <a href="tel:0123456">
+                                       <span>
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                       <path d="M14.3 13.3113C12.1046 15.622 6.5045 10.0722 8.70828 7.75274C10.0538 6.33657 8.53383 4.71815 7.69249 3.52856C6.11347 1.29596 2.64707 4.37837 2.75235 6.33915C3.08433 12.5224 9.77308 19.8501 16.2502 19.2109C18.2765 19.011 20.6047 15.3516 18.2805 14.0142C17.1183 13.3454 15.523 12.0241 14.3 13.3113Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       </svg>
+                                    </span> (00) 238 9836</a>
+                                 </div>
+                                 <div class="togo-footer-widget-info-item">
+                                    <a href="#"> 
+                                       <span>
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                       <path d="M11.5132 19.0857C11.206 19.3048 10.794 19.3048 10.4868 19.0857C6.06043 15.9292 1.36177 9.43901 6.11114 4.74951C7.40775 3.46924 9.16632 2.75 11 2.75C12.8337 2.75 14.5923 3.46924 15.8889 4.74951C20.6382 9.43901 15.9396 15.9292 11.5132 19.0857Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       <path d="M10.9993 11.0002C12.0119 11.0002 12.8327 10.1794 12.8327 9.16683C12.8327 8.15431 12.0119 7.3335 10.9993 7.3335C9.98683 7.3335 9.16602 8.15431 9.16602 9.16683C9.16602 10.1794 9.98683 11.0002 10.9993 11.0002Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       </svg>
+                                    </span>
+                                       351 Humberto Plaza, West <br> Ashtynstead, Ohio - 12551, Canada</a>
+                                 </div>
+                              </div>
+                              <div class="togo-footer-widget-info-btn">
+                                 <a class="togo-btn-primary" href="#">Download bruchore</a>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6">
+                           <div class="togo-footer-widget mb-40 togo-footer-col-2">
+                              <h4 class="togo-footer-widget-title mb-25">destinations</h4>
+                              <div class="togo-footer-widget-menu">
+                                 <ul>
+                                    <li><a class="hover-line" href="#">Singapore</a></li>
+                                    <li><a class="hover-line" href="#">Thailand</a></li>
+                                    <li><a class="hover-line" href="#">Australia</a></li>
+                                    <li><a class="hover-line" href="#">Sri lanka</a></li>
+                                    <li><a class="hover-line" href="#">Norway</a></li>
+                                    <li><a class="hover-line" href="#">Canada</a></li>
+                                    <li><a class="hover-line" href="#">Sweden</a></li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6">
+                           <div class="togo-footer-widget mb-40 togo-footer-col-3">
+                              <h4 class="togo-footer-widget-title mb-25">Company</h4>
+                              <div class="togo-footer-widget-menu">
+                                 <ul>
+                                    <li><a class="hover-line" href="#">About us</a></li>
+                                    <li><a class="hover-line" href="#">Carrer</a></li>
+                                    <li><a class="hover-line" href="#">Blog</a></li>
+                                    <li><a class="hover-line" href="#">Partner</a></li>
+                                    <li><a class="hover-line" href="#">Contact</a></li>
+                                    <li><a class="hover-line" href="#">Terms & policies</a></li>
+                                    <li><a class="hover-line" href="#">Trust Center</a></li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                           <div class="togo-footer-widget mb-40 togo-footer-col-4">
+                              <h4 class="togo-footer-widget-title mb-28">Stay in touch</h4>
+                              <div class="togo-footer-widget-input mb-30">
+                                 <p>Subscribe to our Newsletter for the <br> Latest Updates and Special Offers</p>
+                                 <div class="p-relative">
+                                    <input type="email" placeholder="Enter your email">
+                                    <button class="togo-footer-widget-input-btn">
+                                       <span>
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                          <path d="M18.5969 2.77847C18.9846 2.64279 19.3572 3.01541 19.2215 3.40306L13.79 18.9217C13.6433 19.3408 13.0597 19.3646 12.8794 18.9589L9.92881 12.32C9.87952 12.2091 9.79085 12.1205 9.67995 12.0712L3.04112 9.1206C2.63543 8.94029 2.65924 8.35666 3.07827 8.21L18.5969 2.77847Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                          <path d="M12.832 9.1665L10.082 11.9165" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg>
+                                       </span>
+                                    </button>
+                                 </div>
+                              </div>
+                              <div class="togo-footer-widget-social-wrap mb-30">
+                                 <h4 class="togo-footer-widget-title mb-14">Follow us</h4>
+                                 <div class="togo-footer-widget-social-icon">
+                                    <a href="#">
+                                       <span>
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="20" viewBox="0 0 13 20" fill="none">
+                                          <path d="M0.75 7.75V11.75H3.75V18.75H7.75V11.75H10.75L11.75 7.75H7.75V5.75C7.75 5.20533 8.20533 4.75 8.75 4.75H11.75V0.75H8.75C6.02667 0.75 3.75 3.02667 3.75 5.75V7.75H0.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg>
+                                       </span>
+                                    </a>
+                                    <a href="#"><span>
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                       <path d="M16.5 3H7.5C5.01472 3 3 5.01472 3 7.5V16.5C3 18.9853 5.01472 21 7.5 21H16.5C18.9853 21 21 18.9853 21 16.5V7.5C21 5.01472 18.9853 3 16.5 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       <path d="M15.4621 11.4866C15.5701 12.2148 15.4457 12.9585 15.1067 13.612C14.7676 14.2654 14.2311 14.7953 13.5736 15.1263C12.916 15.4573 12.1708 15.5725 11.444 15.4555C10.7171 15.3386 10.0457 14.9954 9.52513 14.4749C9.00457 13.9543 8.66141 13.2829 8.54446 12.556C8.4275 11.8292 8.5427 11.084 8.87368 10.4264C9.20466 9.76886 9.73456 9.23238 10.388 8.89332C11.0415 8.55426 11.7852 8.42988 12.5134 8.53786C13.2562 8.64801 13.9439 8.99414 14.4749 9.52513C15.0059 10.0561 15.352 10.7438 15.4621 11.4866Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       <path d="M17 6.5H17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       </svg>
+                                    </span></a>
+                                                                        <a href="#"><span>
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                                       <path d="M14.5 0.75L9.06391 7.10276M1.66667 15.4167L7.10276 9.06391M7.10276 9.06391L12.4146 15.1021C12.5892 15.3006 12.8577 15.4167 13.1421 15.4167H14.4934C15.2603 15.4167 15.6917 14.6368 15.2208 14.1016L9.06391 7.10276M7.10276 9.06391L0.945838 2.06506C0.475005 1.52984 0.906398 0.75 1.6733 0.75H3.02462C3.30901 0.75 3.57748 0.866089 3.75208 1.06457L9.06391 7.10276" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       </svg>
+                                    </span></a>
+                                    <a href="#"><span>
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                       <path d="M10.5 9.90776V14.0923C10.5 14.3174 10.6847 14.5 10.9125 14.5C10.9934 14.5 11.0725 14.4765 11.1399 14.4324L14.3149 12.3582C14.505 12.234 14.5572 11.9811 14.4316 11.7932C14.4016 11.7483 14.3628 11.7097 14.3176 11.6797L11.1426 9.5694C10.9536 9.44378 10.6973 9.49339 10.5702 9.68029C10.5244 9.74755 10.5 9.82675 10.5 9.90776Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       <path d="M2 12C2 8.70017 2 7.05025 3.46447 6.02513C4.92893 5 7.28595 5 12 5C16.714 5 19.0711 5 20.5355 6.02513C22 7.05025 22 8.70017 22 12C22 15.2998 22 16.9497 20.5355 17.9749C19.0711 19 16.714 19 12 19C7.28595 19 4.92893 19 3.46447 17.9749C2 16.9497 2 15.2998 2 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       </svg>
+                                    </span></a>
+                                    <a href="#"><span>
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                       <path d="M7.45281 13.1794C6.34487 10.9183 7.85268 6.5121 12.9247 7.23245C18.5112 8.02588 17.5058 16.7097 12.8479 16.3706C11.374 16.2632 10.8167 15.0418 10.6712 13.794M10.6712 13.794C10.5608 12.8479 10.6872 11.8867 10.8304 11.3844C11.0746 10.5272 11.4794 10.6437 11.1836 11.7775C11.0396 12.3294 10.8639 13.022 10.6712 13.794ZM10.6712 13.794C10.1568 15.8538 9.52071 18.4787 9.04037 20.5019" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       </svg>
+                                    </span></a>
+                                 </div>
+                              </div>
+                              <div class="togo-footer-widget-payment">
+                                 <h4 class="togo-footer-widget-title mb-18">Accepted Payment Types</h4>
+                                 <div class="togo-footer-widget-payment-thumb">
+                                    <a href="#">
+                                       <img src="assets/img/blog/payment-logo.png" alt="">
+                                    </a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="togo-footer-top-border pt-35 pb-30">
+                     <div class="row align-items-center">
+                        <div class="col-6">
+                           <div class="togo-footer-copyright-text">
+                              <p><a target="_blank" href="https://themeforest.net/user/ib-themes/portfolio">Ib themes</a> © 2026 all right reserved.</p>
+                           </div>
+                        </div>
+                        <div class="col-6">
+                           <div class="togo-footer-copyright-currence text-end">
+                              <div class="togo-footer-copyright-currence-btn">
+                                 <span>
+                                    EN / USD 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                 </span>
+                                 <div class="togo-footer-copyright-currence-content">
+                                    <h4>Currencies</h4>
+                                    <ul class="currence-work">
+                                       <li><a href="#">USD</a></li>
+                                       <li><a href="#">ERO</a></li>
+                                    </ul>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+             </div>
+            <!-- footer area end -->
+
+         </footer>
+
+      </div>
+   </div>
+
+
+   <!-- JS here -->
+   <script src="assets/js/vendor/jquery.js"></script>
+   <script src="assets/js/bootstrap-bundle.js"></script>
+   <script src="assets/js/swiper-bundle.js"></script>
+   <script src="assets/js/magnific-popup.js"></script>
+   <script src="assets/js/nice-select.js"></script>
+   <script src="assets/js/purecounter.js"></script>
+   <script src="assets/js/fecha.js"></script>
+   <script src="assets/js/hotel-datepicker.js"></script>
+   <script src="assets/js/vendor/incluid-bundle.js"></script>
+   <script src="assets/js/scripts.js"></script>
+
+</body>
+
+
+<!-- Mirrored from togo.ibthemespro.com/togo/index-7.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Mar 2026 17:23:43 GMT -->
+</html>

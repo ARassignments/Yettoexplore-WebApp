@@ -1,0 +1,1137 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+
+<!-- Mirrored from togo.ibthemespro.com/togo/sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Mar 2026 17:24:36 GMT -->
+<head>
+
+   <meta charset="utf-8">
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <title>Togo – Travel & Tour Booking HTML Template</title>
+   <meta name="description" content="">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <!-- Place favicon.ico in the root directory -->
+   <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo/favicon.png">
+
+   <!-- CSS here -->
+   <link rel="stylesheet" href="assets/css/bootstrap.css">
+   <link rel="stylesheet" href="assets/css/swiper-bundle.css">
+   <link rel="stylesheet" href="assets/css/datepicker.css">
+   <link rel="stylesheet" href="assets/css/magnific-popup.css">
+   <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
+   <link rel="stylesheet" href="assets/css/main.css">
+
+
+</head>
+
+
+
+<body data-bg-color="#FBFBFB">
+
+      <!-- Loader Start -->
+   <div class="togo-loader">
+      <div class="togo-preloader p-relative">
+         <span style="--i: 1"></span>
+         <span style="--i: 2"></span>
+         <span style="--i: 3"></span>
+         <span style="--i: 4"></span>
+         <span style="--i: 5"></span>
+         <span style="--i: 6"></span>
+         <span style="--i: 7"></span>
+         <span style="--i: 8"></span>
+         <span style="--i: 9"></span>
+         <span style="--i: 10"></span>
+         <span style="--i: 11"></span>
+         <span style="--i: 12"></span>
+         <span style="--i: 13"></span>
+         <span style="--i: 14"></span>
+         <span style="--i: 15"></span>
+         <span style="--i: 16"></span>
+         <span style="--i: 17"></span>
+         <span style="--i: 18"></span>
+         <span style="--i: 19"></span>
+         <span style="--i: 20"></span>
+         <div class="plane">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="80" height="80" fill="currentColor">
+               <path d="M407.72 208c-2.72 0-14.44.08-18.67.31l-57.77 1.52L198.06 48h-62.81l74.59 164.61-97.31 1.44L68.25 160H16.14l20.61 94.18c.15.54.33 1.07.53 1.59a.26.26 0 010 .15 15.42 15.42 0 00-.53 1.58L15.86 352h51.78l45.45-55 96.77 2.17L135.24 464h63l133-161.75 57.77 1.54c4.29.23 16 .31 18.66.31 24.35 0 44.27-3.34 59.21-9.94C492.22 283 496 265.46 496 256c0-30.06-33-48-88.28-48zm-71.29 87.9z"></path>
+            </svg>
+         </div>
+      </div>
+   </div>
+   <!-- Loader End -->
+
+
+   <!-- back btn start -->
+   <div class="togo-back-wrapper">
+      <button id="back-btn-top" type="button" class="togo-back-btn">
+         <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+               stroke-linejoin="round" />
+         </svg>
+      </button>
+   </div>
+   <!-- back btn end -->
+
+
+   <!-- cart-area-start -->
+   <div class="cart-area">
+      <div class="cart-wrapper">
+         <div class="cart-top">
+            <div class="cart-title-wrap">
+               <h4 class="cart-title">Your Cart </h4>
+            </div> 
+            <div class="cart-close">
+               <button class="offcanvas-close-btn">
+                  <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M9.19141 9.80762L27.5762 28.1924" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                     <path d="M9.19141 28.1924L27.5762 9.80761" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+               </button>
+            </div>
+         </div>
+         <div class="cart-empty-content">
+            <span class="cart-empty-icon">
+               <svg width="70" height="78" fill="none"> <path fill="#888" fill-rule="evenodd" d="m2.357 32.177.732 3.764a1.13 1.13 0 1 1-2.216.433L.14 32.609c-.891-4.581 2.577-8.87 7.23-8.87H62.63c4.597 0 8.053 4.194 7.254 8.738l-6.933 39.386C62.329 75.406 59.278 78 55.698 78H15.73c-3.438 0-6.41-2.398-7.179-5.767l-1.08-4.735a1.129 1.129 0 1 1 2.201-.504l1.08 4.735c.538 2.355 2.607 4.01 4.978 4.01h39.968c2.468 0 4.594-1.79 5.03-4.268l6.933-39.386C68.22 28.899 65.798 26 62.63 26H7.37c-3.206 0-5.638 2.965-5.013 6.177Z" clip-rule="evenodd"></path> <path fill="#888" d="M32.633 2.802a1.805 1.805 0 0 0-.489-2.496 1.786 1.786 0 0 0-2.485.49L11.027 28.684a1.805 1.805 0 0 0 .489 2.497A1.786 1.786 0 0 0 14 30.689L32.633 2.802ZM56.038 30.501a1.786 1.786 0 0 0 2.447-.657c.495-.86.203-1.96-.654-2.458L35.096 14.172a1.786 1.786 0 0 0-2.447.656c-.495.86-.203 1.96.654 2.459L56.038 30.5Z"></path> <path fill="#888" fill-rule="evenodd" d="M35.012 53.02c-.298.07-.663.362-.897.674-.514.683-1.412.76-2.008.17-.595-.588-.662-1.62-.148-2.303.477-.635 1.358-1.48 2.488-1.742a2.917 2.917 0 0 1 1.943.207c.67.319 1.247.882 1.727 1.643.46.731.319 1.752-.318 2.281-.637.53-1.527.366-1.988-.365-.237-.375-.42-.498-.51-.54a.412.412 0 0 0-.29-.025Z" clip-rule="evenodd"></path> <path fill="#888" d="M25.402 47.478a1.695 1.695 0 1 0-.002-3.389 1.695 1.695 0 0 0 .003 3.39ZM44.596 47.478c.936 0 1.693-.759 1.693-1.695a1.694 1.694 0 1 0-3.387 0c0 .936.758 1.695 1.694 1.695Z"></path></svg>
+            </span>
+            <h4 class="cart-empty-title">Your cart is currently empty!</h4>
+            <div class="cart-empty-text">
+               <p>You may check out all the available trips and book one that suits you.</p>
+            </div>
+            <div class="cart-empty-btn">
+               <a class="togo-btn-primary" href="shop.html">Continue Browsing Trips</a>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- cart-area-end -->
+
+
+   <!-- filter-area-start -->
+   <div class="filter-area">
+      <div class="filter-wrapper">
+         <div class="togo-tour-sidebar">
+            <div class="togo-tour-widget">
+               <h4 class="togo-tour-widget-title">Price range <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none">
+                  <path d="M12.75 6.75L6.75 0.75L0.75 6.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+               </span></h4>
+               <div class="togo-tour-widget-content inner_content">
+                  <div class="togo-tour-widget-filter p-relative">
+                     <div id="slider-range" class="mb-25"></div>
+                     <div class="input-range d-flex justify-content-between">
+                        <div class="input-range-item">
+                           <h4 class="input-range-item-title">
+                              Min. price
+                           </h4>
+                           <input type="text" id="min-amount" readonly placeholder="Min price">
+                        </div>
+                        <div class="input-range-item">
+                           <h4 class="input-range-item-title">
+                              Max. price
+                           </h4>
+                           <input type="text" id="max-amount" readonly placeholder="Max price">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="togo-tour-widget">
+               <h4 class="togo-tour-widget-title">Tour styles <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none">
+                  <path d="M12.75 6.75L6.75 0.75L0.75 6.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+               </span></h4>
+               <div class="togo-tour-widget-filter-checkbox inner_content">
+                  <ul>
+                     <li>
+                        <span class="togo-from-checkbox">
+                           <input id="natural" type="checkbox">
+                           <label for="natural">Natural</label>
+                        </span>
+                     </li>
+                     <li>
+                        <span class="togo-from-checkbox">
+                           <input id="cuisine" type="checkbox">
+                           <label for="cuisine">Cuisine</label>
+                        </span>
+                     </li>
+                     <li>
+                        <span class="togo-from-checkbox">
+                           <input id="biking" type="checkbox">
+                           <label for="biking">Biking</label>
+                        </span>
+                     </li>
+                     <li>
+                        <span class="togo-from-checkbox">
+                           <input id="family" type="checkbox">
+                           <label for="family">Family</label>
+                        </span>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="togo-tour-widget">
+               <h4 class="togo-tour-widget-title">Tour types <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none">
+                  <path d="M12.75 6.75L6.75 0.75L0.75 6.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+               </span></h4>
+               <div class="togo-tour-widget-filter-checkbox inner_content">
+                  <ul>
+                     <li>
+                        <span class="togo-from-checkbox">
+                           <input id="group" type="checkbox">
+                           <label for="group">Group tour</label>
+                        </span>
+                     </li>
+                     <li>
+                        <span class="togo-from-checkbox">
+                           <input id="private" type="checkbox">
+                           <label for="private">Private tour</label>
+                        </span>
+                     </li>
+                     <li>
+                        <span class="togo-from-checkbox">
+                           <input id="daily" type="checkbox">
+                           <label for="daily">Daily tour</label>
+                        </span>
+                     </li>
+                     <li>
+                        <span class="togo-from-checkbox">
+                           <input id="package" type="checkbox">
+                           <label for="package">Package tour</label>
+                        </span>
+                     </li>
+                     <li class="togo-show-more" >
+                        <a class="line-border" href="javascript:void(0)">
+                           <span>Show more 
+                              <svg class="ml-4" xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none" style="transform: rotate(180deg);">
+                                 <path d="M12.75 6.75L6.75 0.75L0.75 6.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                              </svg>
+                           </span>
+                        </a>
+                     </li>
+                     <li class="togo-show-more-content">
+                        <ul>
+                           <li>
+                              <span class="togo-from-checkbox">
+                                 <input id="city" type="checkbox">
+                                 <label for="city">City Tours</label>
+                              </span>
+                           </li>
+                           <li>
+                              <span class="togo-from-checkbox">
+                                 <input id="cultural" type="checkbox">
+                                 <label for="cultural">Cultural & Thematic Tours</label>
+                              </span>
+                           </li>
+                           <li>
+                              <span class="togo-from-checkbox">
+                                 <input id="friendly" type="checkbox">
+                                 <label for="friendly">Family Friendly Tours</label>
+                              </span>
+                           </li>
+                        </ul>
+                     </li>
+                     <li class="togo-show-less">
+                        <a class="line-border" href="javascript:void(0)">
+                           <span>Show less
+                              <svg class="ml-4" xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none">
+                              <path d="M12.75 6.75L6.75 0.75L0.75 6.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                              </svg>
+                           </span>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="togo-tour-widget">
+               <h4 class="togo-tour-widget-title">Duration <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none">
+                  <path d="M12.75 6.75L6.75 0.75L0.75 6.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+               </span></h4>
+               <div class="togo-tour-widget-filter-checkbox inner_content">
+                  <ul>
+                     <li>
+                        <span class="togo-from-checkbox">
+                           <input id="hour-1" type="checkbox">
+                           <label for="hour-1">0 - 3 hours</label>
+                        </span>
+                     </li>
+                     <li>
+                        <span class="togo-from-checkbox">
+                           <input id="hour-2" type="checkbox">
+                           <label for="hour-2">3 - 5 hours</label>
+                        </span>
+                     </li>
+                     <li>
+                        <span class="togo-from-checkbox">
+                           <input id="hour-3" type="checkbox">
+                           <label for="hour-3">5 - 8 hours</label>
+                        </span>
+                     </li>
+                     <li>
+                        <span class="togo-from-checkbox">
+                           <input id="hour-4" type="checkbox">
+                           <label for="hour-4">8 - 12 hours</label>
+                        </span>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="togo-tour-widget">
+               <h4 class="togo-tour-widget-title">Time of day <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none">
+                  <path d="M12.75 6.75L6.75 0.75L0.75 6.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+               </span></h4>
+               <div class="togo-tour-widget-filter-checkbox inner_content">
+                  <ul>
+                     <li>
+                        <span class="togo-from-checkbox">
+                           <input id="morning" type="checkbox">
+                           <label for="morning">Morning, 8 AM-12 PM</label>
+                        </span>
+                     </li>
+                     <li>
+                        <span class="togo-from-checkbox">
+                           <input id="afternoon" type="checkbox">
+                           <label for="afternoon">Afternoon, 12 PM-5 PM</label>
+                        </span>
+                     </li>
+                     <li>
+                        <span class="togo-from-checkbox">
+                           <input id="evening" type="checkbox">
+                           <label for="evening">Evening, 5 PM-12 AM</label>
+                        </span>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="togo-tour-widget">
+               <h4 class="togo-tour-widget-title">Languages <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none">
+                  <path d="M12.75 6.75L6.75 0.75L0.75 6.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+               </span></h4>
+               <div class="togo-tour-widget-filter-checkbox inner_content">
+                  <ul>
+                     <li>
+                        <span class="togo-from-checkbox">
+                           <input id="englist" type="checkbox">
+                           <label for="englist">English</label>
+                        </span>
+                     </li>
+                     <li>
+                        <span class="togo-from-checkbox">
+                           <input id="french" type="checkbox">
+                           <label for="french">French</label>
+                        </span>
+                     </li>
+                     <li>
+                        <span class="togo-from-checkbox">
+                           <input id="german" type="checkbox">
+                           <label for="german">German</label>
+                        </span>
+                     </li>
+                     <li>
+                        <span class="togo-from-checkbox">
+                           <input id="italian" type="checkbox">
+                           <label for="italian">Italian</label>
+                        </span>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- filter-area-end -->
+
+
+   <!-- offcanvus-area-start -->
+   <div class="offcanvas-area ">
+      <div class="offcanvas-wrapper">
+         <div class="offcanvas-top d-flex align-items-center justify-content-between">
+            <div class="offcanvas-logo">
+               <a href="index.html">
+                  <img width="120" src="assets/img/logo/logo-black.png" alt="">
+               </a>
+            </div>
+            <div class="offcanvas-close">
+               <button class="offcanvas-close-btn">
+                  <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M9.19141 9.80762L27.5762 28.1924" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                     <path d="M9.19141 28.1924L27.5762 9.80761" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+               </button>
+            </div>
+         </div>
+         <div class="offcanvas-content">
+            <div class="togo-mobilemenu-content fix mb-30"></div>
+         </div>
+      </div>
+   </div>
+   <div class="body-overlay"></div>
+   <!-- offcanvus-area-end -->
+
+   <header>
+
+      <!-- header area start -->
+      <div class="togo-header-3-sec togo-hdr-transparent" data-bg-color="#fff">
+         <div class="container-fluid p-0">
+            <div class="togo-header-wrapper">
+               <div class="row align-items-center">
+                  <div class="col-xl-3 col-lg-6 col-6">
+                     <div class="togo-header-logo">
+                        <a href="index.html">
+                           <img width="120" src="assets/img/logo/logo-black.png" alt="">
+                        </a>
+                     </div>
+                  </div>
+                  <div class="col-xl-6 d-none d-xl-block">
+                     <div class="togo-header-style-3 text-center">
+                        <div class="togo-header-menu togo-header-submenu">
+                           <nav class="togo-mobile-menu">
+                              <ul>
+                                 <li class="togo-dropdown">
+                                    <a href="index.html">Demo</a>
+                                    <ul class="togo-submenu mobile-slide">
+                                       <li><a href="index.html">Home 1</a></li>
+                                       <li><a href="index-2.html">Home 2</a></li>
+                                       <li><a href="index-3.html">Home 3</a></li>
+                                       <li><a href="index-4.html">Home 4</a></li>
+                                       <li><a href="index-5.html">Home 5</a></li>
+                                       <li><a href="index-6.html">Home 6</a></li>
+                                       <li><a href="index-7.html">Home 7</a></li>
+                                       <li><a href="index-8.html">Home 8</a></li>
+                                       <li><a href="index-9.html">Home 9</a></li>
+                                       <li><a href="index-10.html">Home 10</a></li>
+                                       <li><a href="index-11.html">Home 11</a></li>
+                                       <li><a href="index-12.html">Home 12</a></li>
+                                    </ul>
+                                 </li>
+                                 <li class="togo-dropdown p-static">
+                                    <a href="city-details-1.html">Destinations</a>
+                                    <div class="togo-megamenu mobile-slide">
+                                       <div class="row">
+                                          <div class="col-xl-3">
+                                             <div class="togo-megamenu-nav">
+                                                <ul>
+                                                   <li class="active">
+                                                      <a href="#">Top destinations
+                                                         <span>
+                                                            <svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                               <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </svg>
+                                                         </span>
+                                                      </a>
+                                                   </li>
+                                                   <li>
+                                                      <a href="#">France
+                                                         <span>
+                                                            <svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                               <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </svg>
+                                                         </span>
+                                                      </a>
+                                                   </li>
+                                                   <li>
+                                                      <a href="#">Thailand
+                                                         <span>
+                                                            <svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                               <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </svg>
+                                                         </span>
+                                                      </a>
+                                                   </li>
+                                                   <li>
+                                                      <a href="#">United Kingdom
+                                                         <span>
+                                                            <svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                               <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </svg>
+                                                         </span>
+                                                      </a>
+                                                   </li>
+                                                   <li>
+                                                      <a href="#">United States
+                                                         <span>
+                                                            <svg aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                               <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </svg>
+                                                         </span>
+                                                      </a>
+                                                   </li>
+                                                </ul>
+                                                <div class="togo-megamenu-show d-none d-xl-block">
+                                                   <a class="togo-tour-btn line-border" href="city-details-1.html">
+                                                      <span>View all</span>
+                                                   </a>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="col-xl-6">
+                                             <div class="togo-megamenu-destination">
+                                                <div class="togo-megamenu-destination-wrap">
+                                                   <span class="togo-megamenu-destination-title">Top destinations in Countries</span>
+                                                   <div class="row">
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-1.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-1.html">Ha Noi</a>
+                                                            </div>
+                                                         </div>
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-3.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-2.html">Ho Chi Minh</a>
+                                                            </div>
+                                                         </div>
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-5.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-3.html">Hue</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-2.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-2.html">Hoi An</a>
+                                                            </div>
+                                                         </div>
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-4.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-3.html">Da Nang</a>
+                                                            </div>
+                                                         </div>
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-6.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-1.html">Ha Long Bay</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="togo-megamenu-show d-none d-xl-block">
+                                                   <a class="togo-tour-btn line-border" href="city-details-1.html">
+                                                      <span>View all</span>
+                                                   </a>
+                                                </div>
+                                                </div>
+                                                <div class="togo-megamenu-destination-wrap">
+                                                   <span class="togo-megamenu-destination-title">Top destinations in France</span>
+                                                   <div class="row">
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-1.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-1.html">Ha Noi</a>
+                                                            </div>
+                                                         </div>
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-3.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-2.html">Ho Chi Minh</a>
+                                                            </div>
+                                                         </div>
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-5.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-3.html">Hue</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-2.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-2.html">Hoi An</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="togo-megamenu-show d-none d-xl-block">
+                                                   <a class="togo-tour-btn line-border" href="city-details-1.html">
+                                                      <span>View all</span>
+                                                   </a>
+                                                </div>
+                                                </div>
+                                                <div class="togo-megamenu-destination-wrap">
+                                                   <span class="togo-megamenu-destination-title">Top destinations in Thailand </span>
+                                                   <div class="row">
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-1.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-1.html">Ha Noi</a>
+                                                            </div>
+                                                         </div>
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-3.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-2.html">Ho Chi Minh</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-2.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-3.html">Hoi An</a>
+                                                            </div>
+                                                         </div>
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-5.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-2.html">Hue</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="togo-megamenu-show d-none d-xl-block">
+                                                   <a class="togo-tour-btn line-border" href="city-details-1.html">
+                                                      <span>View all</span>
+                                                   </a>
+                                                </div>
+                                                </div>
+                                                <div class="togo-megamenu-destination-wrap">
+                                                   <span class="togo-megamenu-destination-title">Top destinations in United Kingdom</span>
+                                                   <div class="row">
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-1.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-2.html">Ha Noi</a>
+                                                            </div>
+                                                         </div>
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-3.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-3.html">Ho Chi Minh</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-2.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-1.html">Hoi An</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="togo-megamenu-show d-none d-xl-block">
+                                                   <a class="togo-tour-btn line-border" href="city-details-1.html">
+                                                      <span>View all</span>
+                                                   </a>
+                                                </div>
+                                                </div>
+                                                <div class="togo-megamenu-destination-wrap">
+                                                   <span class="togo-megamenu-destination-title">Top destinations in United States</span>
+                                                   <div class="row">
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-1.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-2.html">Ha Noi</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                      <div class="col-xl-6">
+                                                         <div class="togo-megamenu-destination-item mb-20">
+                                                            <div class="togo-megamenu-destination-thumb">
+                                                               <img src="assets/img/explor/megamenu/thumb-2.jpg" alt="">
+                                                            </div>
+                                                            <div class="togo-megamenu-destination-content">
+                                                               <a href="city-details-3.html">Hoi An</a>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="togo-megamenu-show d-none d-xl-block">
+                                                   <a class="togo-tour-btn line-border" href="city-details-1.html">
+                                                      <span>View all</span>
+                                                   </a>
+                                                </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="col-xl-3">
+                                             <div class="togo-megamenu-banner" data-background="assets/img/banner/home-10/megamenu-1.jpg">
+                                                <h4 class="togo-megamenu-banner-title">Togo <br> Travel Booking <br> Html</h4>
+                                                <p>The most complete Tour Management System</p>
+                                                <a class="togo-btn-primary" href="contact.html">Get it now</a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <li class="togo-dropdown">
+                                    <a href="#">Tour listing</a>
+                                    <ul class="togo-submenu mobile-slide">
+                                       <li><a href="tour-grid.html">Left Filter – Grid</a></li>
+                                       <li><a href="tour-list.html">Left Filter – List</a></li>
+                                       <li><a href="tour-filter-list-map.html">Half Maps – List</a></li>
+                                       <li><a href="tour-filter-grid-map.html">Half Maps – Grid</a></li>
+                                       <li><a href="tour-filter-list.html">Top Filter – List</a></li>
+                                       <li><a href="tour-filter-grid.html">Top Filter – Grid</a></li>
+                                       <li><a href="tour-details-1.html">Tour Detail – Layout 1</a></li>
+                                       <li><a href="tour-details-2.html">Tour Detail – Layout 2</a></li>
+                                       <li><a href="tour-details-3.html">Tour Detail – Layout 3</a></li>
+                                       <li><a href="tour-details-4.html">Tour Detail – Layout 4</a></li>
+                                       <li><a href="tour-details-5.html">Tour Detail – Layout 5</a></li>
+                                       <li><a href="tour-details-6.html">Tour Detail – Layout 6</a></li>
+                                    </ul>
+                                 </li>
+                                 <li class="togo-dropdown">
+                                    <a href="#">Pages</a>
+                                    <ul class="togo-submenu mobile-slide">
+                                       <li><a href="city-details-1.html">City Details 1</a></li>
+                                       <li><a href="city-details-2.html">City Details 2</a></li>
+                                       <li><a href="city-details-3.html">City Details 3</a></li>
+                                       <li><a href="about.html">About Us</a></li>
+                                       <li><a href="faq.html">FAQ's</a></li>
+                                       <li><a href="team.html">Teams</a></li>
+                                       <li><a href="carrer.html">Carrer</a></li>
+                                       <li><a href="error.html">Error</a></li>
+                                       <li><a href="contact.html">Contact Us</a></li>
+                                       <li><a href="partner-details.html">Partner Details</a></li>
+                                       <li><a href="privacy.html">Privacy Policy</a></li>
+                                       <li class="togo-dropdown">
+                                          <a href="blog-sidebar.html">Blog</a>
+                                          <ul class="togo-submenu mobile-slide">
+                                             <li><a href="blog-sidebar.html">Blog Sidebar</a></li>
+                                             <li><a href="blog-details.html">Blog Details</a></li>
+                                          </ul>
+                                       </li>
+                                       <li class="togo-dropdown">
+                                          <a href="shop.html">Shop</a>
+                                          <ul class="togo-submenu mobile-slide">
+                                             <li><a href="shop.html">Shop</a></li>
+                                             <li><a href="shop-details.html">Shop Details</a></li>
+                                             <li><a href="sign-in.html">Sign In</a></li>
+                                             <li><a href="sign-up.html">Sign Up</a></li>
+                                          </ul>
+                                       </li>
+                                    </ul>
+                                 </li>
+                                 <li class="togo-dropdown">
+                                    <a href="#">Dashboard</a>
+                                    <ul class="togo-submenu mobile-slide">
+                                       <li class="togo-dropdown"><a href="dashboard-my-account.html">Normal User</a>
+                                          <ul class="togo-submenu mobile-slide">
+                                             <li><a href="dashboard-my-account.html">Dashboard</a></li>
+                                             <li><a href="dashboard-booking.html">Booking</a></li>
+                                             <li><a href="dashboard-wishlist.html">Wishlist</a></li>
+                                             <li><a href="dashboard-review.html">Review</a></li>
+                                             <li><a href="dashboard-setting.html">Setting</a></li>
+                                          </ul>
+                                       </li>
+                                       <li class="togo-dropdown"><a href="partner-dashboard-my-account.html">Partner User</a>
+                                          <ul class="togo-submenu mobile-slide">
+                                             <li><a href="partner-dashboard-my-account.html">Dashboard</a></li>
+                                             <li><a href="partner-dashboard-booking.html">Booking</a></li>
+                                             <li><a href="partner-dashboard-wishlist.html">Wishlist</a></li>
+                                             <li><a href="partner-dashboard-review.html">Review</a></li>
+                                             <li><a href="partner-dashboard-earning.html">Earning</a></li>
+                                             <li><a href="partner-dashboard-tour-manage.html">Tour</a></li>
+                                             <li><a href="partner-dashboard-coupon.html">Coupon</a></li>
+                                             <li><a href="partner-dashboard-setting.html">Setting</a></li>
+                                          </ul>
+                                       </li>
+                                    </ul>
+                                 </li>
+                              </ul>
+                           </nav>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-3 col-lg-6 col-6">
+                     <div class="togo-header-3-right d-flex align-items-center justify-content-end">
+                        <div class="togo-header-3-cart">
+                           <button class="togo-header-3-cart-btn cart-open-btn">
+                              <span>
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                 <path d="M16.5 21C17.3284 21 18 20.3284 18 19.5C18 18.6716 17.3284 18 16.5 18C15.6716 18 15 18.6716 15 19.5C15 20.3284 15.6716 21 16.5 21Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                 <path d="M8.5 21C9.32843 21 10 20.3284 10 19.5C10 18.6716 9.32843 18 8.5 18C7.67157 18 7 18.6716 7 19.5C7 20.3284 7.67157 21 8.5 21Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                 <path d="M3.70907 5.4H18.9241C20.3017 5.4 21.2968 6.67056 20.9194 7.94783L19.2649 13.5478C19.011 14.4072 18.1965 15 17.2696 15H8.11164C7.18469 15 6.37021 14.4072 6.11631 13.5478L3.70907 5.4ZM3.70907 5.4L3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                 </svg>
+                              </span>
+                           </button>
+                        </div>
+                        <a class="togo-header-user ml-20" href="#">
+                           <span>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                              <path d="M14.75 16.95C14.4331 10.7633 5.06692 10.7633 4.75 16.95M12.25 6.84999C12.25 8.2307 11.1307 9.34999 9.74998 9.34999C8.36926 9.34999 7.24997 8.2307 7.24997 6.84999C7.24997 5.46928 8.36926 4.34999 9.74998 4.34999C11.1307 4.34999 12.25 5.46928 12.25 6.84999ZM18.75 9.75C18.75 14.7206 14.7206 18.75 9.75 18.75C4.77944 18.75 0.75 14.7206 0.75 9.75C0.75 4.77944 4.77944 0.75 9.75 0.75C14.7206 0.75 18.75 4.77944 18.75 9.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                              </svg>
+                           </span>
+                        </a>
+                        <div class="togo-header-3-bar ml-20">
+                           <button class="togo-offcanvas-3-open-btn offcanvas-open-btn">
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M4.5 6.5H19.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M4.5 12H19.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M4.5 17.5H19.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- header area end -->
+
+   </header>
+
+   <div id="has-smooth">
+      <div id="has-smooth-wrap">
+
+         <main>
+
+
+            <!-- contact area start -->
+            <div class="togo-contact-sec pt-150 pb-100">
+               <div class="container container-1440">
+                  <div class="row justify-content-center">
+                     <div class="col-lg-12">
+                        <div class="togo-sign-in-heading text-center mb-40">
+                           <h4 class="togo-section-title fs-56 mb-15">Sign in</h4>
+                           <p>New user? <a href="sign-up.html">Create an account.</a></p>
+                        </div>
+                     </div>
+                     <div class="col-lg-5">
+                        <div class="togo-contact-wrapper signin-style">
+                           <div class="togo-contact-form">
+                              <div class="row">
+                                 <div class="col-12">
+                                    <div class="togo-contact-input mb-20">
+                                       <label>Username or Email *</label>
+                                       <input type="email" id="contact-email">
+                                    </div>
+                                 </div>
+                                 <div class="col-12">
+                                    <div class="togo-contact-input mb-20">
+                                       <label>Password *</label>
+                                       <input type="text" id="contact-password">
+                                    </div>
+                                 </div>
+                                 <div class="col-xl-12">
+                                    <div class="togo-contact-input-wrap">
+                                       <div class="togo-from-checkbox">
+                                          <input id="active" type="checkbox">
+                                          <label for="active">Remember me</label>
+                                       </div>
+                                       <button class="togo-btn-primary" type="submit"
+                                          id="contact-submit-btn">Login</button>
+                                       <a href="forgot-password.html">Forgot Password?</a>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- contact area end -->
+
+
+         </main>
+
+         <footer>
+
+            <!-- footer area start -->
+            <div class="togo-footer-sec pt-60" data-bg-color="#000000">
+               <div class="container">
+                  <div class="togo-footer-main-wrapper black-style pb-10">
+                     <div class="row">
+                        <div class="col-lg-4 col-sm-6">
+                           <div class="togo-footer-widget mb-40 togo-footer-col-1">
+                              <h4 class="togo-footer-widget-title mb-25">Contact us</h4>
+                              <div class="togo-footer-widget-info mb-15">
+                                 <div class="togo-footer-widget-info-item">
+                                    <a href="mailto:hello@yoursite.com">
+                                       <span>
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                             viewBox="0 0 22 22" fill="none">
+                                             <path
+                                                d="M1.83398 10.9998C1.83398 7.54287 1.83398 5.81439 3.17641 4.74045C4.51884 3.6665 6.67944 3.6665 11.0007 3.6665C15.3219 3.6665 17.4825 3.6665 18.8249 4.74045C20.1673 5.81439 20.1673 7.54287 20.1673 10.9998C20.1673 14.4568 20.1673 16.1853 18.8249 17.2592C17.4825 18.3332 15.3219 18.3332 11.0007 18.3332C6.67944 18.3332 4.51884 18.3332 3.17641 17.2592C1.83398 16.1853 1.83398 14.4568 1.83398 10.9998Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                             <path
+                                                d="M18.9434 4.86768L14.5201 8.98251C12.8365 10.3855 11.9947 11.087 10.9991 11.087C10.0034 11.087 9.16162 10.3855 7.47804 8.98251L3.05469 4.86768"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                          </svg>
+                                       </span>
+                                       hello@yoursite.com
+                                    </a>
+                                 </div>
+                                 <div class="togo-footer-widget-info-item">
+                                    <a href="tel:0123456">
+                                       <span>
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                             viewBox="0 0 22 22" fill="none">
+                                             <path
+                                                d="M14.3 13.3113C12.1046 15.622 6.5045 10.0722 8.70828 7.75274C10.0538 6.33657 8.53383 4.71815 7.69249 3.52856C6.11347 1.29596 2.64707 4.37837 2.75235 6.33915C3.08433 12.5224 9.77308 19.8501 16.2502 19.2109C18.2765 19.011 20.6047 15.3516 18.2805 14.0142C17.1183 13.3454 15.523 12.0241 14.3 13.3113Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                          </svg>
+                                       </span> (00) 238 9836</a>
+                                 </div>
+                                 <div class="togo-footer-widget-info-item">
+                                    <a href="#">
+                                       <span>
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                             viewBox="0 0 22 22" fill="none">
+                                             <path
+                                                d="M11.5132 19.0857C11.206 19.3048 10.794 19.3048 10.4868 19.0857C6.06043 15.9292 1.36177 9.43901 6.11114 4.74951C7.40775 3.46924 9.16632 2.75 11 2.75C12.8337 2.75 14.5923 3.46924 15.8889 4.74951C20.6382 9.43901 15.9396 15.9292 11.5132 19.0857Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                             <path
+                                                d="M10.9993 11.0002C12.0119 11.0002 12.8327 10.1794 12.8327 9.16683C12.8327 8.15431 12.0119 7.3335 10.9993 7.3335C9.98683 7.3335 9.16602 8.15431 9.16602 9.16683C9.16602 10.1794 9.98683 11.0002 10.9993 11.0002Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                          </svg>
+                                       </span>
+                                       351 Humberto Plaza, West <br> Ashtynstead, Ohio - 12551, Canada</a>
+                                 </div>
+                              </div>
+                              <div class="togo-footer-widget-info-btn">
+                                 <a class="togo-btn-primary" href="#">Download bruchore</a>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-6">
+                           <div class="togo-footer-widget mb-40 togo-footer-col-2">
+                              <h4 class="togo-footer-widget-title mb-25">destinations</h4>
+                              <div class="togo-footer-widget-menu">
+                                 <ul>
+                                    <li><a class="hover-line" href="#">Singapore</a></li>
+                                    <li><a class="hover-line" href="#">Thailand</a></li>
+                                    <li><a class="hover-line" href="#">Australia</a></li>
+                                    <li><a class="hover-line" href="#">Sri lanka</a></li>
+                                    <li><a class="hover-line" href="#">Norway</a></li>
+                                    <li><a class="hover-line" href="#">Canada</a></li>
+                                    <li><a class="hover-line" href="#">Sweden</a></li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-6">
+                           <div class="togo-footer-widget mb-40 togo-footer-col-3">
+                              <h4 class="togo-footer-widget-title mb-25">Company</h4>
+                              <div class="togo-footer-widget-menu">
+                                 <ul>
+                                    <li><a class="hover-line" href="#">About us</a></li>
+                                    <li><a class="hover-line" href="#">Carrer</a></li>
+                                    <li><a class="hover-line" href="#">Blog</a></li>
+                                    <li><a class="hover-line" href="#">Partner</a></li>
+                                    <li><a class="hover-line" href="#">Contact</a></li>
+                                    <li><a class="hover-line" href="#">Terms & policies</a></li>
+                                    <li><a class="hover-line" href="#">Trust Center</a></li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
+                           <div class="togo-footer-widget mb-40 togo-footer-col-4">
+                              <h4 class="togo-footer-widget-title mb-28">Stay in touch</h4>
+                              <div class="togo-footer-widget-input mb-30">
+                                 <p>Subscribe to our Newsletter for the <br> Latest Updates and Special Offers</p>
+                                 <div class="p-relative">
+                                    <input type="email" placeholder="Enter your email">
+                                    <button class="togo-footer-widget-input-btn">
+                                       <span>
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                             viewBox="0 0 22 22" fill="none">
+                                             <path
+                                                d="M18.5969 2.77847C18.9846 2.64279 19.3572 3.01541 19.2215 3.40306L13.79 18.9217C13.6433 19.3408 13.0597 19.3646 12.8794 18.9589L9.92881 12.32C9.87952 12.2091 9.79085 12.1205 9.67995 12.0712L3.04112 9.1206C2.63543 8.94029 2.65924 8.35666 3.07827 8.21L18.5969 2.77847Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                             <path d="M12.832 9.1665L10.082 11.9165" stroke="currentColor"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                          </svg>
+                                       </span>
+                                    </button>
+                                 </div>
+                              </div>
+                              <div class="togo-footer-widget-social-wrap mb-30">
+                                 <h4 class="togo-footer-widget-title mb-14">Follow us</h4>
+                                 <div class="togo-footer-widget-social-icon">
+                                    <a href="#">
+                                       <span>
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="20"
+                                             viewBox="0 0 13 20" fill="none">
+                                             <path
+                                                d="M0.75 7.75V11.75H3.75V18.75H7.75V11.75H10.75L11.75 7.75H7.75V5.75C7.75 5.20533 8.20533 4.75 8.75 4.75H11.75V0.75H8.75C6.02667 0.75 3.75 3.02667 3.75 5.75V7.75H0.75Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                          </svg>
+                                       </span>
+                                    </a>
+                                    <a href="#"><span>
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none">
+                                             <path
+                                                d="M16.5 3H7.5C5.01472 3 3 5.01472 3 7.5V16.5C3 18.9853 5.01472 21 7.5 21H16.5C18.9853 21 21 18.9853 21 16.5V7.5C21 5.01472 18.9853 3 16.5 3Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                             <path
+                                                d="M15.4621 11.4866C15.5701 12.2148 15.4457 12.9585 15.1067 13.612C14.7676 14.2654 14.2311 14.7953 13.5736 15.1263C12.916 15.4573 12.1708 15.5725 11.444 15.4555C10.7171 15.3386 10.0457 14.9954 9.52513 14.4749C9.00457 13.9543 8.66141 13.2829 8.54446 12.556C8.4275 11.8292 8.5427 11.084 8.87368 10.4264C9.20466 9.76886 9.73456 9.23238 10.388 8.89332C11.0415 8.55426 11.7852 8.42988 12.5134 8.53786C13.2562 8.64801 13.9439 8.99414 14.4749 9.52513C15.0059 10.0561 15.352 10.7438 15.4621 11.4866Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                             <path d="M17 6.5H17.5" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                          </svg>
+                                       </span></a>
+                                    <a href="#"><span>
+<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                                       <path d="M14.5 0.75L9.06391 7.10276M1.66667 15.4167L7.10276 9.06391M7.10276 9.06391L12.4146 15.1021C12.5892 15.3006 12.8577 15.4167 13.1421 15.4167H14.4934C15.2603 15.4167 15.6917 14.6368 15.2208 14.1016L9.06391 7.10276M7.10276 9.06391L0.945838 2.06506C0.475005 1.52984 0.906398 0.75 1.6733 0.75H3.02462C3.30901 0.75 3.57748 0.866089 3.75208 1.06457L9.06391 7.10276" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                       </svg>
+                                       </span></a>
+                                    <a href="#"><span>
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none">
+                                             <path
+                                                d="M10.5 9.90776V14.0923C10.5 14.3174 10.6847 14.5 10.9125 14.5C10.9934 14.5 11.0725 14.4765 11.1399 14.4324L14.3149 12.3582C14.505 12.234 14.5572 11.9811 14.4316 11.7932C14.4016 11.7483 14.3628 11.7097 14.3176 11.6797L11.1426 9.5694C10.9536 9.44378 10.6973 9.49339 10.5702 9.68029C10.5244 9.74755 10.5 9.82675 10.5 9.90776Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                             <path
+                                                d="M2 12C2 8.70017 2 7.05025 3.46447 6.02513C4.92893 5 7.28595 5 12 5C16.714 5 19.0711 5 20.5355 6.02513C22 7.05025 22 8.70017 22 12C22 15.2998 22 16.9497 20.5355 17.9749C19.0711 19 16.714 19 12 19C7.28595 19 4.92893 19 3.46447 17.9749C2 16.9497 2 15.2998 2 12Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                          </svg>
+                                       </span></a>
+                                    <a href="#"><span>
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none">
+                                             <path
+                                                d="M7.45281 13.1794C6.34487 10.9183 7.85268 6.5121 12.9247 7.23245C18.5112 8.02588 17.5058 16.7097 12.8479 16.3706C11.374 16.2632 10.8167 15.0418 10.6712 13.794M10.6712 13.794C10.5608 12.8479 10.6872 11.8867 10.8304 11.3844C11.0746 10.5272 11.4794 10.6437 11.1836 11.7775C11.0396 12.3294 10.8639 13.022 10.6712 13.794ZM10.6712 13.794C10.1568 15.8538 9.52071 18.4787 9.04037 20.5019"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                             <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                          </svg>
+                                       </span></a>
+                                 </div>
+                              </div>
+                              <div class="togo-footer-widget-payment">
+                                 <h4 class="togo-footer-widget-title mb-18">Accepted Payment Types</h4>
+                                 <div class="togo-footer-widget-payment-thumb">
+                                    <a href="#">
+                                       <img src="assets/img/blog/payment-logo.png" alt="">
+                                    </a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="togo-footer-2-top-border pt-35 pb-30">
+                     <div class="row align-items-center">
+                        <div class="col-6">
+                           <div class="togo-footer-copyright-text">
+                              <p><a target="_blank" href="https://themeforest.net/user/ib-themes/portfolio">Ib themes</a> © 2026 all right reserved.</p>
+                           </div>
+                        </div>
+                        <div class="col-6">
+                           <div class="togo-footer-copyright-currence text-end">
+                              <div class="togo-footer-copyright-currence-btn">
+                                 <span>
+                                    EN / USD
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                       fill="none">
+                                       <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5"
+                                          stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                 </span>
+                                 <div class="togo-footer-copyright-currence-content">
+                                    <h4>Currencies</h4>
+                                    <ul class="currence-work">
+                                       <li><a href="#">USD</a></li>
+                                       <li><a href="#">ERO</a></li>
+                                    </ul>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- footer area end -->
+
+         </footer>
+
+      </div>
+   </div>
+
+
+   <!-- JS here -->
+   <script src="assets/js/vendor/jquery.js"></script>
+   <script src="assets/js/bootstrap-bundle.js"></script>
+   <script src="assets/js/swiper-bundle.js"></script>
+   <script src="assets/js/magnific-popup.js"></script>
+   <script src="assets/js/nice-select.js"></script>
+   <script src="assets/js/purecounter.js"></script>
+   <script src="assets/js/vendor/incluid-bundle.js"></script>
+   <script src="assets/js/fecha.js"></script>
+   <script src="assets/js/hotel-datepicker.js"></script>
+   <script src="assets/js/range-slider.js"></script>
+   <script src="assets/js/email.js"></script>
+   <script src="assets/js/scripts.js"></script>
+
+</body>
+
+
+<!-- Mirrored from togo.ibthemespro.com/togo/sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Mar 2026 17:24:37 GMT -->
+</html>

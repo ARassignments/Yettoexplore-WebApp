@@ -1,0 +1,16 @@
+.togo-tour-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.togo-tour-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.09) !important;
+}
+
+.hover-primary:hover {
+  color: var(--primary-theme-color, #e65b24) !important;
+}
+
+.font-bebas {
+  font-family: var(--font-bebas, "Bebas Neue", sans-serif);
+}

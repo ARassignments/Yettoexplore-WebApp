@@ -1,34 +1,110 @@
-name: Build & Deploy Angular to cPanel
+name: Deploy to cPanel (Monorepo)
 
 on:
   push:
     branches:
-      - main  # Change to 'master' if that's your branch
+      - main
+      - master
+    paths:
+      - 'backend/**'
+      - 'web/**'
+      - '.github/workflows/deploy.yml'
+
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Choose which project to deploy'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - backend
+          - web
 
 jobs:
-  deploy:
+  # ==============================================================================
+  # Job 1: Deploy Laravel Backend
+  # ==============================================================================
+  deploy-backend:
+    name: Deploy Laravel Backend
     runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'push' || 
+      (github.event_name == 'workflow_dispatch' && (inputs.target == 'all' || inputs.target == 'backend'))
+    
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Sync Backend Files via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME_BACKEND }}
+          password: ${{ secrets.FTP_PASSWORD_BACKEND }}
+          port: ${{ secrets.FTP_PORT }}
+          protocol: ftp
+          local-dir: ./backend/
+          server-dir: ./
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github*/**
+            **/node_modules/**
+            **/vendor/**
+            **/.env
+            **/.env.*
+            !**/.env.example
+            !**/.env.production.example
+            **/storage/logs/**
+            **/storage/framework/cache/**
+            **/storage/framework/sessions/**
+            **/storage/framework/views/**
+            **/public/downloads/**
+            **/tests/**
+            **/phpunit.xml
+
+  # ==============================================================================
+  # Job 2: Build & Deploy Angular Web Frontend
+  # ==============================================================================
+  build-and-deploy-web:
+    name: Build & Deploy Angular Web
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'push' || 
+      (github.event_name == 'workflow_dispatch' && (inputs.target == 'all' || inputs.target == 'web'))
 
     steps:
-      - name: ✅ Checkout Code
+      - name: Checkout Code Repository
         uses: actions/checkout@v4
 
-      - name: 🟢 Setup Node.js
+      - name: Setup Node.js Environment
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: 22
+          cache: 'npm'
+          cache-dependency-path: web/package.json
 
-      - name: 📦 Install Dependencies
-        run: npm install
+      - name: Install Dependencies
+        working-directory: ./web
+        run: npm install --legacy-peer-deps
 
-      - name: 🏗️ Build Angular App
-        run: npm run build -- --configuration production
+      - name: Build Angular Application (Production)
+        working-directory: ./web
+        run: npm run build
 
-      - name: 🚀 Deploy to cPanel via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: Sync Built Web Bundle via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/yettoexplore/browser/  # Angular 17+ output path
-          # server-dir: /yettoexplore.com/                    # cPanel target folder
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME_WEB }}
+          password: ${{ secrets.FTP_PASSWORD_WEB }}
+          port: ${{ secrets.FTP_PORT }}
+          protocol: ftp
+          local-dir: ./web/dist/yettoexplore/browser/
+          server-dir: ./
+          dangerous-clean-slate: false

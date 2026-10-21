@@ -1,0 +1,11 @@
+.itinerary-timeline {
+  position: relative;
+}
+
+.itinerary-item:last-child {
+  border-left-color: transparent !important;
+}
+
+.font-bebas {
+  font-family: var(--font-bebas, "Bebas Neue", sans-serif);
+}
