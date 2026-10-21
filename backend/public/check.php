@@ -41,8 +41,24 @@ foreach ($extensions as $ext) {
 }
 echo "\n";
 
+// Ensure storage subdirectories exist
+$dirsToCreate = [
+    __DIR__ . '/../storage/logs',
+    __DIR__ . '/../storage/framework',
+    __DIR__ . '/../storage/framework/views',
+    __DIR__ . '/../storage/framework/sessions',
+    __DIR__ . '/../storage/framework/cache',
+    __DIR__ . '/../storage/framework/cache/data',
+    __DIR__ . '/../bootstrap/cache'
+];
+foreach ($dirsToCreate as $d) {
+    if (!is_dir($d)) {
+        @mkdir($d, 0775, true);
+    }
+}
+
 // 5. Try Bootstrapping Laravel
-echo "5. Attempting to Bootstrap Laravel:\n";
+echo "5. Attempting to Bootstrap Laravel & Dispatch Request:\n";
 if (!file_exists($autoloadPath)) {
     echo "   ABORTED: Cannot bootstrap because vendor/autoload.php does not exist.\n";
 } else {
@@ -56,10 +72,26 @@ if (!file_exists($autoloadPath)) {
             $app = require_once $appBootstrap;
             echo "   Application instance created.\n";
 
-            // Test kernel handling
-            $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
-            echo "   HTTP Kernel created successfully.\n";
-            echo "   >>> LARAVEL BOOTED WITHOUT FATAL ERRORS! <<<\n";
+            // Test dispatching a request through Laravel
+            $request = \Illuminate\Http\Request::create('/api/v1/tours', 'GET');
+            $request->headers->set('Accept', 'application/json');
+            
+            // Check config
+            echo "   APP_ENV: " . config('app.env') . "\n";
+            echo "   APP_KEY set: " . (config('app.key') ? 'YES' : 'NO (MISSING APP_KEY!)') . "\n";
+            echo "   DB_CONNECTION: " . config('database.default') . "\n";
+            
+            // Test DB connection
+            try {
+                \Illuminate\Support\Facades\DB::connection()->getPdo();
+                echo "   Database connection: SUCCESSFUL!\n";
+            } catch (\Throwable $dbe) {
+                echo "   Database connection FAILED: " . $dbe->getMessage() . "\n";
+            }
+
+            $response = $app->handleRequest($request);
+            echo "   Dispatch Status: " . $response->getStatusCode() . "\n";
+            echo "   Response Body: " . substr($response->getContent(), 0, 500) . "\n";
         }
     } catch (\Throwable $e) {
         echo "   FATAL ERROR CAUGHT:\n";
