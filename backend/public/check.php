@@ -72,26 +72,31 @@ if (!file_exists($autoloadPath)) {
             $app = require_once $appBootstrap;
             echo "   Application instance created.\n";
 
-            // Test dispatching a request through Laravel
+            // Dispatch request through Laravel
             $request = \Illuminate\Http\Request::create('/api/v1/tours', 'GET');
             $request->headers->set('Accept', 'application/json');
+            $response = $app->handleRequest($request);
             
-            // Check config
+            echo "   Dispatch /api/v1/tours Status: " . $response->getStatusCode() . "\n";
+            echo "   Response: " . substr($response->getContent(), 0, 500) . "\n\n";
+
+            // Now that app is bootstrapped, check config & DB
             echo "   APP_ENV: " . config('app.env') . "\n";
-            echo "   APP_KEY set: " . (config('app.key') ? 'YES' : 'NO (MISSING APP_KEY!)') . "\n";
+            echo "   APP_KEY set: " . (config('app.key') ? 'YES (' . substr(config('app.key'), 0, 10) . '...)' : 'NO (MISSING APP_KEY!)') . "\n";
             echo "   DB_CONNECTION: " . config('database.default') . "\n";
-            
-            // Test DB connection
+            echo "   DB_DATABASE: " . config('database.connections.' . config('database.default') . '.database') . "\n";
+
             try {
                 \Illuminate\Support\Facades\DB::connection()->getPdo();
                 echo "   Database connection: SUCCESSFUL!\n";
+                
+                // Test counting tours
+                $count = \Illuminate\Support\Facades\DB::table('tours')->count();
+                echo "   Tours in database: $count\n";
             } catch (\Throwable $dbe) {
-                echo "   Database connection FAILED: " . $dbe->getMessage() . "\n";
+                echo "   DATABASE ERROR:\n";
+                echo "   " . $dbe->getMessage() . "\n";
             }
-
-            $response = $app->handleRequest($request);
-            echo "   Dispatch Status: " . $response->getStatusCode() . "\n";
-            echo "   Response Body: " . substr($response->getContent(), 0, 500) . "\n";
         }
     } catch (\Throwable $e) {
         echo "   FATAL ERROR CAUGHT:\n";
