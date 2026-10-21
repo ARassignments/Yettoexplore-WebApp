@@ -71,8 +71,18 @@ if (!file_exists($autoloadPath)) {
 }
 echo "\n";
 
-// 6. Check error_log
-echo "6. Recent error_log entries:\n";
+// 6. Check error_log and laravel.log
+echo "6. Recent storage/logs/laravel.log:\n";
+$laravelLog = __DIR__ . '/../storage/logs/laravel.log';
+if (file_exists($laravelLog) && is_readable($laravelLog)) {
+    $lines = file($laravelLog);
+    $lastLines = array_slice($lines, -35);
+    echo implode("", $lastLines);
+} else {
+    echo "   laravel.log does not exist or is not readable.\n";
+}
+
+echo "\n7. Recent PHP error_log entries:\n";
 $errorLogFile = __DIR__ . '/error_log';
 if (file_exists($errorLogFile) && is_readable($errorLogFile)) {
     $lines = file($errorLogFile);
@@ -82,12 +92,5 @@ if (file_exists($errorLogFile) && is_readable($errorLogFile)) {
     echo "   No readable error_log in public directory.\n";
 }
 
-$rootLog = __DIR__ . '/../error_log';
-if (file_exists($rootLog) && is_readable($rootLog)) {
-    echo "\n   From root error_log:\n";
-    $lines = file($rootLog);
-    $lastLines = array_slice($lines, -15);
-    echo implode("", $lastLines);
-}
 
 echo "\n========================================\n";
