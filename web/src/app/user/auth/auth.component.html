@@ -291,36 +291,24 @@
           <div *ngIf="isRegisterMode" class="togo-contact-form">
             <form (ngSubmit)="onRegister()">
               
-              <!-- Role Selector Segment -->
-              <div class="mb-3">
-                <label class="form-label-custom">Account Type <span class="text-danger">*</span></label>
-                <div class="row g-2">
-                  <div class="col-6">
-                    <label class="role-selector-card" [class.selected]="registerData.role === 'customer'">
-                      <input type="radio" name="role" value="customer" [(ngModel)]="registerData.role" class="d-none">
-                      <i class="hgi hgi-stroke hgi-rounded hgi-compass-01 role-icon"></i>
-                      <span class="role-name">Traveler</span>
-                      <small class="role-desc">Book trips & passes</small>
-                    </label>
-                  </div>
-                  <div class="col-6">
-                    <label class="role-selector-card" [class.selected]="registerData.role === 'agency_owner'">
-                      <input type="radio" name="role" value="agency_owner" [(ngModel)]="registerData.role" class="d-none">
-                      <i class="hgi hgi-stroke hgi-rounded hgi-briefcase-02 role-icon"></i>
-                      <span class="role-name">Travel Agency</span>
-                      <small class="role-desc">SaaS Management</small>
-                    </label>
-                  </div>
+              <!-- Traveler Account Banner (Customer Only Registration) -->
+              <div class="p-3 mb-3 rounded-3 bg-light border d-flex align-items-center">
+                <div class="rounded-circle bg-primary-subtle text-primary p-2 me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                  <i class="hgi hgi-stroke hgi-rounded hgi-compass-01 fs-20"></i>
+                </div>
+                <div>
+                  <span class="badge bg-primary text-white mb-1">Traveler Account</span>
+                  <div class="fs-12 text-muted">Register to book verified tours, hotels, and get digital boarding passes.</div>
                 </div>
               </div>
 
               <div class="mb-3">
                 <label class="form-label-custom">
                   <i class="hgi hgi-stroke hgi-rounded hgi-user me-1 text-primary"></i>
-                  {{ registerData.role === 'agency_owner' ? 'Company / Agency Name' : 'Full Name' }} <span class="text-danger">*</span>
+                  Full Name <span class="text-danger">*</span>
                 </label>
                 <div class="togo-contact-input">
-                  <input type="text" [placeholder]="registerData.role === 'agency_owner' ? 'e.g. Karakoram Nomads Travel' : 'e.g. Hamza Khan'" [(ngModel)]="registerData.name" name="name" required>
+                  <input type="text" placeholder="e.g. Sarah Khan" [(ngModel)]="registerData.name" name="name" required>
                 </div>
               </div>
 
@@ -376,6 +364,15 @@
                 <i *ngIf="!isLoading" class="hgi hgi-stroke hgi-rounded hgi-user-add-01 me-2 fs-18"></i>
                 {{ isLoading ? 'Creating Your Account...' : 'Complete Registration' }}
               </button>
+
+              <div class="mt-4 pt-3 border-top text-center">
+                <p class="fs-12 text-muted mb-1">
+                  <strong>Are you a Travel Agency?</strong> Platform agency onboarding and tenant workspaces are managed exclusively by the Platform Super Admin.
+                </p>
+                <a href="javascript:void(0);" (click)="setAuthMode('login')" class="fs-12 text-primary text-decoration-none fw-semibold">
+                  Already an agency partner? Sign in with your agency credentials &rarr;
+                </a>
+              </div>
             </form>
           </div>
 

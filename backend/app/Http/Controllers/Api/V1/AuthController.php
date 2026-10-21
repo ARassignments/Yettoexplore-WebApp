@@ -14,7 +14,7 @@ use Illuminate\Support\Str;
 class AuthController extends Controller
 {
     /**
-     * Register a new user (Customer or Agency Owner).
+     * Register a new user (Customer / Traveler ONLY).
      */
     public function register(Request $request): JsonResponse
     {
@@ -23,8 +23,6 @@ class AuthController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
             'phone' => 'nullable|string|max:20',
-            'role' => 'nullable|string|in:customer,agency_owner',
-            'agency_name' => 'required_if:role,agency_owner|string|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -35,31 +33,17 @@ class AuthController extends Controller
             ], 422);
         }
 
-        $agencyId = null;
-        $role = $request->input('role', 'customer');
-
-        if ($role === 'agency_owner' && $request->filled('agency_name')) {
-            $agency = Agency::create([
-                'name' => $request->input('agency_name'),
-                'slug' => Str::slug($request->input('agency_name')) . '-' . Str::random(4),
-                'email' => $request->input('email'),
-                'phone' => $request->input('phone', '+92 300 1234567'),
-                'city' => $request->input('city', 'Islamabad'),
-                'is_verified' => true,
-                'status' => 'active',
-            ]);
-            $agencyId = $agency->id;
-        }
-
+        // Public signup is strictly for Customer / Traveler role only
         $user = User::create([
             'name' => $request->input('name'),
             'email' => strtolower($request->input('email')),
             'phone' => $request->input('phone'),
-            'role' => $role,
-            'agency_id' => $agencyId,
+            'role' => 'customer',
+            'agency_id' => null,
             'password' => Hash::make($request->input('password')),
             'avatar' => 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
             'is_active' => true,
+            'profile_completed' => true,
         ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;

@@ -37,7 +37,18 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone')->nullable();
-            $table->enum('role', ['super_admin', 'agency_owner', 'agency_agent', 'tour_guide', 'customer'])->default('customer');
+            $table->enum('role', [
+                'super_admin',
+                'agency_owner',
+                'operational_manager',
+                'sales_agent',
+                'agency_agent',
+                'accountant',
+                'driver',
+                'tour_guide',
+                'corporate_client',
+                'customer'
+            ])->default('customer');
             $table->string('avatar')->nullable();
             $table->boolean('is_active')->default(true);
             $table->string('google_id')->nullable();

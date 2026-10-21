@@ -166,6 +166,7 @@ export class AuthComponent implements OnInit {
       return;
     }
 
+    this.registerData.role = 'customer';
     this.isLoading = true;
     this.errorMessage = '';
     this.successMessage = '';
@@ -173,13 +174,9 @@ export class AuthComponent implements OnInit {
     this.auth.register(this.registerData).subscribe({
       next: (res) => {
         this.isLoading = false;
-        this.successMessage = 'Account created successfully! Redirecting...';
+        this.successMessage = 'Account created successfully! Welcome to Yettoexplore.';
         setTimeout(() => {
-          if (this.registerData.role === 'agency_owner') {
-            this.router.navigate(['/dashboard']);
-          } else {
-            this.router.navigateByUrl(this.returnUrl);
-          }
+          this.router.navigateByUrl(this.returnUrl === '/' ? '/' : this.returnUrl);
         }, 500);
       },
       error: (err) => {

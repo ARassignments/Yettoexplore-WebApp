@@ -5,12 +5,22 @@ namespace Database\Seeders;
 use App\Models\Agency;
 use App\Models\Booking;
 use App\Models\BookingPassenger;
+use App\Models\CorporateAccount;
 use App\Models\Coupon;
 use App\Models\Destination;
+use App\Models\Driver;
+use App\Models\Flight;
+use App\Models\Hotel;
+use App\Models\HotelQuota;
+use App\Models\HotelRoom;
+use App\Models\Invoice;
+use App\Models\StaffModuleAccess;
+use App\Models\SubscriptionPlan;
 use App\Models\Tour;
 use App\Models\TourBatch;
 use App\Models\TourItinerary;
 use App\Models\User;
+use App\Models\Vehicle;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -23,7 +33,47 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Create Agencies
+        // 0. SaaS Subscription Plans (Per Functional Documentation Section 10.1)
+        $starterPlan = SubscriptionPlan::create([
+            'name' => 'Starter Agency',
+            'slug' => 'starter',
+            'price' => 29.00,
+            'currency' => 'USD',
+            'billing_cycle' => 'monthly',
+            'staff_limit' => 2,
+            'commission_rate' => 5.00,
+            'modules_included' => ['packages', 'hotel'],
+            'description' => 'Ideal for boutique travel operators launching their online booking portal.',
+            'is_active' => true,
+        ]);
+
+        $growthPlan = SubscriptionPlan::create([
+            'name' => 'Growth Operator',
+            'slug' => 'growth',
+            'price' => 79.00,
+            'currency' => 'USD',
+            'billing_cycle' => 'monthly',
+            'staff_limit' => 10,
+            'commission_rate' => 3.00,
+            'modules_included' => ['packages', 'hotel', 'flight', 'car_rental', 'corporate'],
+            'description' => 'For established agencies managing custom tours, corporate clients, flights, and fleets.',
+            'is_active' => true,
+        ]);
+
+        $enterprisePlan = SubscriptionPlan::create([
+            'name' => 'Enterprise Platform',
+            'slug' => 'enterprise',
+            'price' => 199.00,
+            'currency' => 'USD',
+            'billing_cycle' => 'monthly',
+            'staff_limit' => 999,
+            'commission_rate' => 1.50,
+            'modules_included' => ['packages', 'hotel', 'flight', 'car_rental', 'corporate'],
+            'description' => 'Full white-label SaaS suite with unlimited staff seats and dedicated account manager.',
+            'is_active' => true,
+        ]);
+
+        // 1. Create Agencies (Tenants)
         $northVoyagers = Agency::create([
             'name' => 'NorthVoyagers Pakistan',
             'slug' => 'north-voyagers-pakistan',
@@ -33,12 +83,23 @@ class DatabaseSeeder extends Seeder
             'phone' => '+92 300 8555123',
             'address' => 'Floor 3, Executive Heights, Blue Area',
             'city' => 'Islamabad',
+            'country_region' => 'Pakistan',
+            'currency' => 'PKR',
             'license_number' => 'DTS-ISB-2024-889',
             'rating' => 4.95,
             'total_reviews' => 342,
             'is_verified' => true,
-            'commission_rate' => 10.00,
-            'subscription_tier' => 'pro',
+            'commission_rate' => 3.00,
+            'subscription_tier' => 'growth',
+            'subscription_plan_id' => $growthPlan->id,
+            'trial_status' => 'trialing',
+            'trial_ends_at' => Carbon::now()->addDays(14),
+            'is_permanently_free' => false,
+            'branding' => [
+                'primary_color' => '#0F766E',
+                'accent_color' => '#F59E0B',
+                'portal_title' => 'NorthVoyagers Luxury Expeditions'
+            ],
             'status' => 'active',
         ]);
 
@@ -51,18 +112,29 @@ class DatabaseSeeder extends Seeder
             'phone' => '+92 312 9900881',
             'address' => 'River Road, Main Bazaar',
             'city' => 'Skardu',
+            'country_region' => 'Pakistan',
+            'currency' => 'PKR',
             'license_number' => 'DTS-GB-2023-112',
             'rating' => 4.88,
             'total_reviews' => 195,
             'is_verified' => true,
-            'commission_rate' => 8.50,
+            'commission_rate' => 5.00,
             'subscription_tier' => 'starter',
+            'subscription_plan_id' => $starterPlan->id,
+            'trial_status' => 'trialing',
+            'trial_ends_at' => Carbon::now()->addDays(30),
+            'is_permanently_free' => true,
+            'branding' => [
+                'primary_color' => '#1E3A8A',
+                'accent_color' => '#10B981',
+                'portal_title' => 'Karakoram High Altitude Treks'
+            ],
             'status' => 'active',
         ]);
 
         // 2. Create Users with All Platform Roles
         $admin = User::create([
-            'name' => 'Faraz Ahmed (Platform Admin)',
+            'name' => 'Faraz Ahmed (Platform Super Admin)',
             'email' => 'admin@yettoexplore.com',
             'phone' => '+92 300 1112233',
             'role' => 'super_admin',
@@ -72,7 +144,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $agencyOwner = User::create([
-            'name' => 'Babar Azam (Agency Partner)',
+            'name' => 'Babar Azam (Agency Owner)',
             'email' => 'agency@yettoexplore.com',
             'phone' => '+92 300 8555123',
             'role' => 'agency_owner',
@@ -82,13 +154,46 @@ class DatabaseSeeder extends Seeder
             'is_active' => true,
         ]);
 
+        $opsManager = User::create([
+            'name' => 'Tariq Mehmood (Operations Manager)',
+            'email' => 'ops@northvoyagers.pk',
+            'phone' => '+92 301 9887766',
+            'role' => 'operational_manager',
+            'agency_id' => $northVoyagers->id,
+            'avatar' => 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80',
+            'password' => Hash::make('password123'),
+            'is_active' => true,
+        ]);
+
         $agencyAgent = User::create([
-            'name' => 'Kamran Akmal (Agency Agent)',
+            'name' => 'Kamran Akmal (Sales Agent)',
             'email' => 'agent@yettoexplore.com',
             'phone' => '+92 333 4455667',
-            'role' => 'agency_agent',
+            'role' => 'sales_agent',
             'agency_id' => $northVoyagers->id,
             'avatar' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+            'password' => Hash::make('password123'),
+            'is_active' => true,
+        ]);
+
+        $accountant = User::create([
+            'name' => 'Bilal Asif (Finance Accountant)',
+            'email' => 'accountant@northvoyagers.pk',
+            'phone' => '+92 322 5566778',
+            'role' => 'accountant',
+            'agency_id' => $northVoyagers->id,
+            'avatar' => 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80',
+            'password' => Hash::make('password123'),
+            'is_active' => true,
+        ]);
+
+        $driverUser = User::create([
+            'name' => 'Ghulam Rasool (Fleet Driver)',
+            'email' => 'driver@northvoyagers.pk',
+            'phone' => '+92 344 1122334',
+            'role' => 'driver',
+            'agency_id' => $northVoyagers->id,
+            'avatar' => 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80',
             'password' => Hash::make('password123'),
             'is_active' => true,
         ]);
@@ -100,6 +205,16 @@ class DatabaseSeeder extends Seeder
             'role' => 'tour_guide',
             'agency_id' => $northVoyagers->id,
             'avatar' => 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
+            'password' => Hash::make('password123'),
+            'is_active' => true,
+        ]);
+
+        $corporateClient = User::create([
+            'name' => 'Danyal Malik (Corporate Travel Head)',
+            'email' => 'corporate@techcorp.com',
+            'phone' => '+92 300 5544332',
+            'role' => 'corporate_client',
+            'avatar' => 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80',
             'password' => Hash::make('password123'),
             'is_active' => true,
         ]);
@@ -122,6 +237,58 @@ class DatabaseSeeder extends Seeder
             'avatar' => 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
             'password' => Hash::make('password123'),
             'is_active' => true,
+        ]);
+
+        // Seed Staff Module Access (Matrix Permissions per Section 2.1)
+        $modules = ['packages', 'hotel', 'flight', 'car_rental', 'corporate'];
+        foreach ($modules as $mod) {
+            // Ops Manager: Full view & add/edit across all modules
+            StaffModuleAccess::create([
+                'staff_id' => $opsManager->id,
+                'agency_id' => $northVoyagers->id,
+                'module' => $mod,
+                'permission_level' => 'full_access',
+                'can_view' => true,
+                'can_add_edit' => true,
+                'can_book' => true,
+                'can_approve_refund' => false,
+            ]);
+
+            // Sales Agent: View & Book
+            StaffModuleAccess::create([
+                'staff_id' => $agencyAgent->id,
+                'agency_id' => $northVoyagers->id,
+                'module' => $mod,
+                'permission_level' => 'book_only',
+                'can_view' => true,
+                'can_add_edit' => false,
+                'can_book' => true,
+                'can_approve_refund' => false,
+            ]);
+
+            // Accountant: View & Refund
+            StaffModuleAccess::create([
+                'staff_id' => $accountant->id,
+                'agency_id' => $northVoyagers->id,
+                'module' => $mod,
+                'permission_level' => 'approve_refund',
+                'can_view' => true,
+                'can_add_edit' => false,
+                'can_book' => false,
+                'can_approve_refund' => true,
+            ]);
+        }
+
+        // Driver: Car Rental view only
+        StaffModuleAccess::create([
+            'staff_id' => $driverUser->id,
+            'agency_id' => $northVoyagers->id,
+            'module' => 'car_rental',
+            'permission_level' => 'view_only',
+            'can_view' => true,
+            'can_add_edit' => false,
+            'can_book' => false,
+            'can_approve_refund' => false,
         ]);
 
         // 3. Create Destinations
@@ -658,5 +825,180 @@ class DatabaseSeeder extends Seeder
             'is_lead' => true,
             'phone' => '+92 313 1234567',
         ]);
+
+        // 7. Manual Inventory: Hotels & Rooms (No 3rd party APIs)
+        $shigarFort = Hotel::create([
+            'agency_id' => $northVoyagers->id,
+            'destination_id' => $skardu->id,
+            'name' => 'Serena Shigar Fort Palace',
+            'slug' => 'serena-shigar-fort-palace',
+            'city' => 'Skardu',
+            'address' => 'Shigar Valley Road, Skardu, Gilgit-Baltistan',
+            'star_rating' => 4.9,
+            'cover_image' => 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
+            'gallery' => [
+                'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80'
+            ],
+            'description' => 'A unique 400-year-old Raja Palace offering restored royal rooms with panoramic views of the Shigar river.',
+            'amenities' => ['Complimentary WiFi', 'Traditional Breakfast', 'Valet Parking', 'Fine Dining Restaurant', 'Heritage Museum'],
+            'policies' => ['check_in' => '14:00', 'check_out' => '12:00', 'cancellation' => 'Free up to 48 hours'],
+            'is_featured' => true,
+            'status' => 'active',
+        ]);
+
+        $deluxeSuite = HotelRoom::create([
+            'hotel_id' => $shigarFort->id,
+            'name' => 'Royal Heritage Suite',
+            'room_type' => 'suite',
+            'max_adults' => 2,
+            'max_children' => 1,
+            'base_price_per_night' => 38000.00,
+            'total_rooms' => 6,
+            'amenities' => ['King Bed', 'Valley View Balcony', 'Bathtub', 'Espresso Machine', 'Heater/AC'],
+            'images' => ['https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=800&q=80'],
+            'status' => 'active',
+        ]);
+
+        // Seed 14-day Quota for Deluxe Suite
+        for ($i = 0; $i < 14; $i++) {
+            HotelQuota::create([
+                'hotel_room_id' => $deluxeSuite->id,
+                'date' => Carbon::now()->addDays($i)->toDateString(),
+                'total_rooms' => 6,
+                'available_rooms' => $i === 3 ? 1 : 5,
+                'price_override' => $i > 10 ? 42000.00 : null,
+                'is_blocked' => false,
+            ]);
+        }
+
+        // 8. Manual Inventory: Flights (Manual Route & Seat inventory)
+        Flight::create([
+            'agency_id' => $northVoyagers->id,
+            'flight_number' => 'PK-605',
+            'airline_name' => 'Pakistan International Airlines (PIA)',
+            'airline_logo' => 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=120&q=80',
+            'departure_airport' => 'ISB',
+            'departure_city' => 'Islamabad',
+            'arrival_airport' => 'KDU',
+            'arrival_city' => 'Skardu',
+            'departure_time' => Carbon::now()->addDays(2)->setTime(7, 30),
+            'arrival_time' => Carbon::now()->addDays(2)->setTime(8, 30),
+            'duration_minutes' => 60,
+            'cabin_class' => 'Economy',
+            'baggage_kg' => 20,
+            'adult_price' => 24500.00,
+            'child_price' => 18500.00,
+            'total_seats' => 45,
+            'available_seats' => 18,
+            'notes' => 'Mountain view scenic flight over Nanga Parbat and K2. Weather permitting.',
+            'status' => 'scheduled',
+        ]);
+
+        Flight::create([
+            'agency_id' => $northVoyagers->id,
+            'flight_number' => 'PA-201',
+            'airline_name' => 'Airblue Mountain Wings',
+            'airline_logo' => 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=120&q=80',
+            'departure_airport' => 'LHE',
+            'departure_city' => 'Lahore',
+            'arrival_airport' => 'GIL',
+            'arrival_city' => 'Gilgit',
+            'departure_time' => Carbon::now()->addDays(4)->setTime(9, 15),
+            'arrival_time' => Carbon::now()->addDays(4)->setTime(10, 30),
+            'duration_minutes' => 75,
+            'cabin_class' => 'Economy',
+            'baggage_kg' => 20,
+            'adult_price' => 28000.00,
+            'child_price' => 22000.00,
+            'total_seats' => 30,
+            'available_seats' => 12,
+            'notes' => 'Direct morning shuttle to Karakoram mountains.',
+            'status' => 'scheduled',
+        ]);
+
+        // 9. Manual Inventory: Vehicles & Drivers (Fleet & Transfers)
+        $prado = Vehicle::create([
+            'agency_id' => $northVoyagers->id,
+            'name' => 'Toyota Land Cruiser Prado TX 4WD',
+            'make' => 'Toyota',
+            'model_year' => 2023,
+            'type' => 'suv',
+            'license_plate' => 'ICT-GB-901',
+            'seats_capacity' => 7,
+            'luggage_capacity' => 4,
+            'transmission' => 'Automatic',
+            'fuel_type' => 'Diesel',
+            'daily_rate' => 24000.00,
+            'with_driver' => true,
+            'cover_image' => 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80',
+            'features' => ['Dual AC', '4WD Low/High Range', 'Roof Rack', 'Aux/Bluetooth Sound', 'First Aid Kit'],
+            'status' => 'available',
+        ]);
+
+        $hiace = Vehicle::create([
+            'agency_id' => $northVoyagers->id,
+            'name' => 'Toyota Grand Cabin Hiace High-Roof',
+            'make' => 'Toyota',
+            'model_year' => 2022,
+            'type' => 'van',
+            'license_plate' => 'ICT-GB-334',
+            'seats_capacity' => 14,
+            'luggage_capacity' => 10,
+            'transmission' => 'Manual',
+            'fuel_type' => 'Diesel',
+            'daily_rate' => 18000.00,
+            'with_driver' => true,
+            'cover_image' => 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80',
+            'features' => ['Full AC Dual Zone', 'Reclining High Back Seats', 'Luggage Compartment', 'Microphone System'],
+            'status' => 'available',
+        ]);
+
+        Driver::create([
+            'agency_id' => $northVoyagers->id,
+            'user_id' => $driverUser->id,
+            'full_name' => 'Ghulam Rasool',
+            'phone' => '+92 344 1122334',
+            'license_number' => 'HTV-ISB-99812',
+            'experience_years' => 12,
+            'rating' => 4.9,
+            'is_available' => true,
+        ]);
+
+        // 10. Corporate Account & Invoicing Module
+        $techcorp = CorporateAccount::create([
+            'agency_id' => $northVoyagers->id,
+            'company_name' => 'TechCorp Solutions Pakistan Pvt Ltd',
+            'company_code' => 'TECH-PK-01',
+            'ntn_tax_id' => 'NTN-7341209-1',
+            'contact_name' => 'Danyal Malik',
+            'contact_email' => 'corporate@techcorp.com',
+            'contact_phone' => '+92 300 5544332',
+            'address' => 'Technology Park, Sector I-9/3, Islamabad',
+            'credit_limit' => 500000.00,
+            'current_balance' => 185000.00,
+            'discount_rate_percentage' => 8.00,
+            'requires_approval' => true,
+            'status' => 'active',
+        ]);
+
+        Invoice::create([
+            'invoice_number' => 'INV-2026-001',
+            'agency_id' => $northVoyagers->id,
+            'user_id' => $corporateClient->id,
+            'corporate_account_id' => $techcorp->id,
+            'title' => 'Annual Leadership Alpine Retreat - Skardu & Shangrila',
+            'subtotal' => 170000.00,
+            'tax_amount' => 15000.00,
+            'discount_amount' => 0.00,
+            'total_amount' => 185000.00,
+            'currency' => 'PKR',
+            'due_date' => Carbon::now()->addDays(15)->toDateString(),
+            'status' => 'paid',
+            'payment_method' => 'Bank Wire / IBAN',
+            'paid_at' => Carbon::now()->subDay(),
+            'notes' => 'Corporate retreat package including 2x Prado 4WD vehicles and Serena Shigar suites.',
+        ]);
     }
 }
+

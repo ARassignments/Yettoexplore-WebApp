@@ -114,6 +114,111 @@ class AdminDashboardController extends Controller
     }
 
     /**
+     * Create & Onboard a new Travel Agency workspace (Super Admin only).
+     */
+    public function createAgency(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:agencies,email',
+            'phone' => 'required|string|max:30',
+            'city' => 'nullable|string|max:100',
+            'country_region' => 'nullable|string|max:100',
+            'currency' => 'nullable|string|max:10',
+            'commission_rate' => 'nullable|numeric|min:0|max:100',
+            'subscription_plan_id' => 'nullable|exists:subscription_plans,id',
+            'trial_days' => 'nullable|integer|min:1|max:365',
+            'is_permanently_free' => 'nullable|boolean',
+            'owner_name' => 'required|string|max:255',
+            'owner_email' => 'required|email|max:255|unique:users,email',
+            'owner_password' => 'required|string|min:6',
+        ]);
+
+        $trialDays = $validated['trial_days'] ?? 14;
+        $isFree = $request->boolean('is_permanently_free', false);
+
+        $agency = Agency::create([
+            'name' => $validated['name'],
+            'slug' => \Illuminate\Support\Str::slug($validated['name']) . '-' . \Illuminate\Support\Str::random(4),
+            'email' => strtolower($validated['email']),
+            'phone' => $validated['phone'],
+            'city' => $validated['city'] ?? 'Kuala Lumpur',
+            'country_region' => $validated['country_region'] ?? 'Malaysia',
+            'currency' => $validated['currency'] ?? 'MYR',
+            'commission_rate' => $validated['commission_rate'] ?? 10.00,
+            'subscription_plan_id' => $validated['subscription_plan_id'] ?? null,
+            'trial_status' => $isFree ? 'none' : 'trialing',
+            'trial_ends_at' => $isFree ? null : Carbon::now()->addDays($trialDays),
+            'is_permanently_free' => $isFree,
+            'is_verified' => true,
+            'status' => 'active',
+        ]);
+
+        // Create the Agency Owner account (Section 3.2 & DogarX pattern)
+        $owner = User::create([
+            'agency_id' => $agency->id,
+            'name' => $validated['owner_name'],
+            'email' => strtolower($validated['owner_email']),
+            'phone' => $validated['phone'],
+            'role' => 'agency_owner',
+            'password' => \Illuminate\Support\Facades\Hash::make($validated['owner_password']),
+            'is_active' => true,
+            'profile_completed' => false,
+            'avatar' => 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80',
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => "Agency '{$agency->name}' and Owner account created successfully.",
+            'data' => [
+                'agency' => $agency->load('subscriptionPlan'),
+                'owner' => $owner,
+            ],
+        ], 201);
+    }
+
+    /**
+     * Extend Agency Free Trial or Set Permanently Free (Section 10.5 & 3.1).
+     */
+    public function extendTrial(Request $request, int $id): JsonResponse
+    {
+        $agency = Agency::findOrFail($id);
+
+        $validated = $request->validate([
+            'extra_days' => 'nullable|integer|min:1|max:365',
+            'is_permanently_free' => 'nullable|boolean',
+        ]);
+
+        if ($request->has('is_permanently_free')) {
+            $agency->is_permanently_free = $request->boolean('is_permanently_free');
+            if ($agency->is_permanently_free) {
+                $agency->trial_status = 'none';
+                $agency->status = 'active';
+            }
+        }
+
+        if ($request->filled('extra_days')) {
+            $baseDate = ($agency->trial_ends_at && $agency->trial_ends_at->isFuture()) 
+                ? $agency->trial_ends_at 
+                : Carbon::now();
+            $agency->trial_ends_at = $baseDate->copy()->addDays((int) $validated['extra_days']);
+            $agency->trial_status = 'trialing';
+            $agency->status = 'active';
+        }
+
+        $agency->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => "Agency trial updated for '{$agency->name}'.",
+            'data' => [
+                'agency' => $agency,
+                'trial_remaining' => $agency->trialRemaining(),
+            ],
+        ]);
+    }
+
+    /**
      * Toggle Agency Verification or Update Status.
      */
     public function updateAgency(Request $request, int $id): JsonResponse
@@ -132,8 +237,16 @@ class AdminDashboardController extends Controller
             $agency->commission_rate = (float) $request->input('commission_rate');
         }
 
-        if ($request->has('subscription_tier')) {
-            $agency->subscription_tier = $request->input('subscription_tier');
+        if ($request->has('subscription_plan_id')) {
+            $agency->subscription_plan_id = $request->input('subscription_plan_id');
+        }
+
+        if ($request->has('country_region')) {
+            $agency->country_region = $request->input('country_region');
+        }
+
+        if ($request->has('currency')) {
+            $agency->currency = $request->input('currency');
         }
 
         $agency->save();
@@ -141,7 +254,7 @@ class AdminDashboardController extends Controller
         return response()->json([
             'success' => true,
             'message' => "Agency '{$agency->name}' updated successfully.",
-            'data' => $agency,
+            'data' => $agency->load('subscriptionPlan'),
         ]);
     }
 

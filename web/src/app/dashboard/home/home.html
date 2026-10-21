@@ -161,50 +161,114 @@
     </div>
   </div>
 
+  <!-- ── Trial Status Countdown Banner (Section 10.5) ── -->
+  <div *ngIf="isAgencyOwner() || isAgencyAgent()" class="alert border-0 rounded-4 shadow-sm mb-4 p-3 d-flex align-items-center justify-content-between flex-wrap gap-3"
+       [class.bg-warning-subtle]="!adminService.trialStatus()?.is_permanently_free && !adminService.trialStatus()?.trial_remaining?.is_expired"
+       [class.bg-success-subtle]="adminService.trialStatus()?.is_permanently_free"
+       [class.bg-danger-subtle]="adminService.trialStatus()?.trial_remaining?.is_expired">
+    <div class="d-flex align-items-center gap-3">
+      <span class="avatar rounded-circle d-flex align-items-center justify-content-center p-2 text-white shadow-xs"
+            [class.bg-warning]="!adminService.trialStatus()?.is_permanently_free && !adminService.trialStatus()?.trial_remaining?.is_expired"
+            [class.bg-success]="adminService.trialStatus()?.is_permanently_free"
+            [class.bg-danger]="adminService.trialStatus()?.trial_remaining?.is_expired"
+            style="width: 44px; height: 44px;">
+        <i class="ti ti-crown fs-20" *ngIf="adminService.trialStatus()?.is_permanently_free"></i>
+        <i class="ti ti-clock-hour-4 fs-20" *ngIf="!adminService.trialStatus()?.is_permanently_free"></i>
+      </span>
+      <div>
+        <h6 class="mb-0 fw-bold text-dark">
+          <ng-container *ngIf="adminService.trialStatus()?.is_permanently_free">
+            Permanently Free SaaS Organization &bull; Unlimited Platform Access
+          </ng-container>
+          <ng-container *ngIf="!adminService.trialStatus()?.is_permanently_free && !adminService.trialStatus()?.trial_remaining?.is_expired">
+            14-Day Free SaaS Trial Active &bull; {{ adminService.trialStatus()?.trial_remaining?.days ?? 14 }} Days, {{ adminService.trialStatus()?.trial_remaining?.hours ?? 0 }} Hours Remaining
+          </ng-container>
+          <ng-container *ngIf="adminService.trialStatus()?.trial_remaining?.is_expired">
+            Trial Period Expired &bull; Organization Locked (Contact Super Admin)
+          </ng-container>
+        </h6>
+        <p class="fs-12 text-muted mb-0">
+          Plan: <strong>{{ adminService.trialStatus()?.plan?.name || 'Growth Operator' }}</strong> &bull;
+          Platform Fee: <strong>{{ adminService.trialStatus()?.plan?.commission_rate || '3.00' }}%</strong> &bull;
+          Agency Tenant: <strong>{{ adminService.trialStatus()?.agency_name || auth.currentUser()?.name }}</strong>
+        </p>
+      </div>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <span class="badge bg-white text-dark border px-3 py-2 fw-semibold rounded-pill shadow-xs">
+        {{ adminService.trialStatus()?.is_permanently_free ? 'Special Free Tier' : 'Self-Serve Trial' }}
+      </span>
+      <button class="btn btn-primary btn-sm rounded-pill px-3 shadow-sm" *ngIf="!adminService.trialStatus()?.is_permanently_free" (click)="setTab('plans')">
+        Upgrade Plan &rarr;
+      </button>
+    </div>
+  </div>
+
   <!-- ── Navigation Tabs ── -->
   <div class="card border-0 rounded-4 shadow-sm mb-4">
     <div class="card-body p-2">
       <ul class="nav nav-pills nav-justified gap-1 flex-nowrap overflow-auto" id="adminTabs">
         <li class="nav-item">
-          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2"
+          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2 text-nowrap"
                   [class.active]="activeTab() === 'overview'"
                   (click)="setTab('overview')">
             <i class="ti ti-layout-dashboard fs-18"></i> Overview
           </button>
         </li>
         <li class="nav-item" *ngIf="isSuperAdmin()">
-          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2"
+          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2 text-nowrap"
                   [class.active]="activeTab() === 'agencies'"
                   (click)="setTab('agencies')">
             <i class="ti ti-building fs-18"></i> Agencies ({{ adminService.agencies().length || 2 }})
           </button>
         </li>
+        <li class="nav-item" *ngIf="isSuperAdmin() || isAgencyOwner()">
+          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2 text-nowrap"
+                  [class.active]="activeTab() === 'plans'"
+                  (click)="setTab('plans')">
+            <i class="ti ti-credit-card fs-18"></i> SaaS Plans ({{ adminService.plans().length || 3 }})
+          </button>
+        </li>
+        <li class="nav-item" *ngIf="isAgencyOwner() || isSuperAdmin()">
+          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2 text-nowrap"
+                  [class.active]="activeTab() === 'staff'"
+                  (click)="setTab('staff')">
+            <i class="ti ti-users-group fs-18"></i> Staff & Permissions
+          </button>
+        </li>
+        <li class="nav-item" *ngIf="!isCustomer()">
+          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2 text-nowrap"
+                  [class.active]="activeTab() === 'inventory'"
+                  (click)="setTab('inventory')">
+            <i class="ti ti-database fs-18"></i> Manual Inventory & Fleet
+          </button>
+        </li>
         <li class="nav-item" *ngIf="!isTourGuide() && !isCustomer()">
-          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2"
+          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2 text-nowrap"
                   [class.active]="activeTab() === 'tours'"
                   (click)="setTab('tours')">
-            <i class="ti ti-map-pin fs-18"></i> Tour Packages ({{ filteredTours.length }})
+            <i class="ti ti-map-pin fs-18"></i> Tours ({{ filteredTours.length }})
           </button>
         </li>
         <li class="nav-item">
-          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2"
+          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2 text-nowrap"
                   [class.active]="activeTab() === 'bookings'"
                   (click)="setTab('bookings')">
-            <i class="ti ti-ticket fs-18"></i> {{ isCustomer() ? 'My Bookings & Passes' : 'Bookings & Passes' }} ({{ filteredBookings.length }})
+            <i class="ti ti-ticket fs-18"></i> {{ isCustomer() ? 'My Bookings' : 'Bookings' }} ({{ filteredBookings.length }})
           </button>
         </li>
-        <li class="nav-item" *ngIf="isSuperAdmin() || isAgencyOwner()">
-          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2"
+        <li class="nav-item" *ngIf="isSuperAdmin()">
+          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2 text-nowrap"
                   [class.active]="activeTab() === 'users'"
                   (click)="setTab('users')">
-            <i class="ti ti-users fs-18"></i> {{ isSuperAdmin() ? 'Users & Roles' : 'Staff & Guides' }}
+            <i class="ti ti-users fs-18"></i> All Users
           </button>
         </li>
         <li class="nav-item" *ngIf="isSuperAdmin() || isAgencyOwner()">
-          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2"
+          <button class="nav-link rounded-3 py-2 px-3 fw-semibold d-flex align-items-center justify-content-center gap-2 text-nowrap"
                   [class.active]="activeTab() === 'coupons'"
                   (click)="setTab('coupons')">
-            <i class="ti ti-gift fs-18"></i> Promo Coupons
+            <i class="ti ti-gift fs-18"></i> Coupons
           </button>
         </li>
       </ul>
@@ -377,14 +441,17 @@
     <div class="card border-0 rounded-4 shadow-sm mb-4">
       <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0 d-flex align-items-center justify-content-between flex-wrap gap-3">
         <div>
-          <h5 class="fw-bold mb-1 text-dark">SaaS Travel Agency Partners</h5>
-          <p class="fs-13 text-muted mb-0">Manage partner licenses, commission splits, and verification approvals.</p>
+          <h5 class="fw-bold mb-1 text-dark">SaaS Travel Agency Tenants</h5>
+          <p class="fs-13 text-muted mb-0">Platform governance, trial lifecycle, subscription plan assignments, and verification.</p>
         </div>
         <div class="d-flex align-items-center gap-2">
-          <div class="input-group input-group-sm" style="width: 250px;">
+          <div class="input-group input-group-sm" style="width: 220px;">
             <span class="input-group-text bg-light border-0"><i class="ti ti-search"></i></span>
             <input type="text" class="form-control bg-light border-0" placeholder="Search agencies..." [ngModel]="agencySearch()" (ngModelChange)="agencySearch.set($event)">
           </div>
+          <button class="btn btn-primary btn-sm rounded-pill d-inline-flex align-items-center gap-1 shadow-sm px-3" (click)="openCreateAgencyModal()">
+            <i class="ti ti-plus fs-14"></i> Onboard Agency
+          </button>
         </div>
       </div>
       <div class="card-body p-4">
@@ -392,14 +459,15 @@
           <table class="table table-hover align-middle mb-0">
             <thead class="table-light">
               <tr>
-                <th class="border-0">Agency Name</th>
+                <th class="border-0">Agency Tenant</th>
                 <th class="border-0">City & Contact</th>
-                <th class="border-0">Tier</th>
-                <th class="border-0">Commission Rate</th>
-                <th class="border-0">Tours & Revenue</th>
+                <th class="border-0">Subscription Plan</th>
+                <th class="border-0">Trial / Access</th>
+                <th class="border-0">Commission</th>
+                <th class="border-0">Tours Listed</th>
                 <th class="border-0">Verification</th>
                 <th class="border-0">Status</th>
-                <th class="border-0 text-end">Controls</th>
+                <th class="border-0 text-end">Governance</th>
               </tr>
             </thead>
             <tbody>
@@ -418,12 +486,20 @@
                   <span class="fs-12 text-muted">{{ ag.email }} &bull; {{ ag.phone }}</span>
                 </td>
                 <td>
-                  <span class="badge bg-secondary-transparent text-secondary rounded-pill px-3 py-1 fw-bold">
-                    {{ (ag.subscription_tier || 'starter') | uppercase }}
+                  <span class="badge bg-primary-transparent text-primary rounded-pill px-3 py-1 fw-bold">
+                    {{ (ag.subscription_plan?.name || ag.subscription_tier || 'Starter') | uppercase }}
                   </span>
                 </td>
                 <td>
-                  <strong class="text-primary">{{ ag.commission_rate || 10.00 }}%</strong>
+                  <span class="badge bg-success-transparent text-success rounded-pill px-2 py-1 fs-11" *ngIf="ag.is_permanently_free">
+                    <i class="ti ti-crown me-1"></i> Permanent Free
+                  </span>
+                  <span class="badge bg-warning-transparent text-warning rounded-pill px-2 py-1 fs-11" *ngIf="!ag.is_permanently_free">
+                    <i class="ti ti-clock me-1"></i> 14-Day Trial
+                  </span>
+                </td>
+                <td>
+                  <strong class="text-primary">{{ ag.commission_rate || 3.00 }}%</strong>
                 </td>
                 <td>
                   <span class="d-block fw-semibold text-dark">{{ ag.tours_count || 4 }} Tours</span>
@@ -435,7 +511,7 @@
                           [class.btn-outline-secondary]="!ag.is_verified"
                           (click)="toggleAgencyVerification(ag)">
                     <i class="ti" [class.ti-check]="ag.is_verified" [class.ti-x]="!ag.is_verified"></i>
-                    {{ ag.is_verified ? 'Verified' : 'Unverified' }}
+                    {{ ag.is_verified ? 'Verified' : 'Pending' }}
                   </button>
                 </td>
                 <td>
@@ -448,13 +524,16 @@
                   </span>
                 </td>
                 <td class="text-end">
-                  <div class="dropdown">
+                  <button class="btn btn-sm btn-outline-warning rounded-pill me-1 shadow-xs" (click)="openExtendTrialModal(ag)">
+                    <i class="ti ti-clock-plus me-1"></i> Trial
+                  </button>
+                  <div class="dropdown d-inline-block">
                     <button class="btn btn-light btn-sm rounded-circle p-2" data-bs-toggle="dropdown">
                       <i class="ti ti-dots-vertical"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end shadow-sm">
                       <li><a class="dropdown-item" href="javascript:void(0);" (click)="toggleAgencyStatus(ag, 'active')"><i class="ti ti-check text-success me-2"></i> Set Active</a></li>
-                      <li><a class="dropdown-item" href="javascript:void(0);" (click)="toggleAgencyStatus(ag, 'suspended')"><i class="ti ti-ban text-danger me-2"></i> Suspend Agency</a></li>
+                      <li><a class="dropdown-item" href="javascript:void(0);" (click)="toggleAgencyStatus(ag, 'suspended')"><i class="ti ti-ban text-danger me-2"></i> Suspend Tenant</a></li>
                     </ul>
                   </div>
                 </td>
@@ -462,6 +541,339 @@
             </tbody>
           </table>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- TAB: SAAS SUBSCRIPTION PLANS (Section 10.1)               -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div *ngIf="activeTab() === 'plans'" class="tab-content-area animate__animated animate__fadeIn">
+    <div class="card border-0 rounded-4 shadow-sm mb-4">
+      <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0 d-flex align-items-center justify-content-between flex-wrap gap-3">
+        <div>
+          <h5 class="fw-bold mb-1 text-dark">SaaS Subscription Plans & Pricing (Section 10.1)</h5>
+          <p class="fs-13 text-muted mb-0">Configure tier limits, included modules, platform commission overrides, and billing cycles.</p>
+        </div>
+        <button class="btn btn-primary btn-sm rounded-pill d-inline-flex align-items-center gap-1 shadow-sm px-3" *ngIf="isSuperAdmin()" (click)="openCreatePlanModal()">
+          <i class="ti ti-plus fs-14"></i> Create New Plan
+        </button>
+      </div>
+      <div class="card-body p-4">
+        <div class="row g-4">
+          <div class="col-md-4 col-12" *ngFor="let plan of adminService.plans()">
+            <div class="card h-100 rounded-4 border p-4 shadow-sm position-relative" [class.border-primary]="plan.slug === 'growth'">
+              <span class="badge bg-primary text-white position-absolute top-0 end-0 m-3 px-3 py-1 rounded-pill" *ngIf="plan.slug === 'growth'">
+                MOST POPULAR
+              </span>
+              <h5 class="fw-bold text-dark mb-1">{{ plan.name }}</h5>
+              <p class="fs-13 text-muted mb-3">{{ plan.description }}</p>
+              <div class="mb-3">
+                <span class="fs-32 fw-bold text-dark">${{ plan.price }}</span>
+                <span class="text-muted fs-13"> / {{ plan.billing_cycle }}</span>
+              </div>
+              <ul class="list-unstyled fs-13 text-secondary mb-4">
+                <li class="mb-2"><i class="ti ti-check text-success me-2"></i> Staff Limit: <strong>{{ plan.staff_limit }} accounts</strong></li>
+                <li class="mb-2"><i class="ti ti-check text-success me-2"></i> Platform Commission: <strong>{{ plan.commission_rate }}%</strong></li>
+                <li class="mb-2"><i class="ti ti-check text-success me-2"></i> Modules: <strong>{{ plan.modules_included?.join(', ') | uppercase }}</strong></li>
+                <li class="mb-2"><i class="ti ti-check text-success me-2"></i> 14-Day Free Trial Auto-Activation</li>
+              </ul>
+              <div class="mt-auto">
+                <button class="btn w-100 rounded-pill py-2 fw-semibold"
+                        [class.btn-primary]="plan.slug === 'growth'"
+                        [class.btn-outline-primary]="plan.slug !== 'growth'"
+                        *ngIf="isAgencyOwner()">
+                  Switch to {{ plan.name }}
+                </button>
+                <span class="badge bg-light text-muted w-100 py-2 d-block border" *ngIf="isSuperAdmin()">
+                  Active Tier Configuration
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- TAB: STAFF & PERMISSIONS MATRIX (DogarX Pattern)          -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div *ngIf="activeTab() === 'staff'" class="tab-content-area animate__animated animate__fadeIn">
+    <div class="card border-0 rounded-4 shadow-sm mb-4">
+      <div class="card-header bg-transparent border-0 pt-4 px-4 pb-0 d-flex align-items-center justify-content-between flex-wrap gap-3">
+        <div>
+          <h5 class="fw-bold mb-1 text-dark">Tenant Team & Custom Permission Matrix (Section 3.2)</h5>
+          <p class="fs-13 text-muted mb-0">Assign staff roles and customize granular permissions across Packages, Hotels, Flights, Fleet, and Corporate travel.</p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary btn-sm rounded-pill d-inline-flex align-items-center gap-1 shadow-sm px-3" (click)="openCreateStaffModal()">
+            <i class="ti ti-plus fs-14"></i> Add Staff Member
+          </button>
+        </div>
+      </div>
+      <div class="card-body p-4">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th class="border-0">Staff Member</th>
+                <th class="border-0">Role</th>
+                <th class="border-0">Contact</th>
+                <th class="border-0">Module Permissions Overview</th>
+                <th class="border-0">Status</th>
+                <th class="border-0 text-end">Action Matrix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let s of filteredStaff">
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <img [src]="s.avatar || 'assets/user/img/team/team-2.jpg'" alt="" class="avatar avatar-md rounded-circle object-fit-cover shadow-xs">
+                    <div>
+                      <h6 class="mb-0 fw-bold text-dark">{{ s.name }}</h6>
+                      <span class="fs-12 text-muted">{{ s.email }}</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="badge rounded-pill px-3 py-1 fw-bold"
+                        [class.bg-teal-transparent]="s.role === 'operational_manager'"
+                        [class.text-teal]="s.role === 'operational_manager'"
+                        [class.bg-primary-transparent]="s.role === 'sales_agent'"
+                        [class.text-primary]="s.role === 'sales_agent'"
+                        [class.bg-warning-transparent]="s.role === 'accountant'"
+                        [class.text-warning]="s.role === 'accountant'"
+                        [class.bg-secondary-transparent]="s.role === 'driver'"
+                        [class.text-secondary]="s.role === 'driver'">
+                    {{ (s.role || 'staff') | uppercase }}
+                  </span>
+                </td>
+                <td>{{ s.phone || '+92 300 0000000' }}</td>
+                <td>
+                  <div class="d-flex flex-wrap gap-1">
+                    <span class="badge bg-light text-dark border fs-11" *ngFor="let acc of (s.module_access || [])">
+                      {{ acc.module | uppercase }}:
+                      <span class="text-success" *ngIf="acc.can_view">V</span>
+                      <span class="text-primary ms-1" *ngIf="acc.can_add_edit">E</span>
+                      <span class="text-warning ms-1" *ngIf="acc.can_book">B</span>
+                      <span class="text-danger ms-1" *ngIf="acc.can_approve_refund">R</span>
+                    </span>
+                    <span class="fs-12 text-muted" *ngIf="!s.module_access || s.module_access.length === 0">Full Role Access</span>
+                  </div>
+                </td>
+                <td>
+                  <span class="badge rounded-pill px-2 py-1"
+                        [class.bg-success-transparent]="s.is_active"
+                        [class.text-success]="s.is_active"
+                        [class.bg-danger-transparent]="!s.is_active"
+                        [class.text-danger]="!s.is_active">
+                    {{ s.is_active ? 'ACTIVE' : 'DISABLED' }}
+                  </span>
+                </td>
+                <td class="text-end">
+                  <button class="btn btn-sm btn-outline-primary rounded-pill me-1" (click)="openEditPermissionsModal(s)">
+                    <i class="ti ti-adjustments me-1"></i> Permissions
+                  </button>
+                  <button class="btn btn-sm btn-light rounded-circle" (click)="toggleStaffStatus(s)" title="Toggle Status">
+                    <i class="ti ti-power fs-14"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- TAB: MANUAL INVENTORY & FLEET (No GDS / 3rd Party APIs)   -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div *ngIf="activeTab() === 'inventory'" class="tab-content-area animate__animated animate__fadeIn">
+    <!-- Sub-navigation for inventory -->
+    <div class="d-flex align-items-center gap-2 mb-4 border-bottom pb-3 flex-wrap">
+      <button class="btn btn-sm rounded-pill px-3" [class.btn-primary]="inventorySubTab() === 'hotels'" [class.btn-light]="inventorySubTab() !== 'hotels'" (click)="setInventorySubTab('hotels')">
+        <i class="ti ti-building-skyscraper me-1"></i> Hotels & Quotas ({{ adminService.hotels().length }})
+      </button>
+      <button class="btn btn-sm rounded-pill px-3" [class.btn-primary]="inventorySubTab() === 'flights'" [class.btn-light]="inventorySubTab() !== 'flights'" (click)="setInventorySubTab('flights')">
+        <i class="ti ti-plane me-1"></i> Flight Routes ({{ adminService.flights().length }})
+      </button>
+      <button class="btn btn-sm rounded-pill px-3" [class.btn-primary]="inventorySubTab() === 'vehicles'" [class.btn-light]="inventorySubTab() !== 'vehicles'" (click)="setInventorySubTab('vehicles')">
+        <i class="ti ti-car me-1"></i> Fleet & Drivers ({{ adminService.vehicles().length }})
+      </button>
+      <button class="btn btn-sm rounded-pill px-3" [class.btn-primary]="inventorySubTab() === 'corporate'" [class.btn-light]="inventorySubTab() !== 'corporate'" (click)="setInventorySubTab('corporate')">
+        <i class="ti ti-briefcase me-1"></i> Corporate Accounts ({{ adminService.corporate().length }})
+      </button>
+      <button class="btn btn-sm rounded-pill px-3" [class.btn-primary]="inventorySubTab() === 'invoices'" [class.btn-light]="inventorySubTab() !== 'invoices'" (click)="setInventorySubTab('invoices')">
+        <i class="ti ti-receipt me-1"></i> Invoices & Billing ({{ adminService.invoices().length }})
+      </button>
+    </div>
+
+    <!-- Hotels Subtab -->
+    <div *ngIf="inventorySubTab() === 'hotels'">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h6 class="fw-bold mb-0 text-dark">Hotel Listings (Manual Allotment Calendar)</h6>
+        <button class="btn btn-primary btn-sm rounded-pill px-3" (click)="createHotelModalOpen.set(true)">
+          <i class="ti ti-plus me-1"></i> Add Hotel
+        </button>
+      </div>
+      <div class="row g-3">
+        <div class="col-md-6 col-12" *ngFor="let h of adminService.hotels()">
+          <div class="card rounded-4 border shadow-sm p-3">
+            <div class="d-flex gap-3">
+              <img [src]="h.cover_image || 'assets/user/img/tour/tour-1.jpg'" alt="" class="rounded-3 object-fit-cover" style="width: 120px; height: 100px;">
+              <div>
+                <h6 class="fw-bold text-dark mb-1">{{ h.name }}</h6>
+                <p class="fs-12 text-muted mb-1">{{ h.city }} &bull; Star Rating: {{ h.star_rating }} / 5.0</p>
+                <span class="badge bg-teal-transparent text-teal rounded-pill px-2 py-1 fs-11">
+                  {{ h.rooms?.length || 1 }} Room Types Listed
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flights Subtab -->
+    <div *ngIf="inventorySubTab() === 'flights'">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h6 class="fw-bold mb-0 text-dark">Manual Flight Schedules (No GDS Required)</h6>
+        <button class="btn btn-primary btn-sm rounded-pill px-3" (click)="createFlightModalOpen.set(true)">
+          <i class="ti ti-plus me-1"></i> List Flight Route
+        </button>
+      </div>
+      <div class="table-responsive bg-white rounded-4 border shadow-sm">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Flight #</th>
+              <th>Airline</th>
+              <th>Route</th>
+              <th>Departure / Arrival</th>
+              <th>Available Seats</th>
+              <th>Adult Fare</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let f of adminService.flights()">
+              <td><strong>{{ f.flight_number }}</strong></td>
+              <td>{{ f.airline_name }}</td>
+              <td>{{ f.departure_airport }} ({{ f.departure_city }}) &rarr; {{ f.arrival_airport }} ({{ f.arrival_city }})</td>
+              <td class="fs-12">{{ f.departure_time | date:'short' }}</td>
+              <td><span class="badge bg-success-transparent text-success">{{ f.available_seats }} / {{ f.total_seats }} Seats</span></td>
+              <td><strong class="text-primary">PKR {{ f.adult_price | number }}</strong></td>
+              <td><span class="badge bg-primary-transparent text-primary">{{ f.status | uppercase }}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Vehicles Subtab -->
+    <div *ngIf="inventorySubTab() === 'vehicles'">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h6 class="fw-bold mb-0 text-dark">Vehicle Fleet & Mountain Transfers</h6>
+        <button class="btn btn-primary btn-sm rounded-pill px-3" (click)="createVehicleModalOpen.set(true)">
+          <i class="ti ti-plus me-1"></i> Register Vehicle
+        </button>
+      </div>
+      <div class="row g-3">
+        <div class="col-md-6 col-12" *ngFor="let v of adminService.vehicles()">
+          <div class="card rounded-4 border shadow-sm p-3">
+            <div class="d-flex gap-3">
+              <img [src]="v.cover_image || 'assets/user/img/tour/tour-2.jpg'" alt="" class="rounded-3 object-fit-cover" style="width: 120px; height: 100px;">
+              <div>
+                <h6 class="fw-bold text-dark mb-1">{{ v.name }}</h6>
+                <p class="fs-12 text-muted mb-1">{{ v.make }} {{ v.model_year }} &bull; Plate: {{ v.license_plate || 'ICT-GB' }}</p>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="badge bg-secondary-transparent text-secondary rounded-pill px-2 py-1 fs-11">{{ v.seats_capacity }} Seats</span>
+                  <strong class="text-success fs-13">PKR {{ v.daily_rate | number }} / Day</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Corporate Subtab -->
+    <div *ngIf="inventorySubTab() === 'corporate'">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h6 class="fw-bold mb-0 text-dark">Corporate Client Organizations</h6>
+        <button class="btn btn-primary btn-sm rounded-pill px-3" (click)="createCorporateModalOpen.set(true)">
+          <i class="ti ti-plus me-1"></i> New Corporate Account
+        </button>
+      </div>
+      <div class="table-responsive bg-white rounded-4 border shadow-sm">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Company Name</th>
+              <th>Account Code</th>
+              <th>Contact Lead</th>
+              <th>Credit Limit</th>
+              <th>Current Balance</th>
+              <th>Corporate Discount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of adminService.corporate()">
+              <td><strong>{{ c.company_name }}</strong></td>
+              <td><code>{{ c.company_code }}</code></td>
+              <td>{{ c.contact_name }} ({{ c.contact_email }})</td>
+              <td>PKR {{ c.credit_limit | number }}</td>
+              <td><span class="badge bg-warning-transparent text-warning">PKR {{ c.current_balance | number }}</span></td>
+              <td>{{ c.discount_rate_percentage }}%</td>
+              <td><span class="badge bg-success-transparent text-success">{{ c.status | uppercase }}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Invoices Subtab -->
+    <div *ngIf="inventorySubTab() === 'invoices'">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h6 class="fw-bold mb-0 text-dark">Invoices & Corporate Billing</h6>
+        <button class="btn btn-primary btn-sm rounded-pill px-3" (click)="createInvoiceModalOpen.set(true)">
+          <i class="ti ti-plus me-1"></i> Generate Invoice
+        </button>
+      </div>
+      <div class="table-responsive bg-white rounded-4 border shadow-sm">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Invoice #</th>
+              <th>Title / Description</th>
+              <th>Due Date</th>
+              <th>Total Amount</th>
+              <th>Status</th>
+              <th class="text-end">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let inv of adminService.invoices()">
+              <td><strong>{{ inv.invoice_number }}</strong></td>
+              <td>{{ inv.title }}</td>
+              <td class="fs-12">{{ inv.due_date | date:'mediumDate' }}</td>
+              <td><strong class="text-primary">PKR {{ inv.total_amount | number }}</strong></td>
+              <td>
+                <span class="badge rounded-pill px-2 py-1" [class.bg-success-transparent]="inv.status === 'paid'" [class.text-success]="inv.status === 'paid'" [class.bg-danger-transparent]="inv.status === 'unpaid'" [class.text-danger]="inv.status === 'unpaid'">
+                  {{ inv.status | uppercase }}
+                </span>
+              </td>
+              <td class="text-end">
+                <button class="btn btn-sm btn-outline-success rounded-pill px-3" *ngIf="inv.status === 'unpaid'" (click)="markInvoicePaid(inv)">
+                  Mark Paid
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -895,9 +1307,525 @@
           <button type="button" class="btn btn-primary rounded-pill px-4" onclick="window.print()">
             <i class="ti ti-printer me-1"></i> Print Pass
           </button>
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- MODAL: ONBOARD NEW AGENCY (Super Admin Only)               -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div class="modal fade show d-block" *ngIf="createAgencyModalOpen()" style="background: rgba(0,0,0,0.6);" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+        <div class="modal-header bg-primary text-white py-3 px-4">
+          <div class="d-flex align-items-center gap-2">
+            <i class="ti ti-building-plus fs-20"></i>
+            <h5 class="modal-title fw-bold text-white mb-0">Onboard New Agency Tenant (Platform Management)</h5>
+          </div>
+          <button type="button" class="btn-close btn-close-white" (click)="createAgencyModalOpen.set(false)"></button>
+        </div>
+        <div class="modal-body p-4 bg-light">
+          <form (ngSubmit)="submitCreateAgency()">
+            <h6 class="fw-bold text-dark mb-3 border-bottom pb-2">Agency Tenant Information</h6>
+            <div class="row g-3 mb-4">
+              <div class="col-md-6 col-12">
+                <label class="form-label fs-13 fw-semibold">Agency Legal Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" [(ngModel)]="newAgencyData.name" name="name" placeholder="e.g. Karakoram Nomads Travel" required>
+              </div>
+              <div class="col-md-6 col-12">
+                <label class="form-label fs-13 fw-semibold">Official Contact Email <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" [(ngModel)]="newAgencyData.email" name="email" placeholder="contact@karakoramnomads.pk" required>
+              </div>
+              <div class="col-md-4 col-12">
+                <label class="form-label fs-13 fw-semibold">City / Headquarters</label>
+                <input type="text" class="form-control" [(ngModel)]="newAgencyData.city" name="city" placeholder="e.g. Skardu / Islamabad">
+              </div>
+              <div class="col-md-4 col-12">
+                <label class="form-label fs-13 fw-semibold">WhatsApp / Phone</label>
+                <input type="text" class="form-control" [(ngModel)]="newAgencyData.phone" name="phone" placeholder="+92 300 1234567">
+              </div>
+              <div class="col-md-4 col-12">
+                <label class="form-label fs-13 fw-semibold">DTS License #</label>
+                <input type="text" class="form-control" [(ngModel)]="newAgencyData.license_number" name="license_number" placeholder="DTS-ISB-2026-991">
+              </div>
+            </div>
+
+            <h6 class="fw-bold text-dark mb-3 border-bottom pb-2">Subscription & Trial Lifecycle</h6>
+            <div class="row g-3 mb-4">
+              <div class="col-md-6 col-12">
+                <label class="form-label fs-13 fw-semibold">Assigned Subscription Plan</label>
+                <select class="form-select" [(ngModel)]="newAgencyData.subscription_plan_id" name="subscription_plan_id">
+                  <option [ngValue]="null">Select SaaS Plan</option>
+                  <option *ngFor="let p of adminService.plans()" [ngValue]="p.id">{{ p.name }} (${{ p.price }}/mo - {{ p.commission_rate }}% Comm.)</option>
+                </select>
+              </div>
+              <div class="col-md-3 col-12">
+                <label class="form-label fs-13 fw-semibold">Free Trial (Days)</label>
+                <input type="number" class="form-control" [(ngModel)]="newAgencyData.trial_days" name="trial_days" [disabled]="newAgencyData.is_permanently_free">
+              </div>
+              <div class="col-md-3 col-12 d-flex align-items-end">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="permFreeCheck" [(ngModel)]="newAgencyData.is_permanently_free" name="is_permanently_free">
+                  <label class="form-check-label fs-13 fw-semibold" for="permFreeCheck">Permanently Free</label>
+                </div>
+              </div>
+            </div>
+
+            <h6 class="fw-bold text-dark mb-3 border-bottom pb-2">Primary Agency Owner Credentials</h6>
+            <div class="row g-3 mb-3">
+              <div class="col-md-4 col-12">
+                <label class="form-label fs-13 fw-semibold">Owner Full Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" [(ngModel)]="newAgencyData.owner_name" name="owner_name" placeholder="e.g. Babar Azam" required>
+              </div>
+              <div class="col-md-4 col-12">
+                <label class="form-label fs-13 fw-semibold">Owner Login Email <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" [(ngModel)]="newAgencyData.owner_email" name="owner_email" placeholder="owner@agency.com" required>
+              </div>
+              <div class="col-md-4 col-12">
+                <label class="form-label fs-13 fw-semibold">Initial Password <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" [(ngModel)]="newAgencyData.owner_password" name="owner_password" required>
+              </div>
+            </div>
+
+            <div class="text-end pt-3">
+              <button type="button" class="btn btn-secondary rounded-pill px-4 me-2" (click)="createAgencyModalOpen.set(false)">Cancel</button>
+              <button type="submit" class="btn btn-primary rounded-pill px-4 shadow-sm">
+                <i class="ti ti-check me-1"></i> Launch Agency Tenant
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- MODAL: EXTEND TRIAL (Super Admin Only)                    -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div class="modal fade show d-block" *ngIf="extendTrialModalOpen()" style="background: rgba(0,0,0,0.6);" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+        <div class="modal-header bg-warning text-dark py-3 px-4">
+          <div class="d-flex align-items-center gap-2">
+            <i class="ti ti-clock-plus fs-20"></i>
+            <h5 class="modal-title fw-bold mb-0">Extend SaaS Trial & Access</h5>
+          </div>
+          <button type="button" class="btn-close" (click)="extendTrialModalOpen.set(false)"></button>
+        </div>
+        <div class="modal-body p-4 bg-light">
+          <p class="fs-13 text-muted">
+            Managing trial lifecycle for agency: <strong class="text-dark">{{ extendTrialData.agencyName }}</strong>
+          </p>
+
+          <div class="mb-3">
+            <label class="form-label fs-13 fw-semibold">Add Trial Days</label>
+            <div class="d-flex gap-2 mb-2">
+              <button type="button" class="btn btn-sm btn-outline-secondary" (click)="extendTrialData.days = 7">+7 Days</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" (click)="extendTrialData.days = 14">+14 Days</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" (click)="extendTrialData.days = 30">+30 Days</button>
+            </div>
+            <input type="number" class="form-control" [(ngModel)]="extendTrialData.days" [disabled]="extendTrialData.is_permanently_free">
+          </div>
+
+          <div class="form-check p-3 bg-white border rounded-3 mb-4">
+            <input class="form-check-input" type="checkbox" id="permFreeModalCheck" [(ngModel)]="extendTrialData.is_permanently_free">
+            <label class="form-check-label fs-13 fw-semibold" for="permFreeModalCheck">
+              Set as Permanently Free (Bypass 14-day lock completely)
+            </label>
+          </div>
+
+          <div class="text-end">
+            <button type="button" class="btn btn-secondary rounded-pill px-4 me-2" (click)="extendTrialModalOpen.set(false)">Cancel</button>
+            <button type="button" class="btn btn-warning rounded-pill px-4 shadow-sm fw-semibold" (click)="submitExtendTrial()">
+              <i class="ti ti-check me-1"></i> Save Changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- MODAL: CREATE SAAS SUBSCRIPTION PLAN                      -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div class="modal fade show d-block" *ngIf="createPlanModalOpen()" style="background: rgba(0,0,0,0.6);" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+        <div class="modal-header bg-primary text-white py-3 px-4">
+          <div class="d-flex align-items-center gap-2">
+            <i class="ti ti-credit-card fs-20"></i>
+            <h5 class="modal-title fw-bold text-white mb-0">Create SaaS Subscription Tier</h5>
+          </div>
+          <button type="button" class="btn-close btn-close-white" (click)="createPlanModalOpen.set(false)"></button>
+        </div>
+        <div class="modal-body p-4 bg-light">
+          <form (ngSubmit)="submitCreatePlan()">
+            <div class="mb-3">
+              <label class="form-label fs-13 fw-semibold">Plan Name</label>
+              <input type="text" class="form-control" [(ngModel)]="newPlanData.name" name="planName" placeholder="e.g. Enterprise Premier" required>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label fs-13 fw-semibold">Price ($ USD)</label>
+                <input type="number" class="form-control" [(ngModel)]="newPlanData.price" name="planPrice" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label fs-13 fw-semibold">Staff Seat Limit</label>
+                <input type="number" class="form-control" [(ngModel)]="newPlanData.staff_limit" name="planStaffLimit" required>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fs-13 fw-semibold">Platform Commission Rate (%)</label>
+              <input type="number" step="0.1" class="form-control" [(ngModel)]="newPlanData.commission_rate" name="planCommission" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fs-13 fw-semibold">Plan Summary</label>
+              <textarea class="form-control" rows="2" [(ngModel)]="newPlanData.description" name="planDesc"></textarea>
+            </div>
+            <div class="text-end">
+              <button type="button" class="btn btn-secondary rounded-pill px-4 me-2" (click)="createPlanModalOpen.set(false)">Cancel</button>
+              <button type="submit" class="btn btn-primary rounded-pill px-4 shadow-sm">Save Plan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- MODAL: ADD STAFF MEMBER (Agency Owner)                    -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div class="modal fade show d-block" *ngIf="createStaffModalOpen()" style="background: rgba(0,0,0,0.6);" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+        <div class="modal-header bg-primary text-white py-3 px-4">
+          <div class="d-flex align-items-center gap-2">
+            <i class="ti ti-user-plus fs-20"></i>
+            <h5 class="modal-title fw-bold text-white mb-0">Add Team / Staff Member</h5>
+          </div>
+          <button type="button" class="btn-close btn-close-white" (click)="createStaffModalOpen.set(false)"></button>
+        </div>
+        <div class="modal-body p-4 bg-light">
+          <form (ngSubmit)="submitCreateStaff()">
+            <div class="mb-3">
+              <label class="form-label fs-13 fw-semibold">Full Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" [(ngModel)]="newStaffData.name" name="staffName" placeholder="e.g. Asim Raza" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fs-13 fw-semibold">Email Address <span class="text-danger">*</span></label>
+              <input type="email" class="form-control" [(ngModel)]="newStaffData.email" name="staffEmail" placeholder="asim@northvoyagers.pk" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fs-13 fw-semibold">Phone / WhatsApp</label>
+              <input type="text" class="form-control" [(ngModel)]="newStaffData.phone" name="staffPhone" placeholder="+92 321 0000000">
+            </div>
+            <div class="mb-3">
+              <label class="form-label fs-13 fw-semibold">Staff Functional Role <span class="text-danger">*</span></label>
+              <select class="form-select" [(ngModel)]="newStaffData.role" name="staffRole" required>
+                <option value="operational_manager">Operational Manager (Full Inventory & Operations)</option>
+                <option value="sales_agent">Sales Agent (Direct Booking & Guest Inquiry)</option>
+                <option value="accountant">Accountant / Finance (Refunds, Invoices & Settlement)</option>
+                <option value="driver">Driver (Assigned Fleet Trips & Transfers)</option>
+                <option value="tour_guide">Tour Guide (Trip Manifest & Lead Guide)</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label class="form-label fs-13 fw-semibold">Initial Password <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" [(ngModel)]="newStaffData.password" name="staffPassword" required>
+            </div>
+            <div class="text-end">
+              <button type="button" class="btn btn-secondary rounded-pill px-4 me-2" (click)="createStaffModalOpen.set(false)">Cancel</button>
+              <button type="submit" class="btn btn-primary rounded-pill px-4 shadow-sm">
+                <i class="ti ti-check me-1"></i> Create Staff Member
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- MODAL: EDIT PERMISSION MATRIX (DogarX Interactive Matrix) -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div class="modal fade show d-block" *ngIf="editPermissionsModalOpen()" style="background: rgba(0,0,0,0.6);" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+        <div class="modal-header bg-primary text-white py-3 px-4">
+          <div class="d-flex align-items-center gap-2">
+            <i class="ti ti-adjustments fs-20"></i>
+            <div>
+              <h5 class="modal-title fw-bold text-white mb-0">Custom Module & Permission Matrix (Section 3.2)</h5>
+              <span class="fs-12 text-white-50">Staff Member: {{ selectedStaff?.name }} ({{ selectedStaff?.role | uppercase }})</span>
+            </div>
+          </div>
+          <button type="button" class="btn-close btn-close-white" (click)="editPermissionsModalOpen.set(false)"></button>
+        </div>
+        <div class="modal-body p-4 bg-light">
+          <p class="fs-13 text-muted mb-3">
+            Check the granular action permissions permitted for this staff account across agency modules:
+          </p>
+
+          <div class="table-responsive bg-white rounded-4 border shadow-sm mb-4">
+            <table class="table table-hover align-middle mb-0 text-center">
+              <thead class="table-light">
+                <tr>
+                  <th class="text-start py-3 ps-4 border-0">Module</th>
+                  <th class="border-0">Can View</th>
+                  <th class="border-0">Can Add / Edit</th>
+                  <th class="border-0">Can Book</th>
+                  <th class="border-0">Approve Refunds</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let row of staffPermissionsMatrix">
+                  <td class="text-start ps-4 fw-bold text-dark">
+                    <i class="ti ti-folder me-2 text-primary"></i>
+                    {{ row.module | uppercase }}
+                  </td>
+                  <td>
+                    <input type="checkbox" class="form-check-input fs-16" [(ngModel)]="row.can_view">
+                  </td>
+                  <td>
+                    <input type="checkbox" class="form-check-input fs-16" [(ngModel)]="row.can_add_edit">
+                  </td>
+                  <td>
+                    <input type="checkbox" class="form-check-input fs-16" [(ngModel)]="row.can_book">
+                  </td>
+                  <td>
+                    <input type="checkbox" class="form-check-input fs-16" [(ngModel)]="row.can_approve_refund">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="text-end">
+            <button type="button" class="btn btn-secondary rounded-pill px-4 me-2" (click)="editPermissionsModalOpen.set(false)">Cancel</button>
+            <button type="button" class="btn btn-primary rounded-pill px-4 shadow-sm" (click)="submitUpdatePermissions()">
+              <i class="ti ti-device-floppy me-1"></i> Save Permission Matrix
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- MODAL: CREATE HOTEL                                       -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div class="modal fade show d-block" *ngIf="createHotelModalOpen()" style="background: rgba(0,0,0,0.6);" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+        <div class="modal-header bg-primary text-white py-3 px-4">
+          <h5 class="modal-title fw-bold text-white mb-0">List Hotel (Manual Inventory)</h5>
+          <button type="button" class="btn-close btn-close-white" (click)="createHotelModalOpen.set(false)"></button>
+        </div>
+        <div class="modal-body p-4 bg-light">
+          <form (ngSubmit)="submitCreateHotel()">
+            <div class="mb-3">
+              <label class="form-label fs-13 fw-semibold">Hotel Name</label>
+              <input type="text" class="form-control" [(ngModel)]="newHotelData.name" name="hotelName" placeholder="e.g. Hunza Serena View Inn" required>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label fs-13 fw-semibold">City</label>
+                <input type="text" class="form-control" [(ngModel)]="newHotelData.city" name="hotelCity" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label fs-13 fw-semibold">Star Rating</label>
+                <input type="number" step="0.1" class="form-control" [(ngModel)]="newHotelData.star_rating" name="hotelStar">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fs-13 fw-semibold">Address</label>
+              <input type="text" class="form-control" [(ngModel)]="newHotelData.address" name="hotelAddress" placeholder="Karimabad, Hunza Valley">
+            </div>
+            <div class="text-end">
+              <button type="button" class="btn btn-secondary rounded-pill px-4 me-2" (click)="createHotelModalOpen.set(false)">Cancel</button>
+              <button type="submit" class="btn btn-primary rounded-pill px-4 shadow-sm">Save Hotel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- MODAL: LIST FLIGHT                                        -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div class="modal fade show d-block" *ngIf="createFlightModalOpen()" style="background: rgba(0,0,0,0.6);" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+        <div class="modal-header bg-primary text-white py-3 px-4">
+          <h5 class="modal-title fw-bold text-white mb-0">List Flight Route (Manual Seats)</h5>
+          <button type="button" class="btn-close btn-close-white" (click)="createFlightModalOpen.set(false)"></button>
+        </div>
+        <div class="modal-body p-4 bg-light">
+          <form (ngSubmit)="submitCreateFlight()">
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label fs-13 fw-semibold">Flight Number</label>
+                <input type="text" class="form-control" [(ngModel)]="newFlightData.flight_number" name="flightNum" placeholder="PK-607" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label fs-13 fw-semibold">Airline Name</label>
+                <input type="text" class="form-control" [(ngModel)]="newFlightData.airline_name" name="flightAirline" required>
+              </div>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label fs-13 fw-semibold">Departure (From)</label>
+                <input type="text" class="form-control" [(ngModel)]="newFlightData.departure_city" name="flightFrom" placeholder="Islamabad (ISB)" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label fs-13 fw-semibold">Arrival (To)</label>
+                <input type="text" class="form-control" [(ngModel)]="newFlightData.arrival_city" name="flightTo" placeholder="Skardu (KDU)" required>
+              </div>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label fs-13 fw-semibold">Adult Fare (PKR)</label>
+                <input type="number" class="form-control" [(ngModel)]="newFlightData.adult_price" name="flightFare" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label fs-13 fw-semibold">Total Seats</label>
+                <input type="number" class="form-control" [(ngModel)]="newFlightData.total_seats" name="flightSeats" required>
+              </div>
+            </div>
+            <div class="text-end">
+              <button type="button" class="btn btn-secondary rounded-pill px-4 me-2" (click)="createFlightModalOpen.set(false)">Cancel</button>
+              <button type="submit" class="btn btn-primary rounded-pill px-4 shadow-sm">Save Flight Route</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- MODAL: REGISTER VEHICLE                                   -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div class="modal fade show d-block" *ngIf="createVehicleModalOpen()" style="background: rgba(0,0,0,0.6);" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+        <div class="modal-header bg-primary text-white py-3 px-4">
+          <h5 class="modal-title fw-bold text-white mb-0">Register Fleet Vehicle</h5>
+          <button type="button" class="btn-close btn-close-white" (click)="createVehicleModalOpen.set(false)"></button>
+        </div>
+        <div class="modal-body p-4 bg-light">
+          <form (ngSubmit)="submitCreateVehicle()">
+            <div class="mb-3">
+              <label class="form-label fs-13 fw-semibold">Vehicle Title</label>
+              <input type="text" class="form-control" [(ngModel)]="newVehicleData.name" name="vehTitle" placeholder="Toyota Prado TX 4WD" required>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label fs-13 fw-semibold">Seats Capacity</label>
+                <input type="number" class="form-control" [(ngModel)]="newVehicleData.seats_capacity" name="vehSeats" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label fs-13 fw-semibold">Daily Rate (PKR)</label>
+                <input type="number" class="form-control" [(ngModel)]="newVehicleData.daily_rate" name="vehRate" required>
+              </div>
+            </div>
+            <div class="text-end">
+              <button type="button" class="btn btn-secondary rounded-pill px-4 me-2" (click)="createVehicleModalOpen.set(false)">Cancel</button>
+              <button type="submit" class="btn btn-primary rounded-pill px-4 shadow-sm">Register Asset</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- MODAL: CREATE CORPORATE ACCOUNT                           -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div class="modal fade show d-block" *ngIf="createCorporateModalOpen()" style="background: rgba(0,0,0,0.6);" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+        <div class="modal-header bg-primary text-white py-3 px-4">
+          <h5 class="modal-title fw-bold text-white mb-0">Onboard Corporate Client</h5>
+          <button type="button" class="btn-close btn-close-white" (click)="createCorporateModalOpen.set(false)"></button>
+        </div>
+        <div class="modal-body p-4 bg-light">
+          <form (ngSubmit)="submitCreateCorporate()">
+            <div class="mb-3">
+              <label class="form-label fs-13 fw-semibold">Company Name</label>
+              <input type="text" class="form-control" [(ngModel)]="newCorporateData.company_name" name="corpCompany" placeholder="Engro Corp Pakistan" required>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label fs-13 fw-semibold">Contact Lead Name</label>
+                <input type="text" class="form-control" [(ngModel)]="newCorporateData.contact_name" name="corpLead" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label fs-13 fw-semibold">Contact Email</label>
+                <input type="email" class="form-control" [(ngModel)]="newCorporateData.contact_email" name="corpEmail" required>
+              </div>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label fs-13 fw-semibold">Credit Limit (PKR)</label>
+                <input type="number" class="form-control" [(ngModel)]="newCorporateData.credit_limit" name="corpLimit">
+              </div>
+              <div class="col-6">
+                <label class="form-label fs-13 fw-semibold">Discount Rate (%)</label>
+                <input type="number" class="form-control" [(ngModel)]="newCorporateData.discount_rate_percentage" name="corpDisc">
+              </div>
+            </div>
+            <div class="text-end">
+              <button type="button" class="btn btn-secondary rounded-pill px-4 me-2" (click)="createCorporateModalOpen.set(false)">Cancel</button>
+              <button type="submit" class="btn btn-primary rounded-pill px-4 shadow-sm">Save Corporate Account</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <!-- MODAL: GENERATE INVOICE                                   -->
+  <!-- ═════════════════════════════════════════════════════════ -->
+  <div class="modal fade show d-block" *ngIf="createInvoiceModalOpen()" style="background: rgba(0,0,0,0.6);" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+        <div class="modal-header bg-primary text-white py-3 px-4">
+          <h5 class="modal-title fw-bold text-white mb-0">Generate Billing Invoice</h5>
+          <button type="button" class="btn-close btn-close-white" (click)="createInvoiceModalOpen.set(false)"></button>
+        </div>
+        <div class="modal-body p-4 bg-light">
+          <form (ngSubmit)="submitCreateInvoice()">
+            <div class="mb-3">
+              <label class="form-label fs-13 fw-semibold">Invoice Title / Description</label>
+              <input type="text" class="form-control" [(ngModel)]="newInvoiceData.title" name="invTitle" placeholder="Corporate Alpine Tour Expedition" required>
+            </div>
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label fs-13 fw-semibold">Subtotal Amount (PKR)</label>
+                <input type="number" class="form-control" [(ngModel)]="newInvoiceData.subtotal" name="invSubtotal" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label fs-13 fw-semibold">Tax Amount (PKR)</label>
+                <input type="number" class="form-control" [(ngModel)]="newInvoiceData.tax_amount" name="invTax">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fs-13 fw-semibold">Due Date</label>
+              <input type="date" class="form-control" [(ngModel)]="newInvoiceData.due_date" name="invDue" required>
+            </div>
+            <div class="text-end">
+              <button type="button" class="btn btn-secondary rounded-pill px-4 me-2" (click)="createInvoiceModalOpen.set(false)">Cancel</button>
+              <button type="submit" class="btn btn-primary rounded-pill px-4 shadow-sm">Dispatch Invoice</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Floating Toast Notification ── -->
+  <div *ngIf="toastMessage()" class="position-fixed bottom-0 end-0 m-4 p-3 bg-dark text-white rounded-4 shadow-lg z-index-5 animate__animated animate__fadeInUp d-flex align-items-center gap-2" style="z-index: 1090;">
+    <i class="ti ti-info-circle text-info fs-20"></i>
+    <span class="fs-13">{{ toastMessage() }}</span>
+  </div>
+
 </div>
+
