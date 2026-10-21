@@ -1,3 +1,21 @@
+<IfModule mod_headers.c>
+    # -------------------------------------------------------------
+    # Cross-Origin Resource Sharing (CORS) for API & Static Assets
+    # -------------------------------------------------------------
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS, PATCH"
+    Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-XSRF-TOKEN, X-Client-Version, Range"
+    Header set Access-Control-Expose-Headers "Content-Length, Content-Range"
+    Header set Access-Control-Max-Age "86400"
+
+    # Specific static file match to guarantee CORS on all images, uploads, fonts, downloads
+    <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css|css|js|png|jpe?g|gif|svg|ico|webp|mp4|webm|pdf|apk)$">
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, HEAD, OPTIONS"
+        Header set Access-Control-Allow-Headers "*"
+    </FilesMatch>
+</IfModule>
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
@@ -22,4 +40,20 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+</IfModule>
+
+<IfModule mod_php7.c>
+    php_value upload_max_filesize 150M
+    php_value post_max_size 160M
+    php_value memory_limit 256M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>
+
+<IfModule mod_php.c>
+    php_value upload_max_filesize 150M
+    php_value post_max_size 160M
+    php_value memory_limit 256M
+    php_value max_execution_time 300
+    php_value max_input_time 300
 </IfModule>
