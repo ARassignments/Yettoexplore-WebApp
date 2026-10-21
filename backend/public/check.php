@@ -72,30 +72,50 @@ if (!file_exists($autoloadPath)) {
             $app = require_once $appBootstrap;
             echo "   Application instance created.\n";
 
-            // Dispatch request through Laravel
-            $request = \Illuminate\Http\Request::create('/api/v1/tours', 'GET');
-            $request->headers->set('Accept', 'application/json');
-            $response = $app->handleRequest($request);
-            
-            echo "   Dispatch /api/v1/tours Status: " . $response->getStatusCode() . "\n";
-            echo "   Response: " . substr($response->getContent(), 0, 500) . "\n\n";
+            // Bootstrap Laravel core services
+            $consoleKernel = $app->make(\Illuminate\Contracts\Console\Kernel::class);
+            $consoleKernel->bootstrap();
+            echo "   Laravel core bootstrapped.\n\n";
 
-            // Now that app is bootstrapped, check config & DB
+            echo "   --- CONFIG & ENVIRONMENT ---\n";
             echo "   APP_ENV: " . config('app.env') . "\n";
-            echo "   APP_KEY set: " . (config('app.key') ? 'YES (' . substr(config('app.key'), 0, 10) . '...)' : 'NO (MISSING APP_KEY!)') . "\n";
+            echo "   APP_DEBUG: " . (config('app.debug') ? 'true' : 'false (Change to true in .env to see errors)') . "\n";
+            echo "   APP_KEY: " . (config('app.key') ? 'Configured (' . substr(config('app.key'), 0, 10) . '...)' : 'MISSING!') . "\n";
             echo "   DB_CONNECTION: " . config('database.default') . "\n";
-            echo "   DB_DATABASE: " . config('database.connections.' . config('database.default') . '.database') . "\n";
+            
+            $dbConn = config('database.default');
+            $dbConfig = config("database.connections.{$dbConn}");
+            echo "   DB_HOST: " . ($dbConfig['host'] ?? 'N/A') . "\n";
+            echo "   DB_DATABASE: " . ($dbConfig['database'] ?? 'N/A') . "\n";
+            echo "   DB_USERNAME: " . ($dbConfig['username'] ?? 'N/A') . "\n\n";
 
+            echo "   --- DATABASE TEST ---\n";
             try {
-                \Illuminate\Support\Facades\DB::connection()->getPdo();
-                echo "   Database connection: SUCCESSFUL!\n";
-                
-                // Test counting tours
-                $count = \Illuminate\Support\Facades\DB::table('tours')->count();
-                echo "   Tours in database: $count\n";
+                $pdo = \Illuminate\Support\Facades\DB::connection()->getPdo();
+                echo "   Database PDO connection: SUCCESSFUL!\n";
+
+                // Check tables
+                $tables = \Illuminate\Support\Facades\DB::select('SHOW TABLES');
+                echo "   Tables in database: " . count($tables) . "\n";
+                if (count($tables) === 0) {
+                    echo "   WARNING: Database is EMPTY! Migrations have not been run!\n";
+                }
             } catch (\Throwable $dbe) {
-                echo "   DATABASE ERROR:\n";
-                echo "   " . $dbe->getMessage() . "\n";
+                echo "   DATABASE FAILED:\n";
+                echo "   Message: " . $dbe->getMessage() . "\n";
+            }
+            echo "\n";
+
+            echo "   --- TESTING CONTROLLER EXECUTION ---\n";
+            try {
+                $request = \Illuminate\Http\Request::create('/api/v1/tours', 'GET');
+                $controller = new \App\Http\Controllers\Api\V1\TourController();
+                $result = $controller->index($request);
+                echo "   TourController::index() SUCCESS! Status: " . $result->getStatusCode() . "\n";
+            } catch (\Throwable $te) {
+                echo "   TourController FAILED:\n";
+                echo "   Message: " . $te->getMessage() . "\n";
+                echo "   In file: " . $te->getFile() . ":" . $te->getLine() . "\n";
             }
         }
     } catch (\Throwable $e) {
@@ -103,7 +123,6 @@ if (!file_exists($autoloadPath)) {
         echo "   Class: " . get_class($e) . "\n";
         echo "   Message: " . $e->getMessage() . "\n";
         echo "   File: " . $e->getFile() . ":" . $e->getLine() . "\n";
-        echo "   Trace:\n" . $e->getTraceAsString() . "\n";
     }
 }
 echo "\n";
